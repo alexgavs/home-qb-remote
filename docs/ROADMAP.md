@@ -1,5 +1,9 @@
 # Roadmap: optional local torrent engine
 
+Separate future work: [optional Jackett search/download and Jellyfin library/
+playback integrations](INTEGRATIONS-PLAN.md). This is a proposal, not a v0.2.0
+release requirement; direct SMB remains the preferred existing LAN file route.
+
 The shipped architecture is **remote mode**: qBittorrent runs elsewhere, and this
 app controls it through WebUI API. No built-in torrent engine is implemented.
 An embedded engine is a separate potential feature, not a requirement to use
