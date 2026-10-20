@@ -1,0 +1,3 @@
+"CFBundleDisplayName" = "Home qB Remote";
+"NSLocalNetworkUsageDescription" = "Conectarse a tus servidores qBittorrent en la red local.";
+"NSLocationWhenInUseUsageDescription" = "Leer el nombre de la red Wi-Fi para cambiar las direcciones del servidor cuando actives esta opci?n.";

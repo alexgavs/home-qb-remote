@@ -1,0 +1,4 @@
+"CFBundleDisplayName" = "Home qB Remote";
+"NSFaceIDUsageDescription" = "Unlock your saved qBittorrent server profiles.";
+"NSLocalNetworkUsageDescription" = "Connect to your qBittorrent servers on your local network.";
+"NSLocationWhenInUseUsageDescription" = "Read your Wi-Fi network name to switch server addresses when you enable this option.";

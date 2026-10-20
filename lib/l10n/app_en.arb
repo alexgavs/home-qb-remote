@@ -1,0 +1,2639 @@
+{
+  "@@locale": "en",
+  "message0001": "Could not read the protected profile storage.",
+  "@message0001": {
+    "description": "Original: 'Не удалось прочитать защищённое хранилище профилей.'; source: lib/app_controller.dart:89"
+  },
+  "message0002": "Profile storage is unavailable. Changes were not saved; existing data was kept.",
+  "@message0002": {
+    "description": "Original: 'Хранилище профилей недоступно. Изменения не сохранены; существующие данные сохранены.'; source: lib/app_controller.dart:112"
+  },
+  "message0003": "An API key cannot be combined with reverse proxy Basic auth: both use the Authorization header.",
+  "@message0003": {
+    "description": "Original: 'API-ключ нельзя сочетать с Basic auth обратного прокси: оба используют заголовок Authorization.'; source: lib/app_controller.dart:125"
+  },
+  "message0004": "Sign-in was rejected. Check your access details and reconnect to the server.",
+  "@message0004": {
+    "description": "Original: 'Вход отклонён. Проверьте данные доступа и подключитесь к серверу ещё раз.'; source: lib/app_controller.dart:197"
+  },
+  "message0005": "Select a server",
+  "@message0005": {
+    "description": "Original: 'Выберите сервер'; source: lib/app_controller.dart:275"
+  },
+  "message0006": "The selected file is not a valid .torrent. Data was not sent.",
+  "@message0006": {
+    "description": "Original: 'Выбранный файл не является корректным .torrent. Данные не отправлены.'; source: lib/app_controller.dart:368"
+  },
+  "message0007": "Operation failed. Check the connection and server settings.",
+  "@message0007": {
+    "description": "Original: 'Операция не выполнена. Проверьте соединение и настройки сервера.'; source: lib/app_controller.dart:399"
+  },
+  "message0008": "The HTTP Basic username cannot contain a colon.",
+  "@message0008": {
+    "description": "Original: 'The HTTP Basic username cannot contain a colon.'; source: lib/core/qb_client.dart:41"
+  },
+  "message0009": "Use either an API key or HTTP Basic credentials, not both.",
+  "@message0009": {
+    "description": "Original: 'Use either an API key or HTTP Basic credentials, not both.'; source: lib/core/qb_client.dart:80"
+  },
+  "message0010": "The API key contains spaces, line breaks or other unsupported characters.",
+  "@message0010": {
+    "description": "Original: 'The API key contains spaces, line breaks or other unsupported characters.'; source: lib/core/qb_client.dart:85"
+  },
+  "message0011": "Provide both the client certificate and its private key.",
+  "@message0011": {
+    "description": "Original: 'Provide both the client certificate and its private key.'; source: lib/core/qb_client.dart:117"
+  },
+  "message0012": "The custom CA or client certificate could not be loaded.",
+  "@message0012": {
+    "description": "Original: 'The custom CA or client certificate could not be loaded.'; source: lib/core/qb_client.dart:142"
+  },
+  "message0013": "Use an HTTP or HTTPS server URL without embedded credentials, query, or fragment.",
+  "@message0013": {
+    "description": "Original: 'Use an HTTP or HTTPS server URL without embedded credentials, query, or fragment.'; source: lib/core/qb_client.dart:164"
+  },
+  "message0014": "Invalid API endpoint.",
+  "@message0014": {
+    "description": "Original: 'Invalid API endpoint.'; source: lib/core/qb_client.dart:173"
+  },
+  "message0015": "The server connection is closed.",
+  "@message0015": {
+    "description": "Original: 'The server connection is closed.'; source: lib/core/qb_client.dart:195"
+  },
+  "message0016": "The server did not answer the API key check. Check the server URL and WebUI access settings.",
+  "@message0016": {
+    "description": "Original: 'The server did not answer the API key check. Check the server URL and WebUI access settings.'; source: lib/core/qb_client.dart:221"
+  },
+  "message0017": "Sign-in failed. Check the server credentials and WebUI access settings.",
+  "@message0017": {
+    "description": "Original: 'Sign-in failed. Check the server credentials and WebUI access settings.'; source: lib/core/qb_client.dart:257"
+  },
+  "message0018": "The server rejected the API key. Check the key and WebUI access settings, then reconnect.",
+  "@message0018": {
+    "description": "Original: 'The server rejected the API key. Check the key and WebUI access settings, then reconnect.'; source: lib/core/qb_client.dart:309"
+  },
+  "message0019": "Sign-in was rejected. Check the server credentials and WebUI access settings, then reconnect.",
+  "@message0019": {
+    "description": "Original: 'Sign-in was rejected. Check the server credentials and WebUI access settings, then reconnect.'; source: lib/core/qb_client.dart:310"
+  },
+  "message0020": "Sign in to the server first.",
+  "@message0020": {
+    "description": "Original: 'Sign in to the server first.'; source: lib/core/qb_client.dart:322"
+  },
+  "message0021": "The server returned invalid JSON.",
+  "@message0021": {
+    "description": "Original: 'The server returned invalid JSON.'; source: lib/core/qb_client.dart:347"
+  },
+  "message0022": "The server could not complete the action.",
+  "@message0022": {
+    "description": "Original: 'The server could not complete the action.'; source: lib/core/qb_client.dart:376"
+  },
+  "message0023": "The server returned an invalid torrent list.",
+  "@message0023": {
+    "description": "Original: 'The server returned an invalid torrent list.'; source: lib/core/qb_client.dart:391"
+  },
+  "message0024": "Select valid torrents first.",
+  "@message0024": {
+    "description": "Original: 'Select valid torrents first.'; source: lib/core/qb_client.dart:416"
+  },
+  "message0025": "Enter a torrent URL or magnet link.",
+  "@message0025": {
+    "description": "Original: 'Enter a torrent URL or magnet link.'; source: lib/core/qb_client.dart:436"
+  },
+  "message0026": "Choose a non-empty torrent file.",
+  "@message0026": {
+    "description": "Original: 'Choose a non-empty torrent file.'; source: lib/core/qb_client.dart:447"
+  },
+  "message0027": "Choose a named torrent file.",
+  "@message0027": {
+    "description": "Original: 'Choose a named torrent file.'; source: lib/core/qb_client.dart:454"
+  },
+  "message0028": "Invalid torrent option field.",
+  "@message0028": {
+    "description": "Original: 'Invalid torrent option field.'; source: lib/core/qb_client.dart:461"
+  },
+  "message0029": "The server rejected the torrent file.",
+  "@message0029": {
+    "description": "Original: 'The server rejected the torrent file.'; source: lib/core/qb_client.dart:484"
+  },
+  "message0030": "The server returned invalid torrent details.",
+  "@message0030": {
+    "description": "Original: 'The server returned invalid torrent details.'; source: lib/core/qb_client.dart:508"
+  },
+  "message0031": "The server request timed out.",
+  "@message0031": {
+    "description": "Original: 'The server request timed out.'; source: lib/core/qb_client.dart:559"
+  },
+  "message0032": "The server returned an invalid redirect.",
+  "@message0032": {
+    "description": "Original: 'The server returned an invalid redirect.'; source: lib/core/qb_client.dart:604"
+  },
+  "message0033": "The server returned too many redirects.",
+  "@message0033": {
+    "description": "Original: 'The server returned too many redirects.'; source: lib/core/qb_client.dart:615"
+  },
+  "message0034": "The server rejected the request (HTTP {arg1}).",
+  "@message0034": {
+    "description": "Original: 'The server rejected the request (HTTP ${response.statusCode}).'; source: lib/core/qb_client.dart:653; expressions: [\"response.statusCode\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0035": "The server response is too large.",
+  "@message0035": {
+    "description": "Original: 'The server response is too large.'; source: lib/core/qb_client.dart:660"
+  },
+  "message0036": "Cannot reach the server. Check its address and connection.",
+  "@message0036": {
+    "description": "Original: 'Cannot reach the server. Check its address and connection.'; source: lib/core/qb_client.dart:718"
+  },
+  "message0037": "The server connection failed.",
+  "@message0037": {
+    "description": "Original: 'The server connection failed.'; source: lib/core/qb_client.dart:721"
+  },
+  "message0038": "The server returned an invalid response.",
+  "@message0038": {
+    "description": "Original: 'The server returned an invalid response.'; source: lib/core/qb_client.dart:723"
+  },
+  "message0039": "The server request failed.",
+  "@message0039": {
+    "description": "Original: 'The server request failed.'; source: lib/core/qb_client.dart:725"
+  },
+  "message0040": "The session expired. Sign in again.",
+  "@message0040": {
+    "description": "Original: 'The session expired. Sign in again.'; source: lib/core/qb_client.dart:778"
+  },
+  "message0041": "The server rejected the request (HTTP 403).",
+  "@message0041": {
+    "description": "Original: 'The server rejected the request (HTTP 403).'; source: lib/core/qb_client.dart:786"
+  },
+  "message0042": "Operation failed",
+  "@message0042": {
+    "description": "Original: 'Операция не выполнена'; source: lib/features/advanced_screen.dart:31"
+  },
+  "message0043": "Cancel",
+  "@message0043": {
+    "description": "Original: 'Отмена'; source: lib/features/advanced_screen.dart:77"
+  },
+  "message0044": "Apply",
+  "@message0044": {
+    "description": "Original: 'Применить'; source: lib/features/advanced_screen.dart:84"
+  },
+  "message0045": "Server tools",
+  "@message0045": {
+    "description": "Original: 'Инструменты сервера'; source: lib/features/advanced_screen.dart:118"
+  },
+  "message0046": "No server",
+  "@message0046": {
+    "description": "Original: 'Нет сервера'; source: lib/features/advanced_screen.dart:126"
+  },
+  "message0047": "Direct connection to your qBittorrent. No ads or analytics.",
+  "@message0047": {
+    "description": "Original: 'Прямое подключение к вашему qBittorrent. Рекламы и аналитики нет.'; source: lib/features/advanced_screen.dart:131"
+  },
+  "message0048": "Torrent search",
+  "@message0048": {
+    "description": "Original: 'Поиск торрентов'; source: lib/features/advanced_screen.dart:141"
+  },
+  "message0049": "Your server's search plugins",
+  "@message0049": {
+    "description": "Original: 'Поисковые плагины вашего сервера'; source: lib/features/advanced_screen.dart:142"
+  },
+  "message0050": "RSS and download rules",
+  "@message0050": {
+    "description": "Original: 'RSS и правила загрузки'; source: lib/features/advanced_screen.dart:154"
+  },
+  "message0051": "Feeds, articles, automatic rules",
+  "@message0051": {
+    "description": "Original: 'Ленты, статьи, автоматические правила'; source: lib/features/advanced_screen.dart:155"
+  },
+  "message0052": "Speed and limit mode",
+  "@message0052": {
+    "description": "Original: 'Скорость и режим лимитов'; source: lib/features/advanced_screen.dart:160"
+  },
+  "message0053": "Download and upload limits in KiB/s",
+  "@message0053": {
+    "description": "Original: 'Лимиты загрузки и отдачи в КиБ/с'; source: lib/features/advanced_screen.dart:161"
+  },
+  "message0054": "qBittorrent settings",
+  "@message0054": {
+    "description": "Original: 'Настройки qBittorrent'; source: lib/features/advanced_screen.dart:166"
+  },
+  "message0055": "All available WebUI API options",
+  "@message0055": {
+    "description": "Original: 'Все доступные параметры WebUI API'; source: lib/features/advanced_screen.dart:167"
+  },
+  "message0056": "Categories and tags",
+  "@message0056": {
+    "description": "Original: 'Категории и метки'; source: lib/features/advanced_screen.dart:179"
+  },
+  "message0057": "Create, edit and delete",
+  "@message0057": {
+    "description": "Original: 'Создание, изменение и удаление'; source: lib/features/advanced_screen.dart:180"
+  },
+  "message0058": "Server log",
+  "@message0058": {
+    "description": "Original: 'Журнал сервера'; source: lib/features/advanced_screen.dart:185"
+  },
+  "message0059": "Main log and blocked peers",
+  "@message0059": {
+    "description": "Original: 'Основной журнал и заблокированные пиры'; source: lib/features/advanced_screen.dart:186"
+  },
+  "message0060": "Connection status",
+  "@message0060": {
+    "description": "Original: 'Состояние соединения'; source: lib/features/advanced_screen.dart:193"
+  },
+  "message0061": "Speeds, transferred data and DHT",
+  "@message0061": {
+    "description": "Original: 'Скорости, переданные данные и DHT'; source: lib/features/advanced_screen.dart:194"
+  },
+  "message0062": "Magic packet on your local network",
+  "@message0062": {
+    "description": "Original: 'Magic packet в вашей локальной сети'; source: lib/features/advanced_screen.dart:202"
+  },
+  "message0063": "Speed limits",
+  "@message0063": {
+    "description": "Original: 'Ограничения скорости'; source: lib/features/advanced_screen.dart:229"
+  },
+  "message0064": "Download, KiB/s (0 = no limit)",
+  "@message0064": {
+    "description": "Original: 'Загрузка, КиБ/с (0 — без лимита)'; source: lib/features/advanced_screen.dart:230"
+  },
+  "message0065": "Upload, KiB/s (0 = no limit)",
+  "@message0065": {
+    "description": "Original: 'Отдача, КиБ/с (0 — без лимита)'; source: lib/features/advanced_screen.dart:232"
+  },
+  "message0066": "Alternative mode (true/false)",
+  "@message0066": {
+    "description": "Original: 'Альтернативный режим (true/false)'; source: lib/features/advanced_screen.dart:233"
+  },
+  "message0067": "Limits saved",
+  "@message0067": {
+    "description": "Original: 'Лимиты сохранены'; source: lib/features/advanced_screen.dart:245"
+  },
+  "message0068": "MAC address",
+  "@message0068": {
+    "description": "Original: 'MAC-адрес'; source: lib/features/advanced_screen.dart:272"
+  },
+  "message0069": "Broadcast address",
+  "@message0069": {
+    "description": "Original: 'Broadcast-адрес'; source: lib/features/advanced_screen.dart:273"
+  },
+  "message0070": "Port",
+  "@message0070": {
+    "description": "Original: 'Порт'; source: lib/features/advanced_screen.dart:274"
+  },
+  "message0071": "Magic packet sent",
+  "@message0071": {
+    "description": "Original: 'Magic packet отправлен'; source: lib/features/advanced_screen.dart:298"
+  },
+  "message0072": "Setting unavailable. Check device permissions and security protection.",
+  "@message0072": {
+    "description": "Original: 'Настройка недоступна. Проверьте разрешения и защиту устройства.'; source: lib/features/device_settings_screen.dart:27"
+  },
+  "message0073": "Device settings",
+  "@message0073": {
+    "description": "Original: 'Настройки устройства'; source: lib/features/device_settings_screen.dart:37"
+  },
+  "message0074": "App lock",
+  "@message0074": {
+    "description": "Original: 'Блокировка приложения'; source: lib/features/device_settings_screen.dart:51"
+  },
+  "message0075": "OS authentication when opening and returning to the app.",
+  "@message0075": {
+    "description": "Original: 'Аутентификация средствами ОС при открытии и возвращении в приложение.'; source: lib/features/device_settings_screen.dart:53"
+  },
+  "message0076": "Completion notifications",
+  "@message0076": {
+    "description": "Original: 'Уведомления о завершении'; source: lib/features/device_settings_screen.dart:63"
+  },
+  "message0077": "Checks while the app is open. The app must be running for notifications.",
+  "@message0077": {
+    "description": "Original: 'Проверка при открытом приложении. Для уведомлений приложение должно работать.'; source: lib/features/device_settings_screen.dart:66"
+  },
+  "message0078": "Direct polling of qBittorrent. Background execution is limited by the OS; instant delivery is not guaranteed.",
+  "@message0078": {
+    "description": "Original: 'Прямой опрос qBittorrent. Фоновое выполнение ограничивается ОС; мгновенная доставка не гарантируется.'; source: lib/features/device_settings_screen.dart:67"
+  },
+  "message0079": "Background check interval",
+  "@message0079": {
+    "description": "Original: 'Интервал фоновой проверки'; source: lib/features/device_settings_screen.dart:77"
+  },
+  "message0080": "{arg1} min. The OS may delay the start.",
+  "@message0080": {
+    "description": "Original: '${DeviceServices.pollingIntervalMinutes} мин. ОС может отложить запуск.'; source: lib/features/device_settings_screen.dart:79; expressions: [\"DeviceServices.pollingIntervalMinutes\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0081": "Interval, minutes",
+  "@message0081": {
+    "description": "Original: 'Интервал, минуты'; source: lib/features/device_settings_screen.dart:91"
+  },
+  "message0082": "From 15 to 1440 minutes",
+  "@message0082": {
+    "description": "Original: 'От 15 до 1440 минут'; source: lib/features/device_settings_screen.dart:96"
+  },
+  "message0083": "Save",
+  "@message0083": {
+    "description": "Original: 'Сохранить'; source: lib/features/device_settings_screen.dart:111"
+  },
+  "message0084": "No ads or analytics",
+  "@message0084": {
+    "description": "Original: 'Без рекламы и аналитики'; source: lib/features/device_settings_screen.dart:130"
+  },
+  "message0085": "No Firebase, ad SDKs, remote config, or developer registration. Profiles and certificates are stored in the OS secure storage.",
+  "@message0085": {
+    "description": "Original: 'Нет Firebase, рекламных SDK, удалённой конфигурации и регистрации у разработчика. Профили и сертификаты хранятся в защищённом хранилище ОС.'; source: lib/features/device_settings_screen.dart:132"
+  },
+  "message0086": "Network connections",
+  "@message0086": {
+    "description": "Original: 'Сетевые соединения'; source: lib/features/device_settings_screen.dart:137"
+  },
+  "message0087": "The client connects to the qBittorrent servers you specify. Wake-on-LAN sends a packet to the local address you enter. Search and RSS are handled by your server.",
+  "@message0087": {
+    "description": "Original: 'Клиент обращается к заданным вами серверам qBittorrent. Wake-on-LAN отправляет пакет на введённый локальный адрес. Поиск и RSS выполняет ваш сервер.'; source: lib/features/device_settings_screen.dart:139"
+  },
+  "message0088": "Connection security",
+  "@message0088": {
+    "description": "Original: 'Защита соединения'; source: lib/features/device_settings_screen.dart:144"
+  },
+  "message0089": "Use HTTPS or a VPN for remote access. Certificate verification is enabled; a custom CA and client PEM certificate can be set in the profile.",
+  "@message0089": {
+    "description": "Original: 'Для удалённого доступа используйте HTTPS или VPN. Проверка сертификата включена; собственный CA и клиентский PEM-сертификат задаются в профиле.'; source: lib/features/device_settings_screen.dart:146"
+  },
+  "message0090": "Fill in this field",
+  "@message0090": {
+    "description": "Original: 'Заполните поле'; source: lib/features/form_helpers.dart:98"
+  },
+  "message0091": "Confirm",
+  "@message0091": {
+    "description": "Original: 'Подтвердить'; source: lib/features/form_helpers.dart:145"
+  },
+  "message0092": "Enter a whole number, zero or greater",
+  "@message0092": {
+    "description": "Original: 'Укажите целое число не меньше нуля'; source: lib/features/form_helpers.dart:153"
+  },
+  "message0093": "B",
+  "@message0093": {
+    "description": "Original: 'Б'; source: lib/features/form_helpers.dart:157"
+  },
+  "message0094": "KiB",
+  "@message0094": {
+    "description": "Original: 'КиБ'; source: lib/features/form_helpers.dart:157"
+  },
+  "message0095": "MiB",
+  "@message0095": {
+    "description": "Original: 'МиБ'; source: lib/features/form_helpers.dart:157"
+  },
+  "message0096": "GiB",
+  "@message0096": {
+    "description": "Original: 'ГиБ'; source: lib/features/form_helpers.dart:157"
+  },
+  "message0097": "TiB",
+  "@message0097": {
+    "description": "Original: 'ТиБ'; source: lib/features/form_helpers.dart:157"
+  },
+  "message0098": "RSS operation failed",
+  "@message0098": {
+    "description": "Original: 'Операция RSS не выполнена'; source: lib/features/rss_screen.dart:39"
+  },
+  "message0099": "Refresh",
+  "@message0099": {
+    "description": "Original: 'Обновить'; source: lib/features/rss_screen.dart:90"
+  },
+  "message0100": "Add",
+  "@message0100": {
+    "description": "Original: 'Добавить'; source: lib/features/rss_screen.dart:96"
+  },
+  "message0101": "Add feed",
+  "@message0101": {
+    "description": "Original: 'Добавить ленту'; source: lib/features/rss_screen.dart:99"
+  },
+  "message0102": "Create folder",
+  "@message0102": {
+    "description": "Original: 'Создать папку'; source: lib/features/rss_screen.dart:100"
+  },
+  "message0103": "Add rule",
+  "@message0103": {
+    "description": "Original: 'Добавить правило'; source: lib/features/rss_screen.dart:101"
+  },
+  "message0104": "Folder actions",
+  "@message0104": {
+    "description": "Original: 'Действия с папкой'; source: lib/features/rss_screen.dart:104"
+  },
+  "message0105": "Articles",
+  "@message0105": {
+    "description": "Original: 'Статьи'; source: lib/features/rss_screen.dart:112"
+  },
+  "message0106": "Feeds",
+  "@message0106": {
+    "description": "Original: 'Ленты'; source: lib/features/rss_screen.dart:113"
+  },
+  "message0107": "Rules",
+  "@message0107": {
+    "description": "Original: 'Правила'; source: lib/features/rss_screen.dart:114"
+  },
+  "message0108": "No articles in feeds yet",
+  "@message0108": {
+    "description": "Original: 'В лентах пока нет статей'; source: lib/features/rss_screen.dart:127"
+  },
+  "message0109": "Untitled",
+  "@message0109": {
+    "description": "Original: 'Без названия'; source: lib/features/rss_screen.dart:1"
+  },
+  "message0110": "Torrent added",
+  "@message0110": {
+    "description": "Original: 'Торрент добавлен'; source: lib/features/rss_screen.dart:163"
+  },
+  "message0111": "Add torrent",
+  "@message0111": {
+    "description": "Original: 'Добавить торрент'; source: lib/features/rss_screen.dart:172"
+  },
+  "message0112": "Mark as read",
+  "@message0112": {
+    "description": "Original: 'Отметить прочитанной'; source: lib/features/rss_screen.dart:176"
+  },
+  "message0113": "Add your first RSS feed with +",
+  "@message0113": {
+    "description": "Original: 'Добавьте первую RSS-ленту через +'; source: lib/features/rss_screen.dart:186"
+  },
+  "message0114": "Refresh feed",
+  "@message0114": {
+    "description": "Original: 'Обновить ленту'; source: lib/features/rss_screen.dart:202"
+  },
+  "message0115": "Mark all as read",
+  "@message0115": {
+    "description": "Original: 'Отметить всё прочитанным'; source: lib/features/rss_screen.dart:206"
+  },
+  "message0116": "Move / rename",
+  "@message0116": {
+    "description": "Original: 'Переместить / переименовать'; source: lib/features/rss_screen.dart:211"
+  },
+  "message0117": "Delete feed",
+  "@message0117": {
+    "description": "Original: 'Удалить ленту'; source: lib/features/rss_screen.dart:216"
+  },
+  "message0118": "No automatic download rules",
+  "@message0118": {
+    "description": "Original: 'Нет правил автоматической загрузки'; source: lib/features/rss_screen.dart:225"
+  },
+  "message0119": "Edit",
+  "@message0119": {
+    "description": "Original: 'Изменить'; source: lib/features/rss_screen.dart:251"
+  },
+  "message0120": "Rename",
+  "@message0120": {
+    "description": "Original: 'Переименовать'; source: lib/features/rss_screen.dart:255"
+  },
+  "message0121": "Matching articles",
+  "@message0121": {
+    "description": "Original: 'Подходящие статьи'; source: lib/features/rss_screen.dart:259"
+  },
+  "message0122": "Delete rule",
+  "@message0122": {
+    "description": "Original: 'Удалить правило'; source: lib/features/rss_screen.dart:263"
+  },
+  "message0123": "RSS folder",
+  "@message0123": {
+    "description": "Original: 'Папка RSS'; source: lib/features/rss_screen.dart:288"
+  },
+  "message0124": "Full folder path",
+  "@message0124": {
+    "description": "Original: 'Полный путь папки'; source: lib/features/rss_screen.dart:289"
+  },
+  "message0125": "Folder action",
+  "@message0125": {
+    "description": "Original: 'Действие с папкой'; source: lib/features/rss_screen.dart:295"
+  },
+  "message0126": "Delete folder",
+  "@message0126": {
+    "description": "Original: 'Удалить папку'; source: lib/features/rss_screen.dart:303"
+  },
+  "message0127": "New RSS feed",
+  "@message0127": {
+    "description": "Original: 'Новая RSS-лента'; source: lib/features/rss_screen.dart:313"
+  },
+  "message0128": "New RSS folder",
+  "@message0128": {
+    "description": "Original: 'Новая папка RSS'; source: lib/features/rss_screen.dart:313"
+  },
+  "message0129": "Feed URL",
+  "@message0129": {
+    "description": "Original: 'URL ленты'; source: lib/features/rss_screen.dart:316"
+  },
+  "message0130": "Feed path and name (optional)",
+  "@message0130": {
+    "description": "Original: 'Путь и имя ленты (необязательно)'; source: lib/features/rss_screen.dart:320"
+  },
+  "message0131": "New folder path",
+  "@message0131": {
+    "description": "Original: 'Путь новой папки'; source: lib/features/rss_screen.dart:321"
+  },
+  "message0132": "New RSS path",
+  "@message0132": {
+    "description": "Original: 'Новый путь RSS'; source: lib/features/rss_screen.dart:337"
+  },
+  "message0133": "Path and new name",
+  "@message0133": {
+    "description": "Original: 'Путь и новое имя'; source: lib/features/rss_screen.dart:340"
+  },
+  "message0134": "Delete RSS item?",
+  "@message0134": {
+    "description": "Original: 'Удалить элемент RSS?'; source: lib/features/rss_screen.dart:349"
+  },
+  "message0135": "“{arg1}” and its RSS content will be deleted. Torrent files will not be affected.",
+  "@message0135": {
+    "description": "Original: 'Будет удалён «$path» и его содержимое RSS. Файлы торрентов не затрагиваются.'; source: lib/features/rss_screen.dart:350; expressions: [\"path\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0136": "Delete rule?",
+  "@message0136": {
+    "description": "Original: 'Удалить правило?'; source: lib/features/rss_screen.dart:380"
+  },
+  "message0137": "Rule name",
+  "@message0137": {
+    "description": "Original: 'Имя правила'; source: lib/features/rss_screen.dart:383"
+  },
+  "message0138": "New name",
+  "@message0138": {
+    "description": "Original: 'Новое имя'; source: lib/features/rss_screen.dart:384"
+  },
+  "message0139": "Matching articles: {arg1}",
+  "@message0139": {
+    "description": "Original: 'Подходящие статьи: $name'; source: lib/features/rss_screen.dart:396; expressions: [\"name\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0140": "No matching articles",
+  "@message0140": {
+    "description": "Original: 'Нет подходящих статей'; source: lib/features/rss_screen.dart:418"
+  },
+  "message0141": "Close",
+  "@message0141": {
+    "description": "Original: 'Закрыть'; source: lib/features/rss_screen.dart:426"
+  },
+  "message0142": "New RSS rule",
+  "@message0142": {
+    "description": "Original: 'Новое правило RSS'; source: lib/features/rss_screen.dart:491"
+  },
+  "message0143": "RSS rule",
+  "@message0143": {
+    "description": "Original: 'Правило RSS'; source: lib/features/rss_screen.dart:491"
+  },
+  "message0144": "Must contain",
+  "@message0144": {
+    "description": "Original: 'Должно содержать'; source: lib/features/rss_screen.dart:502"
+  },
+  "message0145": "Must not contain",
+  "@message0145": {
+    "description": "Original: 'Не должно содержать'; source: lib/features/rss_screen.dart:503"
+  },
+  "message0146": "Episode filter",
+  "@message0146": {
+    "description": "Original: 'Фильтр серий'; source: lib/features/rss_screen.dart:504"
+  },
+  "message0147": "Feed URLs, one per line",
+  "@message0147": {
+    "description": "Original: 'URL лент, каждый с новой строки'; source: lib/features/rss_screen.dart:505"
+  },
+  "message0148": "Category",
+  "@message0148": {
+    "description": "Original: 'Категория'; source: lib/features/rss_screen.dart:506"
+  },
+  "message0149": "Save path",
+  "@message0149": {
+    "description": "Original: 'Путь сохранения'; source: lib/features/rss_screen.dart:507"
+  },
+  "message0150": "Do not re-download for, days",
+  "@message0150": {
+    "description": "Original: 'Не загружать повторно, дней'; source: lib/features/rss_screen.dart:508"
+  },
+  "message0151": "Enter a rule name",
+  "@message0151": {
+    "description": "Original: 'Укажите имя правила'; source: lib/features/rss_screen.dart:521"
+  },
+  "message0152": "Rule enabled",
+  "@message0152": {
+    "description": "Original: 'Правило включено'; source: lib/features/rss_screen.dart:531"
+  },
+  "message0153": "Regular expressions",
+  "@message0153": {
+    "description": "Original: 'Регулярные выражения'; source: lib/features/rss_screen.dart:536"
+  },
+  "message0154": "Smart episode filter",
+  "@message0154": {
+    "description": "Original: 'Умный фильтр серий'; source: lib/features/rss_screen.dart:541"
+  },
+  "message0155": "Add paused",
+  "@message0155": {
+    "description": "Original: 'Добавлять на паузе'; source: lib/features/rss_screen.dart:546"
+  },
+  "message0156": "Search plugins unavailable",
+  "@message0156": {
+    "description": "Original: 'Поисковые плагины недоступны'; source: lib/features/search_screen.dart:42"
+  },
+  "message0157": "Searching your server…",
+  "@message0157": {
+    "description": "Original: 'Поиск на вашем сервере…'; source: lib/features/search_screen.dart:73"
+  },
+  "message0158": "{arg1, plural, one {{arg1} result} other {{arg1} results}}{arg2}",
+  "@message0158": {
+    "description": "Original: '${results.length} результатов${response['status'] == 'Stopped' ? ' · завершено' : ''}'; source: lib/features/search_screen.dart:109; expressions: [\"results.length\", \"response['status'] == 'Stopped' ? ' · завершено' : ''\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "int"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "message0159": " · completed",
+  "@message0159": {
+    "description": "Original: ' · завершено'; source: lib/features/search_screen.dart:1"
+  },
+  "message0160": "{arg1, plural, one {{arg1} result} other {{arg1} results}} · search stopped after 2 minutes",
+  "@message0160": {
+    "description": "Original: '${results.length} результатов · поиск остановлен через 2 минуты'; source: lib/features/search_screen.dart:117; expressions: [\"results.length\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "int"
+      }
+    }
+  },
+  "message0161": "Search failed",
+  "@message0161": {
+    "description": "Original: 'Поиск не выполнен'; source: lib/features/search_screen.dart:124"
+  },
+  "message0162": "Could not stop the search",
+  "@message0162": {
+    "description": "Original: 'Не удалось остановить поиск'; source: lib/features/search_screen.dart:138"
+  },
+  "message0163": "{arg1, plural, one {{arg1} result} other {{arg1} results}} · stopped",
+  "@message0163": {
+    "description": "Original: '${results.length} результатов · остановлено'; source: lib/features/search_screen.dart:144; expressions: [\"results.length\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "int"
+      }
+    }
+  },
+  "message0164": "Server search",
+  "@message0164": {
+    "description": "Original: 'Поиск на сервере'; source: lib/features/search_screen.dart:152"
+  },
+  "message0165": "Search plugins",
+  "@message0165": {
+    "description": "Original: 'Плагины поиска'; source: lib/features/search_screen.dart:155"
+  },
+  "message0166": "Torrent name",
+  "@message0166": {
+    "description": "Original: 'Название торрента'; source: lib/features/search_screen.dart:184"
+  },
+  "message0167": "Stop",
+  "@message0167": {
+    "description": "Original: 'Стоп'; source: lib/features/search_screen.dart:192"
+  },
+  "message0168": "Search",
+  "@message0168": {
+    "description": "Original: 'Найти'; source: lib/features/search_screen.dart:192"
+  },
+  "message0169": "Plugin",
+  "@message0169": {
+    "description": "Original: 'Плагин'; source: lib/features/search_screen.dart:203"
+  },
+  "message0170": "All plugins",
+  "@message0170": {
+    "description": "Original: 'Все плагины'; source: lib/features/search_screen.dart:207"
+  },
+  "message0171": "Enabled only",
+  "@message0171": {
+    "description": "Original: 'Только включённые'; source: lib/features/search_screen.dart:211"
+  },
+  "message0172": "All",
+  "@message0172": {
+    "description": "Original: 'Все'; source: lib/features/search_screen.dart:235"
+  },
+  "message0173": "Books",
+  "@message0173": {
+    "description": "Original: 'Книги'; source: lib/features/search_screen.dart:236"
+  },
+  "message0174": "Games",
+  "@message0174": {
+    "description": "Original: 'Игры'; source: lib/features/search_screen.dart:237"
+  },
+  "message0175": "Movies",
+  "@message0175": {
+    "description": "Original: 'Фильмы'; source: lib/features/search_screen.dart:238"
+  },
+  "message0176": "Music",
+  "@message0176": {
+    "description": "Original: 'Музыка'; source: lib/features/search_screen.dart:239"
+  },
+  "message0177": "Software",
+  "@message0177": {
+    "description": "Original: 'Программы'; source: lib/features/search_screen.dart:240"
+  },
+  "message0178": "TV shows",
+  "@message0178": {
+    "description": "Original: 'Сериалы'; source: lib/features/search_screen.dart:241"
+  },
+  "message0179": "Enter a search query",
+  "@message0179": {
+    "description": "Original: 'Введите запрос для поиска'; source: lib/features/search_screen.dart:263"
+  },
+  "message0180": "{arg1} · seeds {arg2}\n{arg3}",
+  "@message0180": {
+    "description": "Original: '${humanBytes(result['fileSize'] is num ? result['fileSize'] as num : 0)} · сиды ${result['nbSeeders'] ?? 0}\\n${result['siteUrl'] ?? ''}'; source: lib/features/search_screen.dart:271; expressions: [\"humanBytes(result['fileSize'] is num ? result['fileSize'] as num : 0)\", \"result['nbSeeders'] ?? 0\", \"result['siteUrl'] ?? ''\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      },
+      "arg3": {
+        "type": "String"
+      }
+    }
+  },
+  "message0181": "Add to server",
+  "@message0181": {
+    "description": "Original: 'Добавить на сервер'; source: lib/features/search_screen.dart:275"
+  },
+  "message0182": "Could not add torrent",
+  "@message0182": {
+    "description": "Original: 'Не удалось добавить торрент'; source: lib/features/search_screen.dart:293"
+  },
+  "message0183": "Could not change plugins",
+  "@message0183": {
+    "description": "Original: 'Не удалось изменить плагины'; source: lib/features/search_screen.dart:336"
+  },
+  "message0184": "Install search plugin",
+  "@message0184": {
+    "description": "Original: 'Установить поисковый плагин'; source: lib/features/search_screen.dart:357"
+  },
+  "message0185": "Plugin file URL",
+  "@message0185": {
+    "description": "Original: 'URL файла плагина'; source: lib/features/search_screen.dart:358"
+  },
+  "message0186": "The plugin will be downloaded and installed on your qBittorrent server. Use only trusted sources.",
+  "@message0186": {
+    "description": "Original: 'Плагин будет скачан и установлен на вашем сервере qBittorrent. Указывайте доверенный источник.'; source: lib/features/search_screen.dart:359"
+  },
+  "message0187": "Search plugins",
+  "@message0187": {
+    "description": "Original: 'Поисковые плагины'; source: lib/features/search_screen.dart:369"
+  },
+  "message0188": "Update plugins",
+  "@message0188": {
+    "description": "Original: 'Обновить плагины'; source: lib/features/search_screen.dart:372"
+  },
+  "message0189": "Install plugin",
+  "@message0189": {
+    "description": "Original: 'Установить плагин'; source: lib/features/search_screen.dart:382"
+  },
+  "message0190": "No search plugins on the server",
+  "@message0190": {
+    "description": "Original: 'На сервере нет поисковых плагинов'; source: lib/features/search_screen.dart:395"
+  },
+  "message0191": "Version {arg1}",
+  "@message0191": {
+    "description": "Original: 'Версия ${plugin['version'] ?? '—'}'; source: lib/features/search_screen.dart:401; expressions: [\"plugin['version'] ?? '—'\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0192": "Delete plugin",
+  "@message0192": {
+    "description": "Original: 'Удалить плагин'; source: lib/features/search_screen.dart:413"
+  },
+  "message0193": "Delete plugin?",
+  "@message0193": {
+    "description": "Original: 'Удалить плагин?'; source: lib/features/search_screen.dart:420"
+  },
+  "message0194": "New category",
+  "@message0194": {
+    "description": "Original: 'Новая категория'; source: lib/features/server_info_screen.dart:76"
+  },
+  "message0195": "Edit category",
+  "@message0195": {
+    "description": "Original: 'Изменить категорию'; source: lib/features/server_info_screen.dart:76"
+  },
+  "message0196": "Name",
+  "@message0196": {
+    "description": "Original: 'Название'; source: lib/features/server_info_screen.dart:79"
+  },
+  "message0197": "Server folder",
+  "@message0197": {
+    "description": "Original: 'Папка на сервере'; source: lib/features/server_info_screen.dart:80"
+  },
+  "message0198": "Categories",
+  "@message0198": {
+    "description": "Original: 'Категории'; source: lib/features/server_info_screen.dart:94"
+  },
+  "message0199": "Delete category",
+  "@message0199": {
+    "description": "Original: 'Удалить категорию'; source: lib/features/server_info_screen.dart:119"
+  },
+  "message0200": "Delete category?",
+  "@message0200": {
+    "description": "Original: 'Удалить категорию?'; source: lib/features/server_info_screen.dart:126"
+  },
+  "message0201": "{arg1}. Torrents and files will be kept.",
+  "@message0201": {
+    "description": "Original: '${entry.key}. Торренты и файлы сохранятся.'; source: lib/features/server_info_screen.dart:127; expressions: [\"entry.key\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0202": "Tags",
+  "@message0202": {
+    "description": "Original: 'Теги'; source: lib/features/server_info_screen.dart:138"
+  },
+  "message0203": "Create tags",
+  "@message0203": {
+    "description": "Original: 'Создать теги'; source: lib/features/server_info_screen.dart:140"
+  },
+  "message0204": "New tags",
+  "@message0204": {
+    "description": "Original: 'Новые теги'; source: lib/features/server_info_screen.dart:145"
+  },
+  "message0205": "Names separated by commas",
+  "@message0205": {
+    "description": "Original: 'Названия через запятую'; source: lib/features/server_info_screen.dart:148"
+  },
+  "message0206": "Delete tag",
+  "@message0206": {
+    "description": "Original: 'Удалить тег'; source: lib/features/server_info_screen.dart:163"
+  },
+  "message0207": "Delete tag?",
+  "@message0207": {
+    "description": "Original: 'Удалить тег?'; source: lib/features/server_info_screen.dart:170"
+  },
+  "message0208": "{arg1}. Torrents and files will be kept.",
+  "@message0208": {
+    "description": "Original: '$tag. Торренты и файлы сохранятся.'; source: lib/features/server_info_screen.dart:171; expressions: [\"tag\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0209": "Normal",
+  "@message0209": {
+    "description": "Original: 'Обычный'; source: lib/features/server_info_screen.dart:182"
+  },
+  "message0210": "Info",
+  "@message0210": {
+    "description": "Original: 'Информация'; source: lib/features/server_info_screen.dart:183"
+  },
+  "message0211": "Warning",
+  "@message0211": {
+    "description": "Original: 'Предупреждение'; source: lib/features/server_info_screen.dart:184"
+  },
+  "message0212": "Critical",
+  "@message0212": {
+    "description": "Original: 'Критический'; source: lib/features/server_info_screen.dart:185"
+  },
+  "message0213": "Message",
+  "@message0213": {
+    "description": "Original: 'Сообщение'; source: lib/features/server_info_screen.dart:186"
+  },
+  "message0214": "Peer log",
+  "@message0214": {
+    "description": "Original: 'Журнал пиров'; source: lib/features/server_info_screen.dart:191"
+  },
+  "message0215": "Level",
+  "@message0215": {
+    "description": "Original: 'Уровень'; source: lib/features/server_info_screen.dart:205"
+  },
+  "message0216": "All messages",
+  "@message0216": {
+    "description": "Original: 'Все сообщения'; source: lib/features/server_info_screen.dart:207"
+  },
+  "message0217": "Warnings",
+  "@message0217": {
+    "description": "Original: 'Предупреждения'; source: lib/features/server_info_screen.dart:208"
+  },
+  "message0218": "Critical",
+  "@message0218": {
+    "description": "Original: 'Критические'; source: lib/features/server_info_screen.dart:209"
+  },
+  "message0219": "Blocked",
+  "@message0219": {
+    "description": "Original: 'Заблокирован'; source: lib/features/server_info_screen.dart:1"
+  },
+  "message0220": "Allowed",
+  "@message0220": {
+    "description": "Original: 'Разрешён'; source: lib/features/server_info_screen.dart:1"
+  },
+  "message0221": "Download speed",
+  "@message0221": {
+    "description": "Original: 'Скорость загрузки'; source: lib/features/server_info_screen.dart:249"
+  },
+  "message0222": "Upload speed",
+  "@message0222": {
+    "description": "Original: 'Скорость отдачи'; source: lib/features/server_info_screen.dart:250"
+  },
+  "message0223": "Downloaded this session",
+  "@message0223": {
+    "description": "Original: 'Получено за сессию'; source: lib/features/server_info_screen.dart:251"
+  },
+  "message0224": "Uploaded this session",
+  "@message0224": {
+    "description": "Original: 'Отдано за сессию'; source: lib/features/server_info_screen.dart:252"
+  },
+  "message0225": "Download limit",
+  "@message0225": {
+    "description": "Original: 'Лимит загрузки'; source: lib/features/server_info_screen.dart:253"
+  },
+  "message0226": "Upload limit",
+  "@message0226": {
+    "description": "Original: 'Лимит отдачи'; source: lib/features/server_info_screen.dart:254"
+  },
+  "message0227": "DHT nodes",
+  "@message0227": {
+    "description": "Original: 'Узлы DHT'; source: lib/features/server_info_screen.dart:255"
+  },
+  "message0228": "Connection",
+  "@message0228": {
+    "description": "Original: 'Соединение'; source: lib/features/server_info_screen.dart:256"
+  },
+  "message0229": "{arg1}/s",
+  "@message0229": {
+    "description": "Original: '${humanBytes((info[entry.key] as num?)?.toInt() ?? 0)}/с'; source: lib/features/server_info_screen.dart:266; expressions: [\"humanBytes((info[entry.key] as num?)?.toInt() ?? 0)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0230": "Connected",
+  "@message0230": {
+    "description": "Original: 'Подключено'; source: lib/features/server_info_screen.dart:271"
+  },
+  "message0231": "Behind NAT / firewall",
+  "@message0231": {
+    "description": "Original: 'За NAT / firewall'; source: lib/features/server_info_screen.dart:272"
+  },
+  "message0232": "Not connected",
+  "@message0232": {
+    "description": "Original: 'Нет соединения'; source: lib/features/server_info_screen.dart:273"
+  },
+  "message0233": "Categories and tags",
+  "@message0233": {
+    "description": "Original: 'Категории и теги'; source: lib/features/server_info_screen.dart:286"
+  },
+  "message0234": "Server status",
+  "@message0234": {
+    "description": "Original: 'Состояние сервера'; source: lib/features/server_info_screen.dart:288"
+  },
+  "message0235": "Couldn't load settings",
+  "@message0235": {
+    "description": "Original: 'Не удалось получить настройки'; source: lib/features/server_settings_screen.dart:33"
+  },
+  "message0236": "Change WebUI?",
+  "@message0236": {
+    "description": "Original: 'Изменить WebUI?'; source: lib/features/server_settings_screen.dart:42"
+  },
+  "message0237": "Changing the address, port, or authentication may disconnect you.",
+  "@message0237": {
+    "description": "Original: 'Изменение адреса, порта или авторизации может разорвать подключение.'; source: lib/features/server_settings_screen.dart:43"
+  },
+  "message0238": "Settings saved. If the WebUI address, port, or password changed, update your connection profile.",
+  "@message0238": {
+    "description": "Original: 'Настройки сохранены. Если изменились адрес, порт или пароль WebUI, обновите профиль подключения.'; source: lib/features/server_settings_screen.dart:60"
+  },
+  "message0239": "Settings saved",
+  "@message0239": {
+    "description": "Original: 'Настройки сохранены'; source: lib/features/server_settings_screen.dart:61"
+  },
+  "message0240": "Couldn't save settings",
+  "@message0240": {
+    "description": "Original: 'Не удалось сохранить настройки'; source: lib/features/server_settings_screen.dart:65"
+  },
+  "message0241": "Enter a whole number",
+  "@message0241": {
+    "description": "Original: 'Введите целое число'; source: lib/features/server_settings_screen.dart:103"
+  },
+  "message0242": "Port must be 1–65535",
+  "@message0242": {
+    "description": "Original: 'Порт от 1 до 65535'; source: lib/features/server_settings_screen.dart:105"
+  },
+  "message0243": "Hour must be 0–23",
+  "@message0243": {
+    "description": "Original: 'Час от 0 до 23'; source: lib/features/server_settings_screen.dart:108"
+  },
+  "message0244": "Minute must be 0–59",
+  "@message0244": {
+    "description": "Original: 'Минута от 0 до 59'; source: lib/features/server_settings_screen.dart:111"
+  },
+  "message0245": "Minimum −1 (if supported by the server)",
+  "@message0245": {
+    "description": "Original: 'Минимум −1 (если поддерживается сервером)'; source: lib/features/server_settings_screen.dart:114"
+  },
+  "message0246": "Advanced JSON settings",
+  "@message0246": {
+    "description": "Original: 'Расширенные параметры JSON'; source: lib/features/server_settings_screen.dart:132"
+  },
+  "message0247": "All settings from the current server. Only changed keys are saved.",
+  "@message0247": {
+    "description": "Original: 'Все параметры текущего сервера. Сохраняются только изменённые ключи.'; source: lib/features/server_settings_screen.dart:143"
+  },
+  "message0248": "Invalid settings JSON",
+  "@message0248": {
+    "description": "Original: 'Некорректный JSON параметров'; source: lib/features/server_settings_screen.dart:159"
+  },
+  "message0249": "Downloads",
+  "@message0249": {
+    "description": "Original: 'Загрузки'; source: lib/features/server_settings_screen.dart:191"
+  },
+  "message0250": "Save folder",
+  "@message0250": {
+    "description": "Original: 'Папка сохранения'; source: lib/features/server_settings_screen.dart:192"
+  },
+  "message0251": "Temp folder",
+  "@message0251": {
+    "description": "Original: 'Папка временных файлов'; source: lib/features/server_settings_screen.dart:193"
+  },
+  "message0252": "Use temp folder",
+  "@message0252": {
+    "description": "Original: 'Использовать временную папку'; source: lib/features/server_settings_screen.dart:194"
+  },
+  "message0253": "Add paused",
+  "@message0253": {
+    "description": "Original: 'Добавлять остановленными'; source: lib/features/server_settings_screen.dart:195"
+  },
+  "message0254": "Automatic torrent management",
+  "@message0254": {
+    "description": "Original: 'Автоматическое управление'; source: lib/features/server_settings_screen.dart:196"
+  },
+  "message0255": "Pre-allocate disk space",
+  "@message0255": {
+    "description": "Original: 'Выделять место заранее'; source: lib/features/server_settings_screen.dart:197"
+  },
+  "message0256": "Extension for incomplete files",
+  "@message0256": {
+    "description": "Original: 'Расширение для незавершённых файлов'; source: lib/features/server_settings_screen.dart:200"
+  },
+  "message0257": ".torrent export folder",
+  "@message0257": {
+    "description": "Original: 'Папка экспорта .torrent'; source: lib/features/server_settings_screen.dart:202"
+  },
+  "message0258": "Export finished .torrent files",
+  "@message0258": {
+    "description": "Original: 'Экспорт завершённых .torrent'; source: lib/features/server_settings_screen.dart:203"
+  },
+  "message0259": "Incoming port",
+  "@message0259": {
+    "description": "Original: 'Входящий порт'; source: lib/features/server_settings_screen.dart:206"
+  },
+  "message0260": "Random port on startup",
+  "@message0260": {
+    "description": "Original: 'Случайный порт при запуске'; source: lib/features/server_settings_screen.dart:207"
+  },
+  "message0261": "Max connections (-1 = no limit)",
+  "@message0261": {
+    "description": "Original: 'Максимум соединений (-1 — без лимита)'; source: lib/features/server_settings_screen.dart:211"
+  },
+  "message0262": "Connections per torrent",
+  "@message0262": {
+    "description": "Original: 'Соединений на торрент'; source: lib/features/server_settings_screen.dart:216"
+  },
+  "message0263": "Upload slots",
+  "@message0263": {
+    "description": "Original: 'Слотов отдачи'; source: lib/features/server_settings_screen.dart:219"
+  },
+  "message0264": "Proxy address",
+  "@message0264": {
+    "description": "Original: 'Адрес прокси'; source: lib/features/server_settings_screen.dart:220"
+  },
+  "message0265": "Proxy port",
+  "@message0265": {
+    "description": "Original: 'Порт прокси'; source: lib/features/server_settings_screen.dart:221"
+  },
+  "message0266": "Proxy username",
+  "@message0266": {
+    "description": "Original: 'Пользователь прокси'; source: lib/features/server_settings_screen.dart:222"
+  },
+  "message0267": "Proxy password",
+  "@message0267": {
+    "description": "Original: 'Пароль прокси'; source: lib/features/server_settings_screen.dart:223"
+  },
+  "message0268": "Speed",
+  "@message0268": {
+    "description": "Original: 'Скорость'; source: lib/features/server_settings_screen.dart:225"
+  },
+  "message0269": "Download, bytes/s (0 = no limit)",
+  "@message0269": {
+    "description": "Original: 'Загрузка, байт/с (0 — без лимита)'; source: lib/features/server_settings_screen.dart:228"
+  },
+  "message0270": "Upload, bytes/s (0 = no limit)",
+  "@message0270": {
+    "description": "Original: 'Отдача, байт/с (0 — без лимита)'; source: lib/features/server_settings_screen.dart:233"
+  },
+  "message0271": "Alternative download, bytes/s",
+  "@message0271": {
+    "description": "Original: 'Альтернативная загрузка, байт/с'; source: lib/features/server_settings_screen.dart:238"
+  },
+  "message0272": "Alternative upload, bytes/s",
+  "@message0272": {
+    "description": "Original: 'Альтернативная отдача, байт/с'; source: lib/features/server_settings_screen.dart:243"
+  },
+  "message0273": "Alternative limits schedule",
+  "@message0273": {
+    "description": "Original: 'Расписание альтернативных лимитов'; source: lib/features/server_settings_screen.dart:248"
+  },
+  "message0274": "Start: hour",
+  "@message0274": {
+    "description": "Original: 'Начало: час'; source: lib/features/server_settings_screen.dart:250"
+  },
+  "message0275": "Start: minute",
+  "@message0275": {
+    "description": "Original: 'Начало: минута'; source: lib/features/server_settings_screen.dart:251"
+  },
+  "message0276": "End: hour",
+  "@message0276": {
+    "description": "Original: 'Конец: час'; source: lib/features/server_settings_screen.dart:252"
+  },
+  "message0277": "End: minute",
+  "@message0277": {
+    "description": "Original: 'Конец: минута'; source: lib/features/server_settings_screen.dart:253"
+  },
+  "message0278": "Include protocol overhead in limits",
+  "@message0278": {
+    "description": "Original: 'Учитывать служебный трафик'; source: lib/features/server_settings_screen.dart:254"
+  },
+  "message0279": "Limit local peers",
+  "@message0279": {
+    "description": "Original: 'Ограничивать локальных пиров'; source: lib/features/server_settings_screen.dart:255"
+  },
+  "message0280": "Peer exchange (PeX)",
+  "@message0280": {
+    "description": "Original: 'Обмен пирами (PeX)'; source: lib/features/server_settings_screen.dart:259"
+  },
+  "message0281": "Local peer discovery",
+  "@message0281": {
+    "description": "Original: 'Обнаружение локальных пиров'; source: lib/features/server_settings_screen.dart:260"
+  },
+  "message0282": "Anonymous mode",
+  "@message0282": {
+    "description": "Original: 'Анонимный режим'; source: lib/features/server_settings_screen.dart:261"
+  },
+  "message0283": "Torrent queueing",
+  "@message0283": {
+    "description": "Original: 'Очередь торрентов'; source: lib/features/server_settings_screen.dart:262"
+  },
+  "message0284": "Active downloads",
+  "@message0284": {
+    "description": "Original: 'Активных загрузок'; source: lib/features/server_settings_screen.dart:265"
+  },
+  "message0285": "Active uploads",
+  "@message0285": {
+    "description": "Original: 'Активных раздач'; source: lib/features/server_settings_screen.dart:268"
+  },
+  "message0286": "Active torrents",
+  "@message0286": {
+    "description": "Original: 'Активных торрентов'; source: lib/features/server_settings_screen.dart:271"
+  },
+  "message0287": "Don't count slow torrents",
+  "@message0287": {
+    "description": "Original: 'Не учитывать медленные торренты'; source: lib/features/server_settings_screen.dart:276"
+  },
+  "message0288": "Add trackers automatically",
+  "@message0288": {
+    "description": "Original: 'Добавлять трекеры автоматически'; source: lib/features/server_settings_screen.dart:280"
+  },
+  "message0289": "Additional trackers",
+  "@message0289": {
+    "description": "Original: 'Дополнительные трекеры'; source: lib/features/server_settings_screen.dart:282"
+  },
+  "message0290": "Listening address",
+  "@message0290": {
+    "description": "Original: 'Адрес прослушивания'; source: lib/features/server_settings_screen.dart:285"
+  },
+  "message0291": "WebUI port",
+  "@message0291": {
+    "description": "Original: 'Порт WebUI'; source: lib/features/server_settings_screen.dart:286"
+  },
+  "message0292": "Username",
+  "@message0292": {
+    "description": "Original: 'Имя пользователя'; source: lib/features/server_settings_screen.dart:287"
+  },
+  "message0293": "New password",
+  "@message0293": {
+    "description": "Original: 'Новый пароль'; source: lib/features/server_settings_screen.dart:288"
+  },
+  "message0294": "Localhost authentication",
+  "@message0294": {
+    "description": "Original: 'Авторизация localhost'; source: lib/features/server_settings_screen.dart:290"
+  },
+  "message0295": "CSRF protection",
+  "@message0295": {
+    "description": "Original: 'Защита CSRF'; source: lib/features/server_settings_screen.dart:291"
+  },
+  "message0296": "Clickjacking protection",
+  "@message0296": {
+    "description": "Original: 'Защита от clickjacking'; source: lib/features/server_settings_screen.dart:294"
+  },
+  "message0297": "Session timeout, seconds",
+  "@message0297": {
+    "description": "Original: 'Время сессии, секунд'; source: lib/features/server_settings_screen.dart:298"
+  },
+  "message0298": "Enable RSS feeds",
+  "@message0298": {
+    "description": "Original: 'Получать RSS-ленты'; source: lib/features/server_settings_screen.dart:303"
+  },
+  "message0299": "Auto-download by rules",
+  "@message0299": {
+    "description": "Original: 'Автозагрузка по правилам'; source: lib/features/server_settings_screen.dart:306"
+  },
+  "message0300": "Refresh interval, minutes",
+  "@message0300": {
+    "description": "Original: 'Интервал обновления, минут'; source: lib/features/server_settings_screen.dart:310"
+  },
+  "message0301": "Articles per feed",
+  "@message0301": {
+    "description": "Original: 'Статей в ленте'; source: lib/features/server_settings_screen.dart:315"
+  },
+  "message0302": "Episode filters",
+  "@message0302": {
+    "description": "Original: 'Шаблоны серий'; source: lib/features/server_settings_screen.dart:318"
+  },
+  "message0303": "All settings (JSON)",
+  "@message0303": {
+    "description": "Original: 'Все параметры (JSON)'; source: lib/features/server_settings_screen.dart:322"
+  },
+  "message0304": "Advanced settings and options for your server version",
+  "@message0304": {
+    "description": "Original: 'Расширенные параметры и опции вашей версии сервера'; source: lib/features/server_settings_screen.dart:324"
+  },
+  "message0305": "Couldn't complete the action",
+  "@message0305": {
+    "description": "Original: 'Не удалось выполнить действие'; source: lib/features/torrent_tools_screen.dart:36"
+  },
+  "message0306": "Changes applied",
+  "@message0306": {
+    "description": "Original: 'Изменения применены'; source: lib/features/torrent_tools_screen.dart:45"
+  },
+  "message0307": "Manage torrent",
+  "@message0307": {
+    "description": "Original: 'Управление торрентом'; source: lib/features/torrent_tools_screen.dart:50"
+  },
+  "message0308": "Organize",
+  "@message0308": {
+    "description": "Original: 'Организация'; source: lib/features/torrent_tools_screen.dart:65"
+  },
+  "message0309": "Torrent name",
+  "@message0309": {
+    "description": "Original: 'Имя торрента'; source: lib/features/torrent_tools_screen.dart:68"
+  },
+  "message0310": "Rename torrent",
+  "@message0310": {
+    "description": "Original: 'Переименовать торрент'; source: lib/features/torrent_tools_screen.dart:70"
+  },
+  "message0311": "Move files",
+  "@message0311": {
+    "description": "Original: 'Переместить файлы'; source: lib/features/torrent_tools_screen.dart:80"
+  },
+  "message0312": "New server path",
+  "@message0312": {
+    "description": "Original: 'Новый путь на сервере'; source: lib/features/torrent_tools_screen.dart:82"
+  },
+  "message0313": "Full path",
+  "@message0313": {
+    "description": "Original: 'Полный путь'; source: lib/features/torrent_tools_screen.dart:85"
+  },
+  "message0314": "qBittorrent moves the files on the server",
+  "@message0314": {
+    "description": "Original: 'Перемещение выполняет qBittorrent на сервере'; source: lib/features/torrent_tools_screen.dart:88"
+  },
+  "message0315": "Add tags",
+  "@message0315": {
+    "description": "Original: 'Добавить метки'; source: lib/features/torrent_tools_screen.dart:93"
+  },
+  "message0316": "Tags, comma-separated",
+  "@message0316": {
+    "description": "Original: 'Метки через запятую'; source: lib/features/torrent_tools_screen.dart:98"
+  },
+  "message0317": "Remove tags",
+  "@message0317": {
+    "description": "Original: 'Снять метки'; source: lib/features/torrent_tools_screen.dart:104"
+  },
+  "message0318": "Speed and seeding",
+  "@message0318": {
+    "description": "Original: 'Скорость и раздача'; source: lib/features/torrent_tools_screen.dart:114"
+  },
+  "message0319": "Speed limits",
+  "@message0319": {
+    "description": "Original: 'Лимиты скорости'; source: lib/features/torrent_tools_screen.dart:115"
+  },
+  "message0320": "Seeding limits",
+  "@message0320": {
+    "description": "Original: 'Условия окончания раздачи'; source: lib/features/torrent_tools_screen.dart:116"
+  },
+  "message0321": "Force start",
+  "@message0321": {
+    "description": "Original: 'Принудительный запуск'; source: lib/features/torrent_tools_screen.dart:119"
+  },
+  "message0322": "Super seeding",
+  "@message0322": {
+    "description": "Original: 'Суперсидирование'; source: lib/features/torrent_tools_screen.dart:124"
+  },
+  "message0323": "Toggle sequential download",
+  "@message0323": {
+    "description": "Original: 'Переключить последовательную загрузку'; source: lib/features/torrent_tools_screen.dart:129"
+  },
+  "message0324": "Toggle first/last piece priority",
+  "@message0324": {
+    "description": "Original: 'Переключить приоритет первого и последнего фрагментов'; source: lib/features/torrent_tools_screen.dart:134"
+  },
+  "message0325": "Force recheck",
+  "@message0325": {
+    "description": "Original: 'Перепроверить файлы'; source: lib/features/torrent_tools_screen.dart:137"
+  },
+  "message0326": "Recheck files?",
+  "@message0326": {
+    "description": "Original: 'Перепроверить файлы?'; source: lib/features/torrent_tools_screen.dart:140"
+  },
+  "message0327": "Rechecking may take a while and temporarily pause transfers.",
+  "@message0327": {
+    "description": "Original: 'Проверка может занять время и временно приостановить передачу.'; source: lib/features/torrent_tools_screen.dart:141"
+  },
+  "message0328": "Reannounce to trackers",
+  "@message0328": {
+    "description": "Original: 'Обновить объявления трекерам'; source: lib/features/torrent_tools_screen.dart:148"
+  },
+  "message0329": "Queue",
+  "@message0329": {
+    "description": "Original: 'Очередь'; source: lib/features/torrent_tools_screen.dart:152"
+  },
+  "message0330": "Move to top",
+  "@message0330": {
+    "description": "Original: 'В начало очереди'; source: lib/features/torrent_tools_screen.dart:154"
+  },
+  "message0331": "Move up",
+  "@message0331": {
+    "description": "Original: 'Поднять выше'; source: lib/features/torrent_tools_screen.dart:155"
+  },
+  "message0332": "Move down",
+  "@message0332": {
+    "description": "Original: 'Опустить ниже'; source: lib/features/torrent_tools_screen.dart:156"
+  },
+  "message0333": "Move to bottom",
+  "@message0333": {
+    "description": "Original: 'В конец очереди'; source: lib/features/torrent_tools_screen.dart:157"
+  },
+  "message0334": "Content and connections",
+  "@message0334": {
+    "description": "Original: 'Содержимое и соединения'; source: lib/features/torrent_tools_screen.dart:165"
+  },
+  "message0335": "Export .torrent",
+  "@message0335": {
+    "description": "Original: 'Экспортировать .torrent'; source: lib/features/torrent_tools_screen.dart:168"
+  },
+  "message0336": "Files and priorities",
+  "@message0336": {
+    "description": "Original: 'Файлы и приоритеты'; source: lib/features/torrent_tools_screen.dart:171"
+  },
+  "message0337": "Rename folder",
+  "@message0337": {
+    "description": "Original: 'Переименовать папку'; source: lib/features/torrent_tools_screen.dart:174"
+  },
+  "message0338": "Current path within torrent",
+  "@message0338": {
+    "description": "Original: 'Текущий путь внутри торрента'; source: lib/features/torrent_tools_screen.dart:182"
+  },
+  "message0339": "New path within torrent",
+  "@message0339": {
+    "description": "Original: 'Новый путь внутри торрента'; source: lib/features/torrent_tools_screen.dart:187"
+  },
+  "message0340": "Trackers",
+  "@message0340": {
+    "description": "Original: 'Трекеры'; source: lib/features/torrent_tools_screen.dart:197"
+  },
+  "message0341": "Peers",
+  "@message0341": {
+    "description": "Original: 'Пиры'; source: lib/features/torrent_tools_screen.dart:198"
+  },
+  "message0342": "HTTP sources",
+  "@message0342": {
+    "description": "Original: 'HTTP-источники'; source: lib/features/torrent_tools_screen.dart:199"
+  },
+  "message0343": "Piece states",
+  "@message0343": {
+    "description": "Original: 'Состояние фрагментов'; source: lib/features/torrent_tools_screen.dart:200"
+  },
+  "message0344": "Uncategorized",
+  "@message0344": {
+    "description": "Original: 'Без категории'; source: lib/features/torrent_tools_screen.dart:267"
+  },
+  "message0345": "Download, KiB/s",
+  "@message0345": {
+    "description": "Original: 'Загрузка, КиБ/с'; source: lib/features/torrent_tools_screen.dart:292"
+  },
+  "message0346": "Upload, KiB/s",
+  "@message0346": {
+    "description": "Original: 'Отдача, КиБ/с'; source: lib/features/torrent_tools_screen.dart:299"
+  },
+  "message0347": "0 = no limit. 1 KiB/s = 1024 bytes/s.",
+  "@message0347": {
+    "description": "Original: '0 — без ограничения. 1 КиБ/с = 1024 байта/с.'; source: lib/features/torrent_tools_screen.dart:304"
+  },
+  "message0348": "Ratio",
+  "@message0348": {
+    "description": "Original: 'Рейтинг'; source: lib/features/torrent_tools_screen.dart:323"
+  },
+  "message0349": "Enter a number",
+  "@message0349": {
+    "description": "Original: 'Укажите число'; source: lib/features/torrent_tools_screen.dart:326"
+  },
+  "message0350": "Seeding time, minutes",
+  "@message0350": {
+    "description": "Original: 'Время раздачи, минуты'; source: lib/features/torrent_tools_screen.dart:330"
+  },
+  "message0351": "Enter a whole number",
+  "@message0351": {
+    "description": "Original: 'Укажите целое число'; source: lib/features/torrent_tools_screen.dart:334"
+  },
+  "message0352": "Inactive seeding time, minutes",
+  "@message0352": {
+    "description": "Original: 'Время неактивной раздачи, минуты'; source: lib/features/torrent_tools_screen.dart:338"
+  },
+  "message0353": "-2 = use server settings, -1 = no limit.",
+  "@message0353": {
+    "description": "Original: '-2 — использовать настройки сервера, -1 — без ограничения.'; source: lib/features/torrent_tools_screen.dart:345"
+  },
+  "message0354": "Enable",
+  "@message0354": {
+    "description": "Original: 'Включить'; source: lib/features/torrent_tools_screen.dart:358"
+  },
+  "message0355": "Disable",
+  "@message0355": {
+    "description": "Original: 'Выключить'; source: lib/features/torrent_tools_screen.dart:362"
+  },
+  "message0356": "Files",
+  "@message0356": {
+    "description": "Original: 'Файлы'; source: lib/features/torrent_tools_screen.dart:389"
+  },
+  "message0357": "{arg1} · priority {arg2}",
+  "@message0357": {
+    "description": "Original: '${humanBytes(file['size'] is num ? file['size'] as num : 0)} · приоритет ${file['priority'] ?? 1}'; source: lib/features/torrent_tools_screen.dart:397; expressions: [\"humanBytes(file['size'] is num ? file['size'] as num : 0)\", \"file['priority'] ?? 1\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "message0358": "Rename file",
+  "@message0358": {
+    "description": "Original: 'Переименовать файл'; source: lib/features/torrent_tools_screen.dart:405"
+  },
+  "message0359": "Changes applied. Reopen the list to refresh.",
+  "@message0359": {
+    "description": "Original: 'Изменения применены. Откройте список заново для обновления.'; source: lib/features/torrent_tools_screen.dart:433"
+  },
+  "message0360": "Action failed",
+  "@message0360": {
+    "description": "Original: 'Действие не выполнено'; source: lib/features/torrent_tools_screen.dart:441"
+  },
+  "message0361": "Do not download",
+  "@message0361": {
+    "description": "Original: 'Не скачивать'; source: lib/features/torrent_tools_screen.dart:448"
+  },
+  "message0362": "Normal priority",
+  "@message0362": {
+    "description": "Original: 'Обычный приоритет'; source: lib/features/torrent_tools_screen.dart:449"
+  },
+  "message0363": "High priority",
+  "@message0363": {
+    "description": "Original: 'Высокий приоритет'; source: lib/features/torrent_tools_screen.dart:450"
+  },
+  "message0364": "Maximum priority",
+  "@message0364": {
+    "description": "Original: 'Максимальный приоритет'; source: lib/features/torrent_tools_screen.dart:453"
+  },
+  "message0365": "Edit tracker",
+  "@message0365": {
+    "description": "Original: 'Изменить трекер'; source: lib/features/torrent_tools_screen.dart:487"
+  },
+  "message0366": "New URL",
+  "@message0366": {
+    "description": "Original: 'Новый URL'; source: lib/features/torrent_tools_screen.dart:491"
+  },
+  "message0367": "Remove tracker?",
+  "@message0367": {
+    "description": "Original: 'Удалить трекер?'; source: lib/features/torrent_tools_screen.dart:506"
+  },
+  "message0368": "Couldn't edit tracker",
+  "@message0368": {
+    "description": "Original: 'Не удалось изменить трекер'; source: lib/features/torrent_tools_screen.dart:518"
+  },
+  "message0369": "Remove",
+  "@message0369": {
+    "description": "Original: 'Удалить'; source: lib/features/torrent_tools_screen.dart:526"
+  },
+  "message0370": "Add trackers",
+  "@message0370": {
+    "description": "Original: 'Добавить трекеры'; source: lib/features/torrent_tools_screen.dart:534"
+  },
+  "message0371": "URLs, one per line",
+  "@message0371": {
+    "description": "Original: 'URL, каждый с новой строки'; source: lib/features/torrent_tools_screen.dart:541"
+  },
+  "message0372": "Couldn't add trackers",
+  "@message0372": {
+    "description": "Original: 'Не удалось добавить трекеры'; source: lib/features/torrent_tools_screen.dart:552"
+  },
+  "message0373": "No connected peers",
+  "@message0373": {
+    "description": "Original: 'Нет подключённых пиров'; source: lib/features/torrent_tools_screen.dart:576"
+  },
+  "message0374": "{arg1} · ↓ {arg2}/s",
+  "@message0374": {
+    "description": "Original: '${peer['client'] ?? ''} · ↓ ${humanBytes(peer['dl_speed'] is num ? peer['dl_speed'] as num : 0)}/с'; source: lib/features/torrent_tools_screen.dart:581; expressions: [\"peer['client'] ?? ''\", \"humanBytes(peer['dl_speed'] is num ? peer['dl_speed'] as num : 0)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "message0375": "Add peers",
+  "@message0375": {
+    "description": "Original: 'Добавить пиров'; source: lib/features/torrent_tools_screen.dart:588"
+  },
+  "message0376": "IP:port, separated by |",
+  "@message0376": {
+    "description": "Original: 'IP:порт, разделитель |'; source: lib/features/torrent_tools_screen.dart:595"
+  },
+  "message0377": "Couldn't add peers",
+  "@message0377": {
+    "description": "Original: 'Не удалось добавить пиров'; source: lib/features/torrent_tools_screen.dart:605"
+  },
+  "message0378": "{arg1, plural, one {{arg1} piece} other {{arg1} pieces}}",
+  "@message0378": {
+    "description": "Original: 'Фрагменты: ${states.length}'; source: lib/features/torrent_tools_screen.dart:627; expressions: [\"states.length\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "int"
+      }
+    }
+  },
+  "message0379": "Grey: missing, blue: downloading, green: done. Showing the first 4096 pieces.",
+  "@message0379": {
+    "description": "Original: 'Серый — нет, синий — загружается, зелёный — готов. Показаны первые 4096 фрагментов.'; source: lib/features/torrent_tools_screen.dart:633"
+  },
+  "message0380": "Piece {arg1}",
+  "@message0380": {
+    "description": "Original: 'Фрагмент $i'; source: lib/features/torrent_tools_screen.dart:646; expressions: [\"i\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0381": "Export complete",
+  "@message0381": {
+    "description": "Original: 'Экспорт выполнен'; source: lib/features/torrent_tools_screen.dart:667"
+  },
+  "message0382": "Export cancelled",
+  "@message0382": {
+    "description": "Original: 'Экспорт отменён'; source: lib/features/torrent_tools_screen.dart:667"
+  },
+  "message0383": "Enter a URL",
+  "@message0383": {
+    "description": "Original: 'Укажите URL'; source: lib/features/torrent_tools_screen.dart:681"
+  },
+  "message0384": "URL must not contain spaces, control characters, or \"|\"",
+  "@message0384": {
+    "description": "Original: 'URL не должен содержать пробелы, управляющие символы и «|»'; source: lib/features/torrent_tools_screen.dart:683"
+  },
+  "message0385": "Enter an http:// or https:// address with a host name",
+  "@message0385": {
+    "description": "Original: 'Укажите адрес http:// или https:// с именем узла'; source: lib/features/torrent_tools_screen.dart:689"
+  },
+  "message0386": "Enter at least one URL",
+  "@message0386": {
+    "description": "Original: 'Укажите хотя бы один URL'; source: lib/features/torrent_tools_screen.dart:697"
+  },
+  "message0387": "The server does not support changing HTTP sources. ",
+  "@message0387": {
+    "description": "Original: 'Сервер не поддерживает изменение HTTP-источников. '; source: lib/features/torrent_tools_screen.dart:716"
+  },
+  "message0388": "Requires qBittorrent 5.2 or later; view-only.",
+  "@message0388": {
+    "description": "Original: 'Нужен qBittorrent 5.2 или новее; доступен только просмотр.'; source: lib/features/torrent_tools_screen.dart:717"
+  },
+  "message0389": "Couldn't load HTTP sources",
+  "@message0389": {
+    "description": "Original: 'Не удалось загрузить HTTP-источники'; source: lib/features/torrent_tools_screen.dart:769"
+  },
+  "message0390": "Add HTTP sources",
+  "@message0390": {
+    "description": "Original: 'Добавить HTTP-источники'; source: lib/features/torrent_tools_screen.dart:807"
+  },
+  "message0391": "Addresses are passed to the qBittorrent server; the app does not connect to them directly.",
+  "@message0391": {
+    "description": "Original: 'Адреса передаёт серверу qBittorrent; приложение не обращается к ним напрямую.'; source: lib/features/torrent_tools_screen.dart:817"
+  },
+  "message0392": "Couldn't add HTTP sources",
+  "@message0392": {
+    "description": "Original: 'Не удалось добавить HTTP-источники'; source: lib/features/torrent_tools_screen.dart:822"
+  },
+  "message0393": "Edit HTTP source",
+  "@message0393": {
+    "description": "Original: 'Изменить HTTP-источник'; source: lib/features/torrent_tools_screen.dart:826"
+  },
+  "message0394": "Address unchanged",
+  "@message0394": {
+    "description": "Original: 'Адрес не изменился'; source: lib/features/torrent_tools_screen.dart:838"
+  },
+  "message0395": "Couldn't edit HTTP source",
+  "@message0395": {
+    "description": "Original: 'Не удалось изменить HTTP-источник'; source: lib/features/torrent_tools_screen.dart:844"
+  },
+  "message0396": "Remove HTTP source?",
+  "@message0396": {
+    "description": "Original: 'Удалить HTTP-источник?'; source: lib/features/torrent_tools_screen.dart:850"
+  },
+  "message0397": "Couldn't remove HTTP source",
+  "@message0397": {
+    "description": "Original: 'Не удалось удалить HTTP-источник'; source: lib/features/torrent_tools_screen.dart:856"
+  },
+  "message0398": "Add sources",
+  "@message0398": {
+    "description": "Original: 'Добавить источники'; source: lib/features/torrent_tools_screen.dart:873"
+  },
+  "message0399": "Editing HTTP sources requires qBittorrent 5.2 or later. ",
+  "@message0399": {
+    "description": "Original: 'Изменение HTTP-источников требует qBittorrent 5.2 или новее. '; source: lib/features/torrent_tools_screen.dart:886"
+  },
+  "message0400": "An older server may reject the changes.",
+  "@message0400": {
+    "description": "Original: 'Более ранний сервер может отклонить изменения.'; source: lib/features/torrent_tools_screen.dart:887"
+  },
+  "message0401": "Retry",
+  "@message0401": {
+    "description": "Original: 'Повторить'; source: lib/features/torrent_tools_screen.dart:904"
+  },
+  "message0402": "No HTTP sources",
+  "@message0402": {
+    "description": "Original: 'HTTP-источников нет'; source: lib/features/torrent_tools_screen.dart:914"
+  },
+  "message0403": "Couldn't initialize secure storage.",
+  "@message0403": {
+    "description": "Original: 'Не удалось инициализировать защищённое хранилище.'; source: lib/main.dart:109"
+  },
+  "message0404": "Add incoming torrent?",
+  "@message0404": {
+    "description": "Original: 'Добавить входящий торрент?'; source: lib/main.dart:205"
+  },
+  "message0405": "Server: {arg1}",
+  "@message0405": {
+    "description": "Original: 'Сервер: ${target.name}'; source: lib/main.dart:213; expressions: [\"target.name\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0406": "One .torrent file",
+  "@message0406": {
+    "description": "Original: 'Один .torrent-файл'; source: lib/main.dart:215"
+  },
+  "message0407": "One link",
+  "@message0407": {
+    "description": "Original: 'Одна ссылка'; source: lib/main.dart:215"
+  },
+  "message0408": ".torrent file",
+  "@message0408": {
+    "description": "Original: 'Файл .torrent'; source: lib/main.dart:1"
+  },
+  "message0409": "Couldn't delete local data.",
+  "@message0409": {
+    "description": "Original: 'Не удалось удалить локальные данные.'; source: lib/main.dart:272"
+  },
+  "message0410": "Home qB locked",
+  "@message0410": {
+    "description": "Original: 'Домашний qB заблокирован'; source: lib/main.dart:317"
+  },
+  "message0411": "Open",
+  "@message0411": {
+    "description": "Original: 'Открыть'; source: lib/main.dart:324"
+  },
+  "message0412": "Reset local data",
+  "@message0412": {
+    "description": "Original: 'Сбросить локальные данные'; source: lib/main.dart:330"
+  },
+  "message0413": "Profiles, passwords, and certificates will be deleted from this device. Torrents on the server will be kept.",
+  "@message0413": {
+    "description": "Original: 'Будут удалены профили, пароли и сертификаты с этого устройства. Торренты на сервере сохранятся.'; source: lib/main.dart:336"
+  },
+  "message0414": "Delete local data",
+  "@message0414": {
+    "description": "Original: 'Удалить локальные данные'; source: lib/main.dart:347"
+  },
+  "message0415": "Device settings could not be read from secure storage.",
+  "@message0415": {
+    "description": "Original: 'Device settings could not be read from secure storage.'; source: lib/services/device_services.dart:95"
+  },
+  "message0416": "Background polling could not be scheduled on this device.",
+  "@message0416": {
+    "description": "Original: 'Background polling could not be scheduled on this device.'; source: lib/services/device_services.dart:106"
+  },
+  "message0417": "Background polling is available on Android and iOS. Desktop notifications require the app to remain open.",
+  "@message0417": {
+    "description": "Original: 'Background polling is available on Android and iOS. Desktop notifications require the app to remain open.'; source: lib/services/device_services.dart:109"
+  },
+  "message0418": "Notifications are not configured on this platform.",
+  "@message0418": {
+    "description": "Original: 'Notifications are not configured on this platform.'; source: lib/services/device_services.dart:118"
+  },
+  "message0419": "System notifications are unavailable.",
+  "@message0419": {
+    "description": "Original: 'System notifications are unavailable.'; source: lib/services/device_services.dart:144"
+  },
+  "message0420": "System notifications could not be initialized.",
+  "@message0420": {
+    "description": "Original: 'System notifications could not be initialized.'; source: lib/services/device_services.dart:148"
+  },
+  "message0421": "Android may delay polling because of battery, network, or background restrictions.",
+  "@message0421": {
+    "description": "Original: 'Android may delay polling because of battery, network, or background restrictions.'; source: lib/services/device_services.dart:167"
+  },
+  "message0422": "Choose a polling interval between 15 and 1440 minutes.",
+  "@message0422": {
+    "description": "Original: 'Choose a polling interval between 15 and 1440 minutes.'; source: lib/services/device_services.dart:173"
+  },
+  "message0423": "The new interval was saved, but the background schedule could not be updated.",
+  "@message0423": {
+    "description": "Original: 'The new interval was saved, but the background schedule could not be updated.'; source: lib/services/device_services.dart:185"
+  },
+  "message0424": "Notifications are unavailable.",
+  "@message0424": {
+    "description": "Original: 'Notifications are unavailable.'; source: lib/services/device_services.dart:215"
+  },
+  "message0425": "Notification permission was not granted.",
+  "@message0425": {
+    "description": "Original: 'Notification permission was not granted.'; source: lib/services/device_services.dart:246"
+  },
+  "message0426": "The background schedule could not be updated. Foreground notification checks still work.",
+  "@message0426": {
+    "description": "Original: 'The background schedule could not be updated. Foreground notification checks still work.'; source: lib/services/device_services.dart:266"
+  },
+  "message0427": "Unlock Home qB Remote",
+  "@message0427": {
+    "description": "Original: 'Unlock Home qB Remote'; source: lib/services/device_services.dart:283"
+  },
+  "message0428": "Device authentication was not completed.",
+  "@message0428": {
+    "description": "Original: 'Device authentication was not completed.'; source: lib/services/device_services.dart:300"
+  },
+  "message0429": "Couldn't enable screenshot protection.",
+  "@message0429": {
+    "description": "Original: 'Не удалось включить защиту снимков экрана.'; source: lib/services/device_services.dart:316"
+  },
+  "message0430": "Couldn't remove system notifications.",
+  "@message0430": {
+    "description": "Original: 'Не удалось удалить системные уведомления.'; source: lib/services/device_services.dart:336"
+  },
+  "message0431": "Couldn't cancel the background check.",
+  "@message0431": {
+    "description": "Original: 'Не удалось отменить фоновую проверку.'; source: lib/services/device_services.dart:342"
+  },
+  "message0432": "Download complete",
+  "@message0432": {
+    "description": "Original: 'Загрузка завершена'; source: lib/services/device_services.dart:397"
+  },
+  "message0433": "Download complete. Open the app to view it.",
+  "@message0433": {
+    "description": "Original: 'Загрузка завершена. Откройте приложение для просмотра.'; source: lib/services/device_services.dart:399"
+  },
+  "message0434": "Completed downloads",
+  "@message0434": {
+    "description": "Original: 'Завершение загрузок'; source: lib/services/device_services.dart:407"
+  },
+  "message0435": "Completed downloads on your qBittorrent servers",
+  "@message0435": {
+    "description": "Original: 'Завершённые загрузки на ваших серверах qBittorrent'; source: lib/services/device_services.dart:409"
+  },
+  "message0436": "Background scan budget exhausted.",
+  "@message0436": {
+    "description": "Original: 'Background scan budget exhausted.'; source: lib/services/device_services.dart:510"
+  },
+  "message0437": "Only a local .torrent document can be imported.",
+  "@message0437": {
+    "description": "Original: 'Only a local .torrent document can be imported.'; source: lib/services/incoming_document_service.dart:87"
+  },
+  "message0438": "Document import is not supported on this platform.",
+  "@message0438": {
+    "description": "Original: 'Document import is not supported on this platform.'; source: lib/services/incoming_document_service.dart:92"
+  },
+  "message0439": "Document import is not available in this build of the app.",
+  "@message0439": {
+    "description": "Original: 'Document import is not available in this build of the app.'; source: lib/services/incoming_document_service.dart:106"
+  },
+  "message0440": "The document was rejected by the system.",
+  "@message0440": {
+    "description": "Original: 'The document was rejected by the system.'; source: lib/services/incoming_document_service.dart:116"
+  },
+  "message0441": "The torrent document could not be read.",
+  "@message0441": {
+    "description": "Original: 'The torrent document could not be read.'; source: lib/services/incoming_document_service.dart:117"
+  },
+  "message0442": "The torrent document is empty.",
+  "@message0442": {
+    "description": "Original: 'The torrent document is empty.'; source: lib/services/incoming_document_service.dart:129"
+  },
+  "message0443": "The torrent document is larger than 16 MiB and cannot be imported.",
+  "@message0443": {
+    "description": "Original: 'The torrent document is larger than 16 MiB and cannot be imported.'; source: lib/services/incoming_document_service.dart:133"
+  },
+  "message0444": "The document is not a valid .torrent file.",
+  "@message0444": {
+    "description": "Original: 'The document is not a valid .torrent file.'; source: lib/services/incoming_document_service.dart:138"
+  },
+  "message0445": "Russian",
+  "@message0445": {
+    "description": "Original: 'Русский'; source: lib/services/locale_controller.dart:29"
+  },
+  "message0446": "Ukrainian",
+  "@message0446": {
+    "description": "Original: 'Українська'; source: lib/services/locale_controller.dart:30"
+  },
+  "message0447": "Unsupported language",
+  "@message0447": {
+    "description": "Original: 'Unsupported language'; source: lib/services/locale_controller.dart:106"
+  },
+  "message0448": "Another export is still in progress.",
+  "@message0448": {
+    "description": "Original: 'Another export is still in progress.'; source: lib/services/torrent_export_service.dart:118"
+  },
+  "message0449": "Export is not supported on this platform.",
+  "@message0449": {
+    "description": "Original: 'Export is not supported on this platform.'; source: lib/services/torrent_export_service.dart:134"
+  },
+  "message0450": "There is no torrent data to export.",
+  "@message0450": {
+    "description": "Original: 'There is no torrent data to export.'; source: lib/services/torrent_export_service.dart:144"
+  },
+  "message0451": "The torrent file is larger than 16 MiB and cannot be exported.",
+  "@message0451": {
+    "description": "Original: 'The torrent file is larger than 16 MiB and cannot be exported.'; source: lib/services/torrent_export_service.dart:148"
+  },
+  "message0452": "The torrent data is not a valid byte sequence.",
+  "@message0452": {
+    "description": "Original: 'The torrent data is not a valid byte sequence.'; source: lib/services/torrent_export_service.dart:155"
+  },
+  "message0453": "Export is not available in this build of the app.",
+  "@message0453": {
+    "description": "Original: 'Export is not available in this build of the app.'; source: lib/services/torrent_export_service.dart:175"
+  },
+  "message0454": "The torrent data was rejected by the system.",
+  "@message0454": {
+    "description": "Original: 'The torrent data was rejected by the system.'; source: lib/services/torrent_export_service.dart:188"
+  },
+  "message0455": "The torrent file could not be saved.",
+  "@message0455": {
+    "description": "Original: 'The torrent file could not be saved.'; source: lib/services/torrent_export_service.dart:189"
+  },
+  "message0456": "The save dialog could not be opened.",
+  "@message0456": {
+    "description": "Original: 'The save dialog could not be opened.'; source: lib/services/torrent_export_service.dart:198"
+  },
+  "message0457": "The torrent file could not be written to the chosen location.",
+  "@message0457": {
+    "description": "Original: 'The torrent file could not be written to the chosen location.'; source: lib/services/torrent_export_service.dart:206"
+  },
+  "message0458": "Enter a whole number from 0",
+  "@message0458": {
+    "description": "Original: 'Введите целое число от 0'; source: lib/ui/add_torrent_dialog.dart:114"
+  },
+  "message0459": "New download",
+  "@message0459": {
+    "description": "Original: 'Новая загрузка'; source: lib/ui/add_torrent_dialog.dart:123"
+  },
+  "message0460": "Magnet links or URLs",
+  "@message0460": {
+    "description": "Original: 'Magnet-ссылки или URL'; source: lib/ui/add_torrent_dialog.dart:138"
+  },
+  "message0461": "One link per line",
+  "@message0461": {
+    "description": "Original: 'Каждая ссылка — с новой строки'; source: lib/ui/add_torrent_dialog.dart:139"
+  },
+  "message0462": "Choose .torrent file",
+  "@message0462": {
+    "description": "Original: 'Выбрать .torrent-файл'; source: lib/ui/add_torrent_dialog.dart:146"
+  },
+  "message0463": "Download options",
+  "@message0463": {
+    "description": "Original: 'Параметры загрузки'; source: lib/ui/add_torrent_dialog.dart:150"
+  },
+  "message0464": "Tags, comma-separated",
+  "@message0464": {
+    "description": "Original: 'Теги через запятую'; source: lib/ui/add_torrent_dialog.dart:166"
+  },
+  "message0465": "New name (optional)",
+  "@message0465": {
+    "description": "Original: 'Новое имя (необязательно)'; source: lib/ui/add_torrent_dialog.dart:188"
+  },
+  "message0466": "Download limit, KiB/s",
+  "@message0466": {
+    "description": "Original: 'Лимит загрузки, КиБ/с'; source: lib/ui/add_torrent_dialog.dart:191"
+  },
+  "message0467": "0 — no limit; empty — server setting",
+  "@message0467": {
+    "description": "Original: '0 — без ограничения; пусто — настройка сервера'; source: lib/ui/add_torrent_dialog.dart:192"
+  },
+  "message0468": "Upload limit, KiB/s",
+  "@message0468": {
+    "description": "Original: 'Лимит отдачи, КиБ/с'; source: lib/ui/add_torrent_dialog.dart:197"
+  },
+  "message0469": "File structure",
+  "@message0469": {
+    "description": "Original: 'Структура файлов'; source: lib/ui/add_torrent_dialog.dart:205"
+  },
+  "message0470": "As in torrent",
+  "@message0470": {
+    "description": "Original: 'Как в торренте'; source: lib/ui/add_torrent_dialog.dart:210"
+  },
+  "message0471": "Create subfolder",
+  "@message0471": {
+    "description": "Original: 'Создать подпапку'; source: lib/ui/add_torrent_dialog.dart:214"
+  },
+  "message0472": "No subfolder",
+  "@message0472": {
+    "description": "Original: 'Без подпапки'; source: lib/ui/add_torrent_dialog.dart:218"
+  },
+  "message0473": "Add paused",
+  "@message0473": {
+    "description": "Original: 'Добавить остановленным'; source: lib/ui/add_torrent_dialog.dart:226"
+  },
+  "message0474": "Sequential download",
+  "@message0474": {
+    "description": "Original: 'Последовательная загрузка'; source: lib/ui/add_torrent_dialog.dart:238"
+  },
+  "message0475": "First and last pieces first",
+  "@message0475": {
+    "description": "Original: 'Сначала начало и конец'; source: lib/ui/add_torrent_dialog.dart:244"
+  },
+  "message0476": "PKCS#12 password",
+  "@message0476": {
+    "description": "Original: 'Пароль PKCS#12'; source: lib/ui/home_screen.dart:39"
+  },
+  "message0477": "Container password",
+  "@message0477": {
+    "description": "Original: 'Пароль контейнера'; source: lib/ui/home_screen.dart:45"
+  },
+  "message0478": "Import",
+  "@message0478": {
+    "description": "Original: 'Импортировать'; source: lib/ui/home_screen.dart:54"
+  },
+  "message0479": "Home qB",
+  "@message0479": {
+    "description": "Original: 'Домашний qB'; source: lib/ui/home_screen.dart:123"
+  },
+  "message0480": "Manage servers",
+  "@message0480": {
+    "description": "Original: 'Управление серверами'; source: lib/ui/home_screen.dart:152"
+  },
+  "message0481": "App settings",
+  "@message0481": {
+    "description": "Original: 'Настройки приложения'; source: lib/ui/home_screen.dart:157"
+  },
+  "message0482": "YOUR CONNECTION",
+  "@message0482": {
+    "description": "Original: 'ВАШЕ ПОДКЛЮЧЕНИЕ'; source: lib/ui/home_screen.dart:213"
+  },
+  "message0483": "No server selected",
+  "@message0483": {
+    "description": "Original: 'Сервер не выбран'; source: lib/ui/home_screen.dart:243"
+  },
+  "message0484": "Servers",
+  "@message0484": {
+    "description": "Original: 'Серверы'; source: lib/ui/home_screen.dart:248"
+  },
+  "message0485": "RSS, search, settings",
+  "@message0485": {
+    "description": "Original: 'RSS, поиск, настройки'; source: lib/ui/home_screen.dart:254"
+  },
+  "message0486": "Downloading",
+  "@message0486": {
+    "description": "Original: 'Загрузка'; source: lib/ui/home_screen.dart:271"
+  },
+  "message0487": "Seeding",
+  "@message0487": {
+    "description": "Original: 'Раздача'; source: lib/ui/home_screen.dart:272"
+  },
+  "message0488": "Paused",
+  "@message0488": {
+    "description": "Original: 'Пауза'; source: lib/ui/home_screen.dart:273"
+  },
+  "message0489": "Errors",
+  "@message0489": {
+    "description": "Original: 'Ошибки'; source: lib/ui/home_screen.dart:274"
+  },
+  "message0490": "All torrents",
+  "@message0490": {
+    "description": "Original: 'Все торренты'; source: lib/ui/home_screen.dart:287"
+  },
+  "message0491": "Only your servers.\nNo ads or telemetry.",
+  "@message0491": {
+    "description": "Original: 'Только ваши серверы.\\nБез рекламы и телеметрии.'; source: lib/ui/home_screen.dart:305"
+  },
+  "message0492": "Your downloads, at your fingertips",
+  "@message0492": {
+    "description": "Original: 'Ваши загрузки — под рукой'; source: lib/ui/home_screen.dart:322"
+  },
+  "message0493": "Connect your home qBittorrent via Web UI.\nThe server address and settings are stored on this device.",
+  "@message0493": {
+    "description": "Original: 'Подключите домашний qBittorrent через Web UI.\\nАдрес сервера и настройки хранятся на этом устройстве.'; source: lib/ui/home_screen.dart:323"
+  },
+  "message0494": "Connect server",
+  "@message0494": {
+    "description": "Original: 'Подключить сервер'; source: lib/ui/home_screen.dart:327"
+  },
+  "message0495": "Browse downloads",
+  "@message0495": {
+    "description": "Original: 'Обзор загрузок'; source: lib/ui/home_screen.dart:374"
+  },
+  "message0496": "Current server",
+  "@message0496": {
+    "description": "Original: 'Текущий сервер'; source: lib/ui/home_screen.dart:382"
+  },
+  "message0497": "{arg1}/s",
+  "@message0497": {
+    "description": "Original: '${_bytes(download)}/с'; source: lib/ui/home_screen.dart:424; expressions: [\"_bytes(download)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0498": "{arg1}/s",
+  "@message0498": {
+    "description": "Original: '${_bytes(upload)}/с'; source: lib/ui/home_screen.dart:433; expressions: [\"_bytes(upload)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0499": "Torrents",
+  "@message0499": {
+    "description": "Original: 'Торренты'; source: lib/ui/home_screen.dart:441"
+  },
+  "message0500": "Find torrent by name",
+  "@message0500": {
+    "description": "Original: 'Найти торрент по имени'; source: lib/ui/home_screen.dart:454"
+  },
+  "message0501": "Selected: {arg1}",
+  "@message0501": {
+    "description": "Original: 'Выбрано: ${_selected.length}'; source: lib/ui/home_screen.dart:511; expressions: [\"_selected.length\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0502": "Resume selected",
+  "@message0502": {
+    "description": "Original: 'Продолжить выбранные'; source: lib/ui/home_screen.dart:516"
+  },
+  "message0503": "Pause selected",
+  "@message0503": {
+    "description": "Original: 'Приостановить выбранные'; source: lib/ui/home_screen.dart:528"
+  },
+  "message0504": "Delete selected",
+  "@message0504": {
+    "description": "Original: 'Удалить выбранные'; source: lib/ui/home_screen.dart:540"
+  },
+  "message0505": "Clear selection",
+  "@message0505": {
+    "description": "Original: 'Снять выделение'; source: lib/ui/home_screen.dart:547"
+  },
+  "message0506": "Nothing found",
+  "@message0506": {
+    "description": "Original: 'Ничего не найдено'; source: lib/ui/home_screen.dart:565"
+  },
+  "message0507": "No torrents yet",
+  "@message0507": {
+    "description": "Original: 'Пока нет торрентов'; source: lib/ui/home_screen.dart:566"
+  },
+  "message0508": "Add a magnet link, URL, or .torrent file.",
+  "@message0508": {
+    "description": "Original: 'Добавьте magnet-ссылку, URL или .torrent-файл.'; source: lib/ui/home_screen.dart:567"
+  },
+  "message0509": "Resume",
+  "@message0509": {
+    "description": "Original: 'Продолжить'; source: lib/ui/home_screen.dart:676"
+  },
+  "message0510": "Pause",
+  "@message0510": {
+    "description": "Original: 'Приостановить'; source: lib/ui/home_screen.dart:676"
+  },
+  "message0511": "Actions",
+  "@message0511": {
+    "description": "Original: 'Действия'; source: lib/ui/home_screen.dart:690"
+  },
+  "message0512": "Details",
+  "@message0512": {
+    "description": "Original: 'Подробнее'; source: lib/ui/home_screen.dart:702"
+  },
+  "message0513": "Delete…",
+  "@message0513": {
+    "description": "Original: 'Удалить…'; source: lib/ui/home_screen.dart:707"
+  },
+  "message0514": "↓ {arg1}/s",
+  "@message0514": {
+    "description": "Original: '↓ ${_bytes(torrent.dlspeed)}/с'; source: lib/ui/home_screen.dart:741; expressions: [\"_bytes(torrent.dlspeed)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0515": "↑ {arg1}/s",
+  "@message0515": {
+    "description": "Original: '↑ ${_bytes(torrent.upspeed)}/с'; source: lib/ui/home_screen.dart:760; expressions: [\"_bytes(torrent.upspeed)\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0516": "Couldn't complete the action. Check your server connection.",
+  "@message0516": {
+    "description": "Original: 'Не удалось выполнить действие. Проверьте подключение к серверу.'; source: lib/ui/home_screen.dart:842"
+  },
+  "message0517": "My servers",
+  "@message0517": {
+    "description": "Original: 'Мои серверы'; source: lib/ui/home_screen.dart:867"
+  },
+  "message0518": "Server settings",
+  "@message0518": {
+    "description": "Original: 'Настройки сервера'; source: lib/ui/home_screen.dart:885"
+  },
+  "message0519": "Edit",
+  "@message0519": {
+    "description": "Original: 'Редактировать'; source: lib/ui/home_screen.dart:891"
+  },
+  "message0520": "Delete profile",
+  "@message0520": {
+    "description": "Original: 'Удалить профиль'; source: lib/ui/home_screen.dart:895"
+  },
+  "message0521": "Add server",
+  "@message0521": {
+    "description": "Original: 'Добавить сервер'; source: lib/ui/home_screen.dart:904"
+  },
+  "message0522": "Delete profile?",
+  "@message0522": {
+    "description": "Original: 'Удалить профиль?'; source: lib/ui/home_screen.dart:929"
+  },
+  "message0523": "Profile “{arg1}” will be removed from this device. Torrents on the server will be kept.",
+  "@message0523": {
+    "description": "Original: 'Профиль «${profile.name}» будет удалён с этого устройства. Торренты на сервере сохранятся.'; source: lib/ui/home_screen.dart:931; expressions: [\"profile.name\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "message0524": "Use local HTTP?",
+  "@message0524": {
+    "description": "Original: 'Использовать локальный HTTP?'; source: lib/ui/home_screen.dart:962"
+  },
+  "message0525": "SSID does not verify the network's identity. On another network with the same name, your password could reach an unauthorized server. For protection, use HTTPS with certificate verification or a VPN.",
+  "@message0525": {
+    "description": "Original: 'SSID не подтверждает подлинность сети. В другой сети с таким же именем пароль может попасть к постороннему серверу. Для защиты используйте HTTPS с проверкой сертификата или VPN.'; source: lib/ui/home_screen.dart:963"
+  },
+  "message0526": "Choose a .torrent file up to 16 MB.",
+  "@message0526": {
+    "description": "Original: 'Выберите .torrent-файл размером до 16 МБ.'; source: lib/ui/home_screen.dart:991"
+  },
+  "message0527": "Couldn't open the selected file.",
+  "@message0527": {
+    "description": "Original: 'Не удалось открыть выбранный файл.'; source: lib/ui/home_screen.dart:1008"
+  },
+  "message0528": "Delete torrent?",
+  "@message0528": {
+    "description": "Original: 'Удалить торрент?'; source: lib/ui/home_screen.dart:1023"
+  },
+  "message0529": "{arg1, plural, one {Delete {arg1} torrent?} other {Delete {arg1} torrents?}}",
+  "@message0529": {
+    "description": "Original: 'Удалить торренты (${hashes.length})?'; source: lib/ui/home_screen.dart:1024; expressions: [\"hashes.length\"]",
+    "placeholders": {
+      "arg1": {
+        "type": "int"
+      }
+    }
+  },
+  "message0530": "By default, downloaded files will stay on the server.",
+  "@message0530": {
+    "description": "Original: 'По умолчанию загруженные файлы останутся на сервере.'; source: lib/ui/home_screen.dart:1030"
+  },
+  "message0531": "Also delete files from server",
+  "@message0531": {
+    "description": "Original: 'Также удалить файлы с сервера'; source: lib/ui/home_screen.dart:1036"
+  },
+  "message0532": "This action can't be undone",
+  "@message0532": {
+    "description": "Original: 'Это действие нельзя отменить'; source: lib/ui/home_screen.dart:1037"
+  },
+  "message0533": "Home server",
+  "@message0533": {
+    "description": "Original: 'Домашний сервер'; source: lib/ui/home_screen.dart:1093"
+  },
+  "message0534": "Couldn't import PKCS#12. Check the password and file (up to 4 MB).",
+  "@message0534": {
+    "description": "Original: 'Не удалось импортировать PKCS#12. Проверьте пароль и файл (до 4 МБ).'; source: lib/ui/home_screen.dart:1173"
+  },
+  "message0535": "Enter a name",
+  "@message0535": {
+    "description": "Original: 'Укажите название'; source: lib/ui/home_screen.dart:1220"
+  },
+  "message0536": "Web UI address",
+  "@message0536": {
+    "description": "Original: 'Адрес Web UI'; source: lib/ui/home_screen.dart:1228"
+  },
+  "message0537": "HTTP or HTTPS, including port and path",
+  "@message0537": {
+    "description": "Original: 'HTTP или HTTPS, включая порт и путь'; source: lib/ui/home_screen.dart:1230"
+  },
+  "message0538": "Enter the full HTTP(S) server address",
+  "@message0538": {
+    "description": "Original: 'Укажите полный HTTP(S)-адрес сервера'; source: lib/ui/home_screen.dart:1237"
+  },
+  "message0539": "Remove password, parameters, and # from the address",
+  "@message0539": {
+    "description": "Original: 'Уберите пароль, параметры и # из адреса'; source: lib/ui/home_screen.dart:1242"
+  },
+  "message0540": "Password",
+  "@message0540": {
+    "description": "Original: 'Пароль'; source: lib/ui/home_screen.dart:1262"
+  },
+  "message0541": "Hide password",
+  "@message0541": {
+    "description": "Original: 'Скрыть пароль'; source: lib/ui/home_screen.dart:1264"
+  },
+  "message0542": "Show password",
+  "@message0542": {
+    "description": "Original: 'Показать пароль'; source: lib/ui/home_screen.dart:1264"
+  },
+  "message0543": "API key (optional)",
+  "@message0543": {
+    "description": "Original: 'API-ключ (необязательно)'; source: lib/ui/home_screen.dart:1281"
+  },
+  "message0544": "qBittorrent 5.2+. If filled in, it's used instead of username and password.",
+  "@message0544": {
+    "description": "Original: 'qBittorrent 5.2+. При заполнении используется вместо имени и пароля.'; source: lib/ui/home_screen.dart:1282"
+  },
+  "message0545": "API key can't be combined with a Basic auth proxy",
+  "@message0545": {
+    "description": "Original: 'API-ключ нельзя сочетать с Basic auth прокси'; source: lib/ui/home_screen.dart:1290"
+  },
+  "message0546": "Local Wi-Fi address",
+  "@message0546": {
+    "description": "Original: 'Локальный адрес по Wi-Fi'; source: lib/ui/home_screen.dart:1298"
+  },
+  "message0547": "Optional. The SSID is used only on the device to select an address. The OS may request location permission to read the Wi-Fi name; coordinates are not read.",
+  "@message0547": {
+    "description": "Original: 'Необязательно. SSID используется только на устройстве для выбора адреса. ОС может запросить разрешение геолокации для чтения имени Wi-Fi; координаты не считываются.'; source: lib/ui/home_screen.dart:1301"
+  },
+  "message0548": "Local URL",
+  "@message0548": {
+    "description": "Original: 'Локальный URL'; source: lib/ui/home_screen.dart:1306"
+  },
+  "message0549": "Enter an HTTP(S) address without password or parameters",
+  "@message0549": {
+    "description": "Original: 'Укажите HTTP(S)-адрес без пароля и параметров'; source: lib/ui/home_screen.dart:1317"
+  },
+  "message0550": "Home Wi-Fi network (SSID)",
+  "@message0550": {
+    "description": "Original: 'Домашняя Wi-Fi сеть (SSID)'; source: lib/ui/home_screen.dart:1324"
+  },
+  "message0551": "SSID unavailable. You can enter the network name manually.",
+  "@message0551": {
+    "description": "Original: 'SSID недоступен. Можно ввести имя сети вручную.'; source: lib/ui/home_screen.dart:1339"
+  },
+  "message0552": "Read current network",
+  "@message0552": {
+    "description": "Original: 'Прочитать текущую сеть'; source: lib/ui/home_screen.dart:1346"
+  },
+  "message0553": "Proxy and certificates",
+  "@message0553": {
+    "description": "Original: 'Прокси и сертификаты'; source: lib/ui/home_screen.dart:1352"
+  },
+  "message0554": "Basic auth for reverse proxy; PEM for HTTPS and client certificate.",
+  "@message0554": {
+    "description": "Original: 'Basic auth для обратного прокси; PEM для HTTPS и клиентского сертификата.'; source: lib/ui/home_screen.dart:1355"
+  },
+  "message0555": "Basic auth: username",
+  "@message0555": {
+    "description": "Original: 'Basic auth: имя'; source: lib/ui/home_screen.dart:1362"
+  },
+  "message0556": "Basic auth: password",
+  "@message0556": {
+    "description": "Original: 'Basic auth: пароль'; source: lib/ui/home_screen.dart:1370"
+  },
+  "message0557": "Custom CA (PEM)",
+  "@message0557": {
+    "description": "Original: 'Собственный CA (PEM)'; source: lib/ui/home_screen.dart:1374"
+  },
+  "message0558": "Client certificate (PEM)",
+  "@message0558": {
+    "description": "Original: 'Клиентский сертификат (PEM)'; source: lib/ui/home_screen.dart:1375"
+  },
+  "message0559": "Private key (PEM)",
+  "@message0559": {
+    "description": "Original: 'Приватный ключ (PEM)'; source: lib/ui/home_screen.dart:1376"
+  },
+  "message0560": "Import PKCS#12 (.p12/.pfx)",
+  "@message0560": {
+    "description": "Original: 'Импортировать PKCS#12 (.p12/.pfx)'; source: lib/ui/home_screen.dart:1381"
+  },
+  "message0561": "Private key password",
+  "@message0561": {
+    "description": "Original: 'Пароль приватного ключа'; source: lib/ui/home_screen.dart:1387"
+  },
+  "message0562": "PEM file must be smaller than 1 MB.",
+  "@message0562": {
+    "description": "Original: 'Размер PEM-файла должен быть меньше 1 МБ.'; source: lib/ui/home_screen.dart:1459"
+  },
+  "message0563": "Couldn't read PEM file.",
+  "@message0563": {
+    "description": "Original: 'Не удалось прочитать PEM-файл.'; source: lib/ui/home_screen.dart:1472"
+  },
+  "message0564": "Import file",
+  "@message0564": {
+    "description": "Original: 'Импортировать файл'; source: lib/ui/home_screen.dart:1479"
+  },
+  "message0565": "Torrent actions",
+  "@message0565": {
+    "description": "Original: 'Действия с торрентом'; source: lib/ui/home_screen.dart:1527"
+  },
+  "message0566": "Recheck",
+  "@message0566": {
+    "description": "Original: 'Перепроверить'; source: lib/ui/home_screen.dart:1531"
+  },
+  "message0567": "Update trackers",
+  "@message0567": {
+    "description": "Original: 'Обновить трекеры'; source: lib/ui/home_screen.dart:1534"
+  },
+  "message0568": "Force start",
+  "@message0568": {
+    "description": "Original: 'Принудительно запустить'; source: lib/ui/home_screen.dart:1538"
+  },
+  "message0569": "First and last pieces",
+  "@message0569": {
+    "description": "Original: 'Первый и последний фрагменты'; source: lib/ui/home_screen.dart:1546"
+  },
+  "message0570": "Couldn't load torrent details.",
+  "@message0570": {
+    "description": "Original: 'Не удалось получить сведения о торренте.'; source: lib/ui/home_screen.dart:1570"
+  },
+  "message0571": "Browse",
+  "@message0571": {
+    "description": "Original: 'Обзор'; source: lib/ui/home_screen.dart:1589"
+  },
+  "message0572": "File list is empty",
+  "@message0572": {
+    "description": "Original: 'Список файлов пуст'; source: lib/ui/home_screen.dart:1599"
+  },
+  "message0573": "File",
+  "@message0573": {
+    "description": "Original: 'Файл'; source: lib/ui/home_screen.dart:1"
+  },
+  "message0574": "File priority",
+  "@message0574": {
+    "description": "Original: 'Приоритет файла'; source: lib/ui/home_screen.dart:1622"
+  },
+  "message0575": "High",
+  "@message0575": {
+    "description": "Original: 'Высокий'; source: lib/ui/home_screen.dart:1641"
+  },
+  "message0576": "Maximum",
+  "@message0576": {
+    "description": "Original: 'Максимальный'; source: lib/ui/home_screen.dart:1645"
+  },
+  "message0577": "No trackers",
+  "@message0577": {
+    "description": "Original: 'Нет трекеров'; source: lib/ui/home_screen.dart:1653"
+  },
+  "message0578": "Tracker",
+  "@message0578": {
+    "description": "Original: 'Трекер'; source: lib/ui/home_screen.dart:1"
+  },
+  "message0579": "Couldn't change torrent.",
+  "@message0579": {
+    "description": "Original: 'Не удалось изменить торрент.'; source: lib/ui/home_screen.dart:1694"
+  },
+  "message0580": "Status",
+  "@message0580": {
+    "description": "Original: 'Состояние'; source: lib/ui/home_screen.dart:1748"
+  },
+  "message0581": "Size",
+  "@message0581": {
+    "description": "Original: 'Размер'; source: lib/ui/home_screen.dart:1749"
+  },
+  "message0582": "Done",
+  "@message0582": {
+    "description": "Original: 'Готово'; source: lib/ui/home_screen.dart:1750"
+  },
+  "message0583": "Downloaded",
+  "@message0583": {
+    "description": "Original: 'Загружено'; source: lib/ui/home_screen.dart:1751"
+  },
+  "message0584": "Uploaded",
+  "@message0584": {
+    "description": "Original: 'Отдано'; source: lib/ui/home_screen.dart:1754"
+  },
+  "message0585": "Comment",
+  "@message0585": {
+    "description": "Original: 'Комментарий'; source: lib/ui/home_screen.dart:1760"
+  },
+  "message0586": "Hash",
+  "@message0586": {
+    "description": "Original: 'Хеш'; source: lib/ui/home_screen.dart:1761"
+  },
+  "message0587": "KB",
+  "@message0587": {
+    "description": "Original: 'КБ'; source: lib/ui/home_screen.dart:1787"
+  },
+  "message0588": "MB",
+  "@message0588": {
+    "description": "Original: 'МБ'; source: lib/ui/home_screen.dart:1787"
+  },
+  "message0589": "GB",
+  "@message0589": {
+    "description": "Original: 'ГБ'; source: lib/ui/home_screen.dart:1787"
+  },
+  "message0590": "TB",
+  "@message0590": {
+    "description": "Original: 'ТБ'; source: lib/ui/home_screen.dart:1787"
+  },
+  "message0591": "Error",
+  "@message0591": {
+    "description": "Original: 'Ошибка'; source: lib/ui/home_screen.dart:1816"
+  },
+  "message0592": "Checking",
+  "@message0592": {
+    "description": "Original: 'Проверка'; source: lib/ui/home_screen.dart:1818"
+  },
+  "message0593": "Moving",
+  "@message0593": {
+    "description": "Original: 'Перемещение'; source: lib/ui/home_screen.dart:1819"
+  },
+  "message0594": "Queued",
+  "@message0594": {
+    "description": "Original: 'В очереди'; source: lib/ui/home_screen.dart:1820"
+  },
+  "message0595": "Metadata",
+  "@message0595": {
+    "description": "Original: 'Метаданные'; source: lib/ui/home_screen.dart:1822"
+  },
+  "message0596": "Server",
+  "@message0596": {
+    "description": "Original: 'Сервер'; source: lib/ui/home_screen.dart:1828"
+  },
+  "message0597": "Not polled",
+  "@message0597": {
+    "description": "Original: 'Не опрошен'; source: lib/ui/home_screen.dart:1831"
+  },
+  "message0598": "Down",
+  "@message0598": {
+    "description": "Original: 'Не работает'; source: lib/ui/home_screen.dart:1832"
+  },
+  "message0599": "Working",
+  "@message0599": {
+    "description": "Original: 'Работает'; source: lib/ui/home_screen.dart:1833"
+  },
+  "message0600": "Updating",
+  "@message0600": {
+    "description": "Original: 'Обновление'; source: lib/ui/home_screen.dart:1834"
+  },
+  "message0601": "Status unknown",
+  "@message0601": {
+    "description": "Original: 'Состояние неизвестно'; source: lib/ui/home_screen.dart:1836"
+  },
+  "languageTitle": "Language",
+  "@languageTitle": {
+    "description": "Semantic integration message: Язык"
+  },
+  "systemLanguage": "System default",
+  "@systemLanguage": {
+    "description": "Semantic integration message: Системный язык"
+  },
+  "languageFollowSystemDescription": "Follow the device language",
+  "@languageFollowSystemDescription": {
+    "description": "Semantic integration message: Использовать язык устройства"
+  },
+  "languageChangeFailed": "The language could not be changed. Try again.",
+  "@languageChangeFailed": {
+    "description": "Semantic integration message: Не удалось изменить язык. Повторите попытку."
+  },
+  "startupStorageFailed": "Could not read protected storage. Try again.",
+  "@startupStorageFailed": {
+    "description": "Semantic integration message: Не удалось прочитать защищённое хранилище. Повторите попытку."
+  },
+  "localDataResetFailed": "Could not delete local data. Try again.",
+  "@localDataResetFailed": {
+    "description": "Semantic integration message: Не удалось удалить локальные данные. Повторите попытку."
+  },
+  "appLocked": "App locked",
+  "@appLocked": {
+    "description": "Semantic integration message: Приложение заблокировано"
+  },
+  "open": "Open",
+  "@open": {
+    "description": "Semantic integration message: Открыть"
+  },
+  "resetLocalData": "Reset local data",
+  "@resetLocalData": {
+    "description": "Semantic integration message: Сбросить локальные данные"
+  },
+  "resetLocalDataWarning": "Saved profiles, credentials and device settings will be deleted. This cannot be undone.",
+  "@resetLocalDataWarning": {
+    "description": "Semantic integration message: Сохранённые профили, учётные данные и настройки устройства будут удалены. Это действие нельзя отменить."
+  },
+  "deleteLocalData": "Delete local data",
+  "@deleteLocalData": {
+    "description": "Semantic integration message: Удалить локальные данные"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Semantic integration message: Отмена"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "Semantic integration message: Добавить"
+  },
+  "incomingTorrentTitle": "Add incoming torrent?",
+  "@incomingTorrentTitle": {
+    "description": "Semantic integration message: Добавить входящий торрент?"
+  },
+  "serverName": "Server: {name}",
+  "@serverName": {
+    "description": "Semantic integration message: Сервер: {name}",
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "incomingTorrentFile": "One .torrent file",
+  "@incomingTorrentFile": {
+    "description": "Semantic integration message: Один .torrent-файл"
+  },
+  "incomingTorrentLink": "One link",
+  "@incomingTorrentLink": {
+    "description": "Semantic integration message: Одна ссылка"
+  },
+  "torrentFile": "Torrent file",
+  "@torrentFile": {
+    "description": "Semantic integration message: Файл .torrent"
+  },
+  "unlockReason": "Unlock Home qB Remote",
+  "@unlockReason": {
+    "description": "Semantic integration message: Разблокируйте Home qB Remote"
+  },
+  "downloadComplete": "Download complete",
+  "@downloadComplete": {
+    "description": "Semantic integration message: Загрузка завершена"
+  },
+  "downloadCompletePrivate": "Download complete. Open the app to view it.",
+  "@downloadCompletePrivate": {
+    "description": "Semantic integration message: Загрузка завершена. Откройте приложение для просмотра."
+  },
+  "completionChannelName": "Completed downloads",
+  "@completionChannelName": {
+    "description": "Semantic integration message: Завершение загрузок"
+  },
+  "completionChannelDescription": "Completed downloads on your qBittorrent servers",
+  "@completionChannelDescription": {
+    "description": "Semantic integration message: Завершённые загрузки на ваших серверах qBittorrent"
+  }
+}
