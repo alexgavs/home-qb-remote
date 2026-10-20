@@ -73,4 +73,5 @@ app.*.map.json
 **/Pods/
 **/.symlinks/
 **/ephemeral/
+**/.kotlin/
 **/xcuserdata/
