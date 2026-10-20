@@ -10,7 +10,7 @@ implementation must verify the APIs of the actual supported server versions.
 | Component | Responsibility | Explicitly outside its role |
 |---|---|---|
 | Jackett | Search the user's configured torrent indexers through Torznab | Media playback, downloading content on behalf of qBittorrent |
-| qBittorrent | Add and manage the selected torrent | Receive Jackett/Jellyfin credentials or discover arbitrary NAS paths |
+| qBittorrent | Add/manage torrents; optionally run its already configured server-side Jackett search plugin | Receive app-managed Jackett/Jellyfin credentials in the direct-client flow, or discover arbitrary NAS paths |
 | Jellyfin | Browse an existing media library, indicate possible matches, negotiate playback | Act as a torrent indexer or prove that a torrent is already downloaded |
 | SMB | Preferred direct LAN access to files on an existing read-only NAS share | Require installation of Jellyfin or another media server |
 
@@ -20,9 +20,35 @@ search result never automatically downloads it. Jellyfin's optional "In library"
 badge and "Play" action are separate from "Download"; availability there must
 not silently suppress a user-requested download.
 
+## Stage 0: assess reuse of an existing server-side plugin
+
+Before building a direct Jackett client, evaluate an earlier MVP through the
+app's existing qBittorrent WebAPI search screens and endpoints. qBittorrent's
+official wiki documents a Jackett search plugin with a server-side configuration
+file containing its Jackett address and API key.
+[Official Jackett plugin configuration](https://github.com/qbittorrent/search-plugins/wiki/How-to-configure-Jackett-plugin).
+
+When the user has already installed and configured that plugin on their
+qBittorrent server, the app may be able to select it, start a search and display
+results without connecting directly to Jackett or storing another key. This is
+an assessment, **not a currently verified end-to-end Jackett workflow**. Do not
+install/configure the plugin on a user's server, edit its configuration, or
+claim arbitrary filesystem access through WebAPI. Server-side setup remains
+the user's responsibility and is separate from app-side integration profiles.
+
+The server plugin's existing key is already under the user's server-side
+configuration; it is not the direct app profile key described below. Keep both
+modes visibly distinct. Plugin result download URLs may themselves contain
+secrets: redact them, require an explicit target/download action, and separately
+test magnet/file handoff, download-origin handling and deduplication. Do not
+assume that displaying a search result proves its download route works safely.
+Confirm exactly which URL/metadata reaches the chosen qBittorrent server before
+enabling that handoff. Direct Torznab remains an optional advanced path if the
+existing server-side flow is insufficient.
+
 ## Separate optional profiles and transport boundaries
 
-Add independent `JackettProfile` and `JellyfinProfile` records with explicit URL,
+For direct integration, add independent `JackettProfile` and `JellyfinProfile` records with explicit URL,
 display name and service-specific authentication. Keep secrets in the protected
 store, with independent disconnect/delete actions. Do not reuse qBittorrent
 passwords, API keys, cookies, Basic auth or custom certificate settings implicitly.
@@ -33,7 +59,9 @@ Use the existing strict TLS, timeout, cancellation and bounded-response design.
 Each service owns its HTTP client and origin policy. Jackett URLs can contain
 secrets in query/path components: redact the **whole sensitive URL**, including
 exceptions, redirects, logs, clipboard and notification payloads. Never forward
-the Jackett key to qBittorrent as a download URL, argument or header. Third-party
+the app-managed Jackett key to qBittorrent as a download URL, argument or header.
+This direct-client rule does not reconfigure a user's existing server plugin.
+Third-party
 artwork and media hosts are also separate origins; do not forward Jellyfin auth
 to them automatically.
 
@@ -126,6 +154,7 @@ management writes are included in this proposal.
 
 | Ticket/stage | Scope | Acceptance gate |
 |---|---|---|
+| INT-00: plugin assessment | Reuse an already configured server-side Jackett plugin through existing qB search UI/API | Authorized test proves plugin selection/search and separately validates download handoff, redaction, explicit target and dedup; no plugin/config/filesystem changes |
 | INT-01: profiles | Optional protected credentials, independent clients/origins, disabled-state UI | Disconnect/delete removes only that service; secrets absent from errors/logs; base qB client works with both off |
 | INT-02: search MVP | Jackett capabilities, configured indexers, bounded Torznab parser, text/category search | Fake-server tests cover missing fields, malformed/oversized XML, cancellation, timeout, partial failures and unsupported filters |
 | INT-03: download MVP | Magnet/file handoff, target/path/category confirmation, infohash dedup | Exactly one add per confirmed click; binary multipart preserved; duplicate taps blocked; no Jackett secret reaches qB server; no mutation replay |
@@ -134,8 +163,10 @@ management writes are included in this proposal.
 | INT-06: playback prototype | Optional Jellyfin Direct Play, explicit transcode choice, SMB coexistence | Test codecs/subtitles/seeks, server policy denial, cleanup and OS lifecycle on actual target platforms; no claim from mocks alone |
 | INT-07: release gate | Documentation, eight locales and accessibility | en/ru/uk/he/ar/de/fr/es complete, ICU/plural tests and Hebrew/Arabic RTL layouts; platform results and limits recorded |
 
-Implement INT-01–04 as the first independently reviewable MVP; INT-05 can ship
-separately. INT-06 is deliberately outside the first search/download milestone.
+Assess INT-00 first. If it meets the search/download need, prefer that smaller
+MVP and keep direct Torznab optional. INT-01–04 form the independently reviewable
+direct-integration MVP if required; INT-05 can ship separately. INT-06 is
+deliberately outside the first search/download milestone.
 All network tests use local fake services and invented data. Real-server tests
 need explicit authorization and must not publish keys, search histories, media
 titles, library paths or personal endpoints. Maintainers review added dependency
