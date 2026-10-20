@@ -23,3 +23,7 @@ Both Apple targets declare eight bundle languages and localized permission descr
 ## Windows
 
 Install Visual Studio with Desktop development with C++, the Windows SDK, and Flutter's required CMake tooling. Enable symlink support for plugin builds. Windows and Apple binaries must be built and tested on their respective supported hosts.
+
+### Windows standard coroutines
+
+`local_auth_windows` 2.0.2 and `permission_handler_windows` 0.2.2 request C++20 but also add `/await`. Current MSVC rejects the resulting experimental coroutine path (STL1011). The project removes `/await` from those two targets only, requires C++20, and force-includes `<coroutine>` so their C++/WinRT versions select standard `std::coroutine` types. No compiler downgrade or deprecation suppression is used. See [Microsoft's /await documentation](https://learn.microsoft.com/en-us/cpp/build/reference/await-enable-coroutine-support) and the upstream [C++/WinRT 2022](https://github.com/microsoft/cppwinrt/blob/2.0.220418.1/strings/base_includes.h) / [2021](https://github.com/microsoft/cppwinrt/blob/2.0.210806.1/strings/base_includes.h) header conditions. A Windows CI build validates actual compilation; local source checks alone do not.

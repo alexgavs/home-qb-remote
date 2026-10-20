@@ -57,6 +57,12 @@ add_subdirectory("runner")
 # them to the application.
 include(flutter/generated_plugins.cmake)
 
+# Keep the current MSVC toolchain while adapting legacy plugin coroutine flags.
+include(cmake/standard_coroutines.cmake)
+home_qb_use_standard_coroutines(local_auth_windows_plugin)
+home_qb_use_standard_coroutines(permission_handler_windows_plugin)
+
+
 
 # === Installation ===
 # Support files are copied into place next to the executable, so that it can

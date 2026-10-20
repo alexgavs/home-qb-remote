@@ -30,10 +30,12 @@ void main() {
   test(
     'secure snapshots establish baselines, isolate servers and reset on re-enable',
     () async {
-      // Exercise the real secure-store and Android notification adapters through
-      // mock platform implementations. Desktop host ensures no Workmanager calls
-      // or real periodic scheduler runs during this test.
-      debugDefaultTargetPlatformOverride = TargetPlatform.android;
+      // Match the notification adapter to the host-specific permission branch.
+      // Desktop hosts never start Workmanager or a real periodic scheduler.
+      final useMacAdapter = Platform.isMacOS;
+      debugDefaultTargetPlatformOverride = useMacAdapter
+          ? TargetPlatform.macOS
+          : TargetPlatform.android;
       addTearDown(() => debugDefaultTargetPlatformOverride = null);
       binding.platformDispatcher.localesTestValue = const [Locale('ru')];
       addTearDown(binding.platformDispatcher.clearLocalesTestValue);
@@ -49,10 +51,13 @@ void main() {
           {'id': 'first-complete'},
         ]),
       });
-      FlutterLocalNotificationsPlatform.instance =
-          AndroidFlutterLocalNotificationsPlugin();
+      FlutterLocalNotificationsPlatform.instance = useMacAdapter
+          ? MacOSFlutterLocalNotificationsPlugin()
+          : AndroidFlutterLocalNotificationsPlugin();
       final shown = <Map<dynamic, dynamic>>[];
       final calls = <String>[];
+      final permissionRequests = <Map<dynamic, dynamic>>[];
+      // Both Android and macOS adapters use this channel in the pinned plugin.
       const channel = MethodChannel(
         'dexterous.com/flutter/local_notifications',
       );
@@ -61,6 +66,9 @@ void main() {
             calls.add(call.method);
             if (call.method == 'show') {
               shown.add(call.arguments as Map<dynamic, dynamic>);
+            }
+            if (call.method == 'requestPermissions') {
+              permissionRequests.add(call.arguments as Map<dynamic, dynamic>);
             }
             return true;
           });
@@ -164,12 +172,26 @@ void main() {
       expect(shown.last['title'], hebrew.downloadComplete);
       expect(shown.last['title'], matches(RegExp(r'[\u0590-\u05ff]')));
       expect(shown.last['body'], hebrew.downloadCompletePrivate);
-      // Android's adapter normalizes an omitted payload to an empty string.
+      // Both adapters normalize an omitted payload to an empty string.
       expect(shown.last['payload'], isEmpty);
       expect(shown.last.toString(), isNot(contains('Fixture')));
-      final android = shown.last['platformSpecifics'] as Map;
-      expect(android['visibility'], NotificationVisibility.private.index);
-      expect(android['channelName'], hebrew.completionChannelName);
+      final platformSpecifics = shown.last['platformSpecifics'] as Map;
+      if (useMacAdapter) {
+        expect(permissionRequests, hasLength(1));
+        expect(permissionRequests.single, containsPair('alert', true));
+        expect(permissionRequests.single, containsPair('badge', true));
+        expect(permissionRequests.single, containsPair('sound', true));
+        expect(platformSpecifics, contains('presentAlert'));
+        expect(platformSpecifics, isNot(contains('channelName')));
+        expect(platformSpecifics, isNot(contains('visibility')));
+      } else {
+        expect(permissionRequests, isEmpty);
+        expect(
+          platformSpecifics['visibility'],
+          NotificationVisibility.private.index,
+        );
+        expect(platformSpecifics['channelName'], hebrew.completionChannelName);
+      }
       expect(calls.where((method) => method == 'initialize').length, 1);
       await store.write(key: 'auth.blocked.A', value: 'true');
       await DeviceServices.resetLocalData();
