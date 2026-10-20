@@ -48,14 +48,15 @@ private class WifiPermissionBridge: NSObject, CLLocationManagerDelegate {
       pending = result
       manager.requestWhenInUseAuthorization()
     } else {
-      result(status == .authorizedAlways || status == .authorizedWhenInUse)
+      // macOS reports authorizedAlways for either authorization request mode.
+      result(status == .authorizedAlways)
     }
   }
 
   private func complete(_ status: CLAuthorizationStatus) {
     guard status != .notDetermined, let callback = pending else { return }
     pending = nil
-    callback(status == .authorizedAlways || status == .authorizedWhenInUse)
+    callback(status == .authorizedAlways)
   }
 
   func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {

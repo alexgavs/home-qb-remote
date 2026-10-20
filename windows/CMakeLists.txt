@@ -61,6 +61,7 @@ include(flutter/generated_plugins.cmake)
 include(cmake/standard_coroutines.cmake)
 home_qb_use_standard_coroutines(local_auth_windows_plugin)
 home_qb_use_standard_coroutines(permission_handler_windows_plugin)
+home_qb_fix_local_auth_coroutine_return()
 
 
 
