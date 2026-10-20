@@ -11,7 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     environment: release
     env:
-      ANDROID_KEYSTORE_PATH: ${{ runner.temp }}/release.jks
       ANDROID_KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
       ANDROID_KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
       ANDROID_KEY_ALIAS: ${{ secrets.ANDROID_KEY_ALIAS }}
@@ -31,6 +30,8 @@ jobs:
       - name: Prepare signing key
         shell: bash
         run: |
+          export ANDROID_KEYSTORE_PATH="$RUNNER_TEMP/release.p12"
+          echo "ANDROID_KEYSTORE_PATH=$ANDROID_KEYSTORE_PATH" >> "$GITHUB_ENV"
           test -n "$ANDROID_KEYSTORE_BASE64"
           test -n "$ANDROID_KEYSTORE_PASSWORD"
           test -n "$ANDROID_KEY_ALIAS"
@@ -57,7 +58,7 @@ jobs:
       - name: Remove signing key
         if: always()
         shell: bash
-        run: rm -f -- "$ANDROID_KEYSTORE_PATH"
+        run: rm -f -- "${ANDROID_KEYSTORE_PATH:-$RUNNER_TEMP/release.p12}"
   windows:
     runs-on: windows-latest
     steps:
