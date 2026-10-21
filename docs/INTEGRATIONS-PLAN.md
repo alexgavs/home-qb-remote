@@ -2,23 +2,31 @@
 
 **Status: partially implemented in current source; advanced work remains planned.**
 Independent protected profiles, direct Jackett basic search/download and Jellyfin
-read-only catalog screens now exist. Tests use local fixtures and mocked UI,
-not real Jackett/Jellyfin end-to-end deployments. Check release notes for binary
+read-only catalog screens now exist. Released v0.3.0 backend clients and the
+physical Android app passed authenticated real-service search/catalog checks;
+real download handoff and playback remain untested. Check release notes for binary
 availability; this does not change the historical v0.2.0 scope. See
 [practical setup](INTEGRATIONS.md). Primary sources were reviewed on 2026-10-21;
-actual supported service versions still need verification.
+observed Jellyfin 10.11/qBittorrent 5.2 compatibility is not a complete version matrix.
 
 ## Implemented versus unverified
 
 | Area | Current source | Missing or unverified |
 |---|---|---|
-| Profiles | Independent protected storage and add/edit/remove UI | Native real-service onboarding not verified |
-| Jackett | Root/Torznab URL, basic text search, bounded XML, same-origin file fetch and qB multipart/magnet handoff | No capabilities, advanced filters/indexer picker, pagination or foreign-origin allowlist; no real E2E proof |
-| Handoff | Explicit target/options, identity checks and no mutation replay | Real private-tracker/network edge cases unverified |
-| Jellyfin | User-token/UUID validation, first 100 user-scoped items and read-only details | No admin API-key mode, pagination, login wizard, images, player or library matching |
+| Profiles | Independent protected storage/UI; actual qBittorrent and both service profiles survived physical-app force-stop/restart | No claim of all-device/keychain behavior |
+| Jackett | Basic direct text search authenticated on real backend and physical Android UI; bounded XML/file transport and qB handoff code | No capabilities, advanced filters/indexer picker, pagination or foreign-origin allowlist; real download handoff untested |
+| Handoff | Explicit target/options, identity checks and no mutation replay covered by local tests | No real add/download executed during integration verification; private-tracker/network edge cases unverified |
+| Jellyfin | Real token-owner UUID validation/catalog/search; physical-app catalog, read-only details and title search passed; first 100 requested | No admin API-key mode, pagination, login wizard, images, player or automatic matching |
 | Transport | Independent clients, default TLS, bounded responses/timeouts and restricted redirects | No integration-specific custom CA/client certificate/Basic-auth options |
 | Server plugin | Ordinary qB search screens can select server plugins | Jackett plugin E2E still an assessment; no configuration/filesystem writes |
 | LAN media | SMB remains the preferred future direct-file approach | SMB playback and local torrent engine absent |
+
+Physical Android API 36 checks also covered installation, language/RTL behavior,
+protected-profile UI and an authenticated qBittorrent list. Captured runtime checks
+showed no critical process-error signatures. These observations establish the
+tested read-only flows, not all integration operations, media playback or all
+platforms. No private endpoints, credentials, media titles or library counts are
+included in this public verification summary.
 
 The sections below retain the target architecture, including work not yet built.
 The status table above and [setup guide](INTEGRATIONS.md) describe today's limits;
@@ -185,10 +193,12 @@ management writes are included in this proposal.
 
 INT-00 remains an unverified alternative through an existing server plugin.
 Direct profiles/basic handoff and the read-only part of INT-05 now exist; the
-advanced capability/filter, library-matching and real-service acceptance gates
+advanced capability/filter, library-matching and real-download acceptance gates
 remain open. INT-06 playback is not part of the current implementation.
-All network tests use local fake services and invented data. Real-server tests
-need explicit authorization and must not publish keys, search histories, media
+Automated protocol tests use local fake services and invented data. Separate
+authorized real-backend and physical-app read-only checks passed; no download
+was started in those checks. Further real-server tests need explicit authorization
+and must not publish keys, search histories, media
 titles, library paths or personal endpoints. Maintainers review added dependency
 licenses and platform requirements before selecting XML, SMB or player packages.
 

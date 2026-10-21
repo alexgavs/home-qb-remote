@@ -1,10 +1,24 @@
 # Optional Jackett and Jellyfin setup
 
 This guide describes the integration screens in the current source. Check the
-release notes for availability in a downloaded binary. Protocol tests use local
-fake servers; an end-to-end deployment with real Jackett/Jellyfin services has
-not been verified. Both integrations are optional and independent of normal
-qBittorrent operation.
+release notes for availability in a downloaded binary. Both integrations are
+optional and independent of normal qBittorrent operation.
+
+## Verification scope
+
+The released v0.3.0 Dart clients passed authenticated checks against real services:
+Jackett text search and Jellyfin token-owner validation, catalog browsing and
+search. The physical Android API 36 app also passed authenticated Jackett search,
+Jellyfin catalog/details/search, and qBittorrent connection/list checks. Protected
+service profiles persisted across force-stop and restart. Language/RTL and
+protected-profile UI checks were exercised separately. No critical process-error
+signatures were found in the captured runtime checks.
+
+These were **read-only integration flows**: no real Jackett-to-qBittorrent download
+handoff, media playback or transcoding was performed. Automated loopback tests
+cover mutation behavior, credential isolation and failure cases; they do not turn
+the untested real download path into a verified feature. Observed compatibility
+includes Jellyfin 10.11 and qBittorrent 5.2, not an exhaustive version matrix.
 
 Open **Integrations** from the navigation menu. Add a named Jackett or Jellyfin
 profile, then open its card. Edit/remove actions affect only that integration
@@ -52,7 +66,7 @@ a direct app-side Jackett profile is neither required nor automatically linked.
 The app does not edit `jackett.json` or obtain filesystem access through WebAPI.
 [Official plugin setup](https://github.com/qbittorrent/search-plugins/wiki/How-to-configure-Jackett-plugin).
 
-This particular plugin/search/download chain has not been verified end-to-end
+This separate server-side plugin/search/download chain has not been verified end-to-end
 here. Result URLs may contain secrets in either mode; never paste them into
 public logs. See the [assessment and plan](INTEGRATIONS-PLAN.md).
 
