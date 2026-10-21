@@ -8,6 +8,9 @@
 - Describe successful submission as a server acknowledgement rather than proof
   that metadata retrieval or downloading has completed.
 
+Validated on a physical Android 16 phone: newest entries matched the server
+order in All and Downloading, including after restart; no new downloads started.
+
 ## 0.3.1 (unreleased)
 
 - Make server-side search plugins easier to discover from the search interface.
