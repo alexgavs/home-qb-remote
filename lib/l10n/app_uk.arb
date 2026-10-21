@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "Фільтр поточних торентів",
-  "clearTorrentListFilter": "Скинути фільтр торентів"
+  "clearTorrentListFilter": "Скинути фільтр торентів",
+  "viewDownloads": "Відкрити завантаження",
+  "torrentSubmitted": "Надіслано до qBittorrent. Відкрийте завантаження, щоб перевірити статус."
 }

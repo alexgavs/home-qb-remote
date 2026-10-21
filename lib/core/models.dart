@@ -64,6 +64,7 @@ class Torrent {
     required this.eta,
     required this.category,
     required this.ratio,
+    this.addedOn = 0,
   });
 
   factory Torrent.fromJson(Map<String, dynamic> json) => Torrent(
@@ -77,6 +78,7 @@ class Torrent {
     eta: _number(json['eta']).toInt(),
     category: _string(json['category']),
     ratio: _number(json['ratio']).toDouble(),
+    addedOn: _timestamp(json['added_on']),
   );
 
   final String hash;
@@ -89,6 +91,14 @@ class Torrent {
   final int eta;
   final String category;
   final double ratio;
+
+  /// Server-provided Unix seconds, or 0 when absent/unknown.
+  final int addedOn;
+
+  static int _timestamp(Object? value) {
+    final number = _number(value);
+    return number > 0 ? number.toInt() : 0;
+  }
 
   static String _string(Object? value) => value is String ? value : '';
   static num _number(Object? value) {

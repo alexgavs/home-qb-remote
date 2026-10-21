@@ -49,6 +49,7 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
   bool adding = false;
   bool searched = false;
   _Notice? notice;
+  ServerProfile? submissionTarget;
   int generation = 0;
 
   @override
@@ -206,6 +207,7 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
       submitted.add(key);
       submittedHashes.addAll(identities);
       posted = true;
+      submissionTarget = target;
       if (bytes == null) {
         await qb.addUrls(magnet.toString(), options: request.options);
       } else {
@@ -237,7 +239,7 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
     _Notice.noTarget => l10n.jackettNoTarget,
     _Notice.duplicate => l10n.searchAlreadyAdded,
     _Notice.unknown => l10n.searchAddOutcomeUnknown,
-    _Notice.added => l10n.jackettAdded,
+    _Notice.added => l10n.torrentSubmitted,
     null => '',
   };
 
@@ -278,10 +280,17 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
                   if (notice != null) Text(_status(l10n)),
                   if (notice == _Notice.unknown || notice == _Notice.added)
                     TextButton(
-                      onPressed: () =>
+                      onPressed: () {
+                        final target = submissionTarget;
+                        if (target != null &&
+                            widget.controller.requestShowDownloads(target)) {
                           Navigator.of(context)
-                              .popUntil((route) => route.isFirst),
-                      child: Text(l10n.searchCheckServer),
+                              .popUntil((route) => route.isFirst);
+                        } else {
+                          _message(_Notice.profileChanged);
+                        }
+                      },
+                      child: Text(l10n.viewDownloads),
                     ),
                   if (searched && results.isEmpty)
                     Text(l10n.jackettSearchEmpty),

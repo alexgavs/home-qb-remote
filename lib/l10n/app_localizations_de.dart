@@ -2126,4 +2126,10 @@ class AppLocalizationsDe extends AppLocalizations {
 
   @override
   String get clearTorrentListFilter => 'Torrentfilter zurücksetzen';
+
+  @override
+  String get viewDownloads => 'Downloads anzeigen';
+
+  @override
+  String get torrentSubmitted => 'An qBittorrent gesendet. Öffne die Downloads, um den Status zu prüfen.';
 }

@@ -4180,6 +4180,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Clear torrent filter'**
   String get clearTorrentListFilter;
+
+  /// No description provided for @viewDownloads.
+  ///
+  /// In en, this message translates to:
+  /// **'View downloads'**
+  String get viewDownloads;
+
+  /// No description provided for @torrentSubmitted.
+  ///
+  /// In en, this message translates to:
+  /// **'Submitted to qBittorrent. Open downloads to check its status.'**
+  String get torrentSubmitted;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

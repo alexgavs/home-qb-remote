@@ -40,6 +40,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
   final hashesByProfile = <ServerProfile, Set<String>>{};
   final linksByProfile = <ServerProfile, Set<String>>{};
   ServerProfile? observedProfile;
+  bool submissionAcknowledged = false;
   String? uncertainLink;
   Set<String> uncertainHashes = {};
   AppController get c => widget.controller;
@@ -136,6 +137,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       profileChanged = false;
       results = [];
       uncertainLink = null;
+      submissionAcknowledged = false;
       status = (l) => l.message0157;
     });
     try {
@@ -276,7 +278,10 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       sent = true;
       await client.addUrls(link, options: request.options);
       if (mounted && selected(profile)) {
-        setState(() => status = (l) => l.message0110);
+        setState(() {
+          submissionAcknowledged = true;
+          status = (l) => l.torrentSubmitted;
+        });
         unawaited(c.refresh());
       }
     } catch (error) {
@@ -504,6 +509,17 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
                 children: [
                   Text(status?.call(l10n) ?? ''),
                   Text(l10n.searchResultUrlHidden),
+                  if (submissionAcknowledged && !profileChanged)
+                    TextButton(
+                      onPressed: () {
+                        final target = resultProfile;
+                        if (target != null && c.requestShowDownloads(target)) {
+                          Navigator.of(context)
+                              .popUntil((route) => route.isFirst);
+                        }
+                      },
+                      child: Text(l10n.viewDownloads),
+                    ),
                   if (uncertainLink != null && !profileChanged)
                     TextButton(
                       onPressed: handoffBusy ? null : checkUncertainSubmission,

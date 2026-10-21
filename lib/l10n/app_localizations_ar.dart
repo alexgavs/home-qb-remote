@@ -2146,4 +2146,10 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get clearTorrentListFilter => 'مسح مرشح التورنت';
+
+  @override
+  String get viewDownloads => 'عرض التنزيلات';
+
+  @override
+  String get torrentSubmitted => 'تم الإرسال إلى qBittorrent. افتح التنزيلات للتحقق من الحالة.';
 }

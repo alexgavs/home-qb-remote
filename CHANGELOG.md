@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.2 (unreleased)
+
+- Show recently added torrents first in every status filter.
+- Offer an explicit return to downloads after search submission, clearing local
+  filters for that action and scrolling to the newest entries.
+- Describe successful submission as a server acknowledgement rather than proof
+  that metadata retrieval or downloading has completed.
+
 ## 0.3.1 (unreleased)
 
 - Make server-side search plugins easier to discover from the search interface.

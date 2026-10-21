@@ -232,6 +232,11 @@ void main() {
       expect(qb.mutations, 1);
       expect(qb.bytes, torrentBytes);
       expect(qb.urls, isNull);
+      expect(find.text(l10n.torrentSubmitted), findsOneWidget);
+      await tester.tap(find.text(l10n.viewDownloads));
+      await frames(tester);
+      expect(controller.showDownloadsRevision, 1);
+      expect(qb.mutations, 1);
       await tester.tap(find.byTooltip(l10n.jackettDownloadAction));
       await frames(tester);
       expect(qb.mutations, 1);

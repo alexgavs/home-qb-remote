@@ -24,6 +24,17 @@ class AppController extends ChangeNotifier {
   List<ServerProfile> profiles = [];
   ServerProfile? currentProfile;
   List<Torrent> torrents = [];
+  int showDownloadsRevision = 0;
+
+  /// Explicit UI intent, bound to the profile that accepted the submission.
+  bool requestShowDownloads(ServerProfile profile) {
+    if (!identical(currentProfile, profile)) return false;
+    showDownloadsRevision++;
+    _notify();
+    unawaited(refresh());
+    return true;
+  }
+
   bool busy = false;
   String? error;
   String? version;

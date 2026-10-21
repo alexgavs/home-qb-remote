@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "Filtrar los torrents actuales",
-  "clearTorrentListFilter": "Borrar el filtro de torrents"
+  "clearTorrentListFilter": "Borrar el filtro de torrents",
+  "viewDownloads": "Ver descargas",
+  "torrentSubmitted": "Enviado a qBittorrent. Abre las descargas para comprobar el estado."
 }

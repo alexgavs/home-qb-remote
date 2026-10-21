@@ -80,9 +80,44 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String _query = '';
   final _filterQuery = TextEditingController();
+  final _torrentScroll = ScrollController();
+  int _showDownloadsRevision = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _showDownloadsRevision = controller.showDownloadsRevision;
+    controller.addListener(_showDownloads);
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeScreen oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.controller != controller) {
+      oldWidget.controller.removeListener(_showDownloads);
+      _showDownloadsRevision = controller.showDownloadsRevision;
+      controller.addListener(_showDownloads);
+    }
+  }
+
+  void _showDownloads() {
+    if (_showDownloadsRevision == controller.showDownloadsRevision) return;
+    _showDownloadsRevision = controller.showDownloadsRevision;
+    _filterQuery.clear();
+    setState(() {
+      _query = '';
+      _filter = _filterIds.first;
+      _selected.clear();
+    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted && _torrentScroll.hasClients) _torrentScroll.jumpTo(0);
+    });
+  }
 
   @override
   void dispose() {
+    controller.removeListener(_showDownloads);
+    _torrentScroll.dispose();
     _filterQuery.dispose();
     super.dispose();
   }
@@ -392,12 +427,22 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       );
     }
-    final torrents = controller.torrents.where((torrent) {
-      if (!torrent.name.toLowerCase().contains(_query.toLowerCase())) {
-        return false;
-      }
-      return _matchesFilter(torrent, _filter);
-    }).toList();
+    final originalOrder = {
+      for (var i = 0; i < controller.torrents.length; i++)
+        controller.torrents[i].hash: i,
+    };
+    final torrents =
+        controller.torrents.where((torrent) {
+          if (!torrent.name.toLowerCase().contains(_query.toLowerCase())) {
+            return false;
+          }
+          return _matchesFilter(torrent, _filter);
+        }).toList()..sort((a, b) {
+          final newest = b.addedOn.compareTo(a.addedOn);
+          return newest != 0
+              ? newest
+              : originalOrder[a.hash]!.compareTo(originalOrder[b.hash]!);
+        });
     final download = controller.torrents.fold<int>(
       0,
       (sum, torrent) => sum + torrent.dlspeed,
@@ -414,6 +459,7 @@ class _HomeScreenState extends State<HomeScreen> {
         child: RefreshIndicator(
           onRefresh: () => _run(controller.reconnect),
           child: CustomScrollView(
+            controller: _torrentScroll,
             physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               if (controller.busy)

@@ -330,6 +330,12 @@ void main() {
       expect(fixture.additions.single.fields['category'], 'Linux');
       fixture.pendingAdd!.complete();
       await tester.pumpAndSettle();
+      expect(find.text(strings.torrentSubmitted), findsOneWidget);
+      expect(controller.showDownloadsRevision, 0);
+      await tester.tap(find.text(strings.viewDownloads));
+      await tester.pumpAndSettle();
+      expect(controller.showDownloadsRevision, 1);
+      expect(fixture.additions, hasLength(1));
       await tester.tap(find.byTooltip(strings.message0181));
       await tester.pumpAndSettle();
       expect(fixture.additions, hasLength(1));

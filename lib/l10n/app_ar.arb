@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "تصفية التورنتات الحالية",
-  "clearTorrentListFilter": "مسح مرشح التورنت"
+  "clearTorrentListFilter": "مسح مرشح التورنت",
+  "viewDownloads": "عرض التنزيلات",
+  "torrentSubmitted": "تم الإرسال إلى qBittorrent. افتح التنزيلات للتحقق من الحالة."
 }

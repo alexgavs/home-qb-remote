@@ -2136,4 +2136,10 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get clearTorrentListFilter => 'Скинути фільтр торентів';
+
+  @override
+  String get viewDownloads => 'Відкрити завантаження';
+
+  @override
+  String get torrentSubmitted => 'Надіслано до qBittorrent. Відкрийте завантаження, щоб перевірити статус.';
 }

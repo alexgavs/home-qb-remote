@@ -2697,5 +2697,7 @@
     }
   },
   "torrentListFilterHint": "Filter your current torrents",
-  "clearTorrentListFilter": "Clear torrent filter"
+  "clearTorrentListFilter": "Clear torrent filter",
+  "viewDownloads": "View downloads",
+  "torrentSubmitted": "Submitted to qBittorrent. Open downloads to check its status."
 }

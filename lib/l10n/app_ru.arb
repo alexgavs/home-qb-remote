@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "Фильтр текущих торрентов",
-  "clearTorrentListFilter": "Сбросить фильтр торрентов"
+  "clearTorrentListFilter": "Сбросить фильтр торрентов",
+  "viewDownloads": "Открыть загрузки",
+  "torrentSubmitted": "Отправлено в qBittorrent. Откройте загрузки, чтобы проверить статус."
 }

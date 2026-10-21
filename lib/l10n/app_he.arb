@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "סינון הטורנטים הנוכחיים",
-  "clearTorrentListFilter": "ניקוי מסנן הטורנטים"
+  "clearTorrentListFilter": "ניקוי מסנן הטורנטים",
+  "viewDownloads": "פתיחת הורדות",
+  "torrentSubmitted": "נשלח ל-qBittorrent. פתחו את ההורדות כדי לבדוק את המצב."
 }

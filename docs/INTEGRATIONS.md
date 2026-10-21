@@ -28,13 +28,18 @@ a failed storage read prevents overwriting it with an empty profile list.
 ## Find the right search
 
 - The main screen's torrent filter searches only torrents already on the selected
-  qBittorrent server. Clear it to restore the full list.
+  qBittorrent server. Clear it to restore the full list. Torrents are shown
+  newest first by the server's added time, including within status filters.
 - **Torrent search** in the navigation menu opens the selected server's search
   engine. **Search plugins** manages plugins installed on that server. An empty
   plugin list means this mode has no search sources; it does not inspect Jackett
   profiles automatically.
 - For configured tracker/forum indexers in Jackett, open **Integrations**, then
   your Jackett profile. Results come from that profile's configured indexers.
+
+After a search submission, **View downloads** returns to the selected server's
+list, clears local text/status filters and scrolls to the top. Submission confirms
+that the request was sent; the server may still be retrieving torrent metadata.
 
 ## Direct Jackett search
 

@@ -685,5 +685,7 @@
     }
   },
   "torrentListFilterHint": "Aktuelle Torrents filtern",
-  "clearTorrentListFilter": "Torrentfilter zurücksetzen"
+  "clearTorrentListFilter": "Torrentfilter zurücksetzen",
+  "viewDownloads": "Downloads anzeigen",
+  "torrentSubmitted": "An qBittorrent gesendet. Öffne die Downloads, um den Status zu prüfen."
 }
