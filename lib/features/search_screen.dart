@@ -78,8 +78,9 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
   Future<void> loadPlugins() async {
     final profile = c.currentProfile;
     if (profile == null || c.requiresAuthentication) return;
-    final client = api(resolved(profile));
+    SearchServerApi? client;
     try {
+      client = api(resolved(profile));
       final response = await client.get('search/plugins');
       if (mounted && selected(profile)) {
         setState(
@@ -94,7 +95,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
         setState(() => status = (l) => l.message0156);
       }
     } finally {
-      client.close();
+      client?.close();
     }
   }
 
@@ -121,8 +122,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
     final token = ++generation;
     final old = job;
     if (old != null) unawaited(old.cleanup());
-    final activeJob = BoundSearchJob(api(resolved(profile)));
-    job = activeJob;
+    BoundSearchJob? activeJob;
     resultProfile = profile;
     final pattern = query.text.trim();
     setState(() {
@@ -134,6 +134,8 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       status = (l) => l.message0157;
     });
     try {
+      activeJob = BoundSearchJob(api(resolved(profile)));
+      job = activeJob;
       final id = await activeJob.start({
         'pattern': pattern,
         'plugins': plugin,
@@ -176,13 +178,13 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       }
     } catch (error) {
       await c.reportAuthenticationFailure(profile, error);
-      unawaited(activeJob.cleanup());
+      if (activeJob != null) unawaited(activeJob.cleanup());
       if (mounted && token == generation) {
         setState(() => status = (l) => l.message0161);
       }
     } finally {
       if (!mounted || token != generation || !selected(profile)) {
-        unawaited(activeJob.cleanup());
+        if (activeJob != null) unawaited(activeJob.cleanup());
       }
       if (mounted && token == generation) setState(() => busy = false);
     }
@@ -233,9 +235,11 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       return;
     }
     setState(() => handoffBusy = true);
-    final client = api(resolved(profile));
+    SearchServerApi? client;
     var sent = false;
     try {
+      client = api(resolved(profile));
+      final downloadClient = client;
       final request = await showDialog<AddTorrentRequest>(
         context: context,
         builder: (_) => AddTorrentDialog(
@@ -248,7 +252,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
           ),
           hideUrls: true,
           showFilePicker: false,
-          loadSuggestions: client.get,
+          loadSuggestions: downloadClient.get,
         ),
       );
       if (request == null || !mounted || !selected(profile)) return;
@@ -289,7 +293,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
         );
       }
     } finally {
-      client.close();
+      client?.close();
       if (mounted) setState(() => handoffBusy = false);
     }
   }
@@ -305,8 +309,9 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       return;
     }
     setState(() => handoffBusy = true);
-    final client = api(resolved(profile));
+    SearchServerApi? client;
     try {
+      client = api(resolved(profile));
       final torrents = await client.getTorrents();
       if (!mounted || !selected(profile)) return;
       final present = torrents.any(
@@ -326,7 +331,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
     } catch (error) {
       await c.reportAuthenticationFailure(profile, error);
     } finally {
-      client.close();
+      client?.close();
       if (mounted) setState(() => handoffBusy = false);
     }
   }
@@ -613,7 +618,7 @@ class _SearchPluginsScreenState extends State<SearchPluginsScreen> {
                             '${plugin['fullName'] ?? plugin['name']}',
                           ),
                           subtitle: Text(
-                            l10n.message0191('${plugin['version'] ?? '—'}'),
+                            l10n.message0191('${plugin['version'] ?? 'â€”'}'),
                           ),
                           value: plugin['enabled'] == true,
                           onChanged: busy

@@ -114,9 +114,15 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
       _message(_Notice.duplicate);
       return;
     }
-    final qb = activeQb =
-        widget.qbFactory?.call(target.withUrl(endpoint)) ??
-        QbClient(target.withUrl(endpoint));
+    final QbClient qb;
+    try {
+      qb = activeQb =
+          widget.qbFactory?.call(target.withUrl(endpoint)) ??
+          QbClient(target.withUrl(endpoint));
+    } catch (_) {
+      _message(_Notice.downloadFailed);
+      return;
+    }
     Future<void>? login;
     Future<void> ready() => login ??= (() async {
       try {

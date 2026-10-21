@@ -150,6 +150,38 @@ Future<void> runSearch(WidgetTester tester) async {
 void main() {
   setUp(() => FlutterSecureStorage.setMockInitialValues({}));
 
+  testWidgets('invalid certificate factory failures remain recoverable', (
+    tester,
+  ) async {
+    final controller = SearchController()..choose(serverA);
+    addTearDown(controller.dispose);
+    var attempts = 0;
+    await tester.pumpWidget(
+      MaterialApp(
+        locale: const Locale('en'),
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        home: TypedSearchScreen(
+          controller: controller,
+          apiFactory: (_) {
+            attempts++;
+            throw const FormatException('Invalid custom certificate');
+          },
+        ),
+      ),
+    );
+    await tester.pumpAndSettle();
+    expect(tester.takeException(), isNull);
+    expect(find.text(strings.message0156), findsOneWidget);
+    await runSearch(tester);
+    expect(tester.takeException(), isNull);
+    expect(find.text(strings.message0161), findsOneWidget);
+    expect(find.byType(LinearProgressIndicator), findsNothing);
+    await runSearch(tester);
+    expect(attempts, 3);
+    expect(tester.takeException(), isNull);
+  });
+
   test('magnet identities normalize v1 base32/hex and keep full v2 hashes', () {
     expect(magnetInfoHashes('magnet:?xt=urn:btih:${'A' * 32}'), {'0' * 40});
     expect(magnetInfoHashes('magnet:?xt=urn:btih:${'B' * 40}'), {'b' * 40});

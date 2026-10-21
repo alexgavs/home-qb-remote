@@ -145,6 +145,7 @@ void main() {
     _Jackett jackett,
     _Qb qb, {
     String language = 'en',
+    bool invalidClient = false,
   }) async {
     tester.view.physicalSize = const Size(900, 1000);
     tester.view.devicePixelRatio = 1;
@@ -161,7 +162,9 @@ void main() {
           profile: profile,
           controller: controller,
           jackettFactory: (_) => jackett,
-          qbFactory: (_) => qb,
+          qbFactory: (_) => invalidClient
+              ? throw const QbException('Invalid certificate fixture')
+              : qb,
         ),
       ),
     );
@@ -310,6 +313,28 @@ void main() {
       await frames(tester);
       expect(qb.mutations, 1);
       expect(find.text(l10n.searchAlreadyAdded), findsOneWidget);
+    },
+  );
+
+  testWidgets(
+    'invalid transport configuration is a localized error without a mutation',
+    (tester) async {
+      final controller = _Controller();
+      final service = _Jackett();
+      final qb = _Qb();
+      addTearDown(controller.dispose);
+      final l10n = await open(
+        tester,
+        controller,
+        service,
+        qb,
+        invalidClient: true,
+      );
+      await tester.tap(find.byTooltip(l10n.jackettDownloadAction));
+      await frames(tester);
+      expect(find.text(l10n.jackettDownloadFailed), findsOneWidget);
+      expect(qb.mutations, 0);
+      expect(tester.takeException(), isNull);
     },
   );
 }
