@@ -683,5 +683,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "torrentListFilterHint": "Filtrer les torrents actuels",
+  "clearTorrentListFilter": "Effacer le filtre des torrents"
 }

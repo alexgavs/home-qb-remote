@@ -683,5 +683,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "torrentListFilterHint": "Фильтр текущих торрентов",
+  "clearTorrentListFilter": "Сбросить фильтр торрентов"
 }

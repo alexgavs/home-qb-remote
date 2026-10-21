@@ -4168,6 +4168,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Confirm and add'**
   String get searchConfirmAdd;
+
+  /// No description provided for @torrentListFilterHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Filter your current torrents'**
+  String get torrentListFilterHint;
+
+  /// No description provided for @clearTorrentListFilter.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear torrent filter'**
+  String get clearTorrentListFilter;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

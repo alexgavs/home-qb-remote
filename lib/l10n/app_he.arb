@@ -683,5 +683,7 @@
         "type": "String"
       }
     }
-  }
+  },
+  "torrentListFilterHint": "סינון הטורנטים הנוכחיים",
+  "clearTorrentListFilter": "ניקוי מסנן הטורנטים"
 }

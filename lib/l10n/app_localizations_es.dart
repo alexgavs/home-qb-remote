@@ -2120,4 +2120,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get searchConfirmAdd => 'Confirmar y añadir';
+
+  @override
+  String get torrentListFilterHint => 'Filtrar los torrents actuales';
+
+  @override
+  String get clearTorrentListFilter => 'Borrar el filtro de torrents';
 }

@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.3.1 (unreleased)
+
+- Make server-side search plugins easier to discover from the search interface.
+- Improve keyboard handling and result-list scrolling on small screens.
+
+Physical-device validation of these UX changes is pending.
+
+## 0.3.0
+
+- Add independent, protected Jackett and Jellyfin integration profiles.
+- Search Jackett directly and explicitly confirm the target and add options
+  before handing a magnet or validated torrent file to qBittorrent.
+- Browse and search a user-scoped Jellyfin catalog with read-only item details.
+  Playback and transcoding are not included.
+- Keep integration credentials separate, restrict redirects and bound responses;
+  detect duplicate torrent identities without automatically replaying mutations.
+
 ## 0.2.0
 
 - First public, independently implemented Home qB Remote release.

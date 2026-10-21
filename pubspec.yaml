@@ -1,7 +1,7 @@
 name: home_qb_remote
 description: "An open-source qBittorrent remote client without ads or analytics."
 publish_to: 'none'
-version: 0.3.0+4
+version: 0.3.1+5
 
 environment:
   sdk: ^3.13.5

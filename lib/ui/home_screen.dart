@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import '../app_controller.dart';
 import '../core/models.dart';
 import '../features/advanced_screen.dart';
+import '../features/search_screen.dart';
 import '../features/device_settings_screen.dart';
 import '../features/torrent_tools_screen.dart';
 import '../features/form_helpers.dart';
@@ -78,6 +79,14 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   String _query = '';
+  final _filterQuery = TextEditingController();
+
+  @override
+  void dispose() {
+    _filterQuery.dispose();
+    super.dispose();
+  }
+
   String _filter = 'Все';
   final Set<String> _selected = {};
 
@@ -276,6 +285,20 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   if (closeOnSelect) Navigator.of(context).pop();
                   _advanced();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.travel_explore),
+                title: Text(l10n.message0048),
+                subtitle: Text(l10n.message0049),
+                enabled: controller.currentProfile != null,
+                onTap: () {
+                  if (closeOnSelect) Navigator.of(context).pop();
+                  Navigator.of(context).push<void>(
+                    MaterialPageRoute(
+                      builder: (_) => TypedSearchScreen(controller: controller),
+                    ),
+                  );
                 },
               ),
               ListTile(
@@ -490,9 +513,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       SizedBox(height: compact ? 8 : 20),
                       TextField(
+                        controller: _filterQuery,
                         onChanged: (value) => setState(() => _query = value),
                         decoration: InputDecoration(
-                          hintText: l10n.message0500,
+                          hintText: l10n.torrentListFilterHint,
+                          suffixIcon: _query.isEmpty
+                              ? null
+                              : IconButton(
+                                  tooltip: l10n.clearTorrentListFilter,
+                                  onPressed: () {
+                                    _filterQuery.clear();
+                                    setState(() => _query = '');
+                                  },
+                                  icon: const Icon(Icons.clear),
+                                ),
                           prefixIcon: const Icon(Icons.search_rounded),
                           isDense: true,
                         ),

@@ -146,8 +146,9 @@ void main() {
     _Qb qb, {
     String language = 'en',
     bool invalidClient = false,
+    Size size = const Size(900, 1000),
   }) async {
-    tester.view.physicalSize = const Size(900, 1000);
+    tester.view.physicalSize = size;
     tester.view.devicePixelRatio = 1;
     addTearDown(tester.view.resetPhysicalSize);
     addTearDown(tester.view.resetDevicePixelRatio);
@@ -174,6 +175,43 @@ void main() {
     await frames(tester);
     return l10n;
   }
+
+  testWidgets('small phone keeps Jackett results reachable with IME insets', (
+    tester,
+  ) async {
+    tester.view.physicalSize = const Size(360, 592);
+    tester.view.devicePixelRatio = 1;
+    tester.view.viewInsets = const FakeViewPadding(bottom: 240);
+    addTearDown(tester.view.resetPhysicalSize);
+    addTearDown(tester.view.resetDevicePixelRatio);
+    addTearDown(tester.view.resetViewInsets);
+    final controller = _Controller();
+    addTearDown(controller.dispose);
+    final service = _Jackett();
+    final qb = _Qb();
+    await open(tester, controller, service, qb, size: const Size(360, 592));
+    expect(
+      tester
+          .widget<EditableText>(find.byType(EditableText).first)
+          .focusNode
+          .hasFocus,
+      isFalse,
+    );
+    await tester.scrollUntilVisible(
+      find.text('Fixture result'),
+      120,
+      scrollable: find
+          .descendant(
+            of: find.byType(CustomScrollView),
+            matching: find.byType(Scrollable),
+          )
+          .first,
+    );
+    expect(find.text('Fixture result').hitTestable(), findsOneWidget);
+    expect(tester.takeException(), isNull);
+    expect(service.downloads, 0);
+    expect(qb.mutations, 0);
+  });
 
   testWidgets(
     'confirmed torrent uploads bytes, never the Jackett URL or key; repeated add is blocked',

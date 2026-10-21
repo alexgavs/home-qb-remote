@@ -6,6 +6,8 @@ import '../app_controller.dart';
 import '../core/models.dart';
 import '../core/qb_client.dart' show QbAuthenticationException;
 import '../ui/add_torrent_dialog.dart';
+import '../ui/search_results_layout.dart';
+import '../integrations/integrations_screen.dart';
 import 'search_session.dart';
 import '../l10n/error_messages.dart';
 import '../l10n/l10n.dart';
@@ -34,6 +36,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
   int generation = 0;
   bool busy = false, canceled = false, handoffBusy = false;
   bool profileChanged = false;
+  bool pluginsLoaded = false;
   final hashesByProfile = <ServerProfile, Set<String>>{};
   final linksByProfile = <ServerProfile, Set<String>>{};
   ServerProfile? observedProfile;
@@ -59,6 +62,7 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       observedProfile = c.currentProfile;
       plugins = [];
       plugin = 'all';
+      pluginsLoaded = false;
       unawaited(loadPlugins());
     }
     final origin = resultProfile;
@@ -83,11 +87,10 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
       client = api(resolved(profile));
       final response = await client.get('search/plugins');
       if (mounted && selected(profile)) {
-        setState(
-          () => plugins = response is List
-              ? response.whereType<Map>().toList()
-              : [],
-        );
+        setState(() {
+          plugins = response is List ? response.whereType<Map>().toList() : [];
+          pluginsLoaded = true;
+        });
       }
     } catch (error) {
       await c.reportAuthenticationFailure(profile, error);
@@ -116,9 +119,11 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
         busy ||
         handoffBusy ||
         profile == null ||
-        c.requiresAuthentication) {
+        c.requiresAuthentication ||
+        (pluginsLoaded && plugins.isEmpty)) {
       return;
     }
+    FocusManager.instance.primaryFocus?.unfocus();
     final token = ++generation;
     final old = job;
     if (old != null) unawaited(old.cleanup());
@@ -369,152 +374,175 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        controller: query,
-                        onSubmitted: (_) => search(),
-                        decoration: InputDecoration(
-                          labelText: l10n.message0166,
-                          prefixIcon: const Icon(Icons.search),
+      body: SearchResultsLayout(
+        header: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: TextField(
+                          controller: query,
+                          onSubmitted: (_) => search(),
+                          decoration: InputDecoration(
+                            labelText: l10n.message0166,
+                            prefixIcon: const Icon(Icons.search),
+                          ),
                         ),
                       ),
+                      const SizedBox(width: 12),
+                      FilledButton(
+                        onPressed:
+                            handoffBusy || (pluginsLoaded && plugins.isEmpty)
+                            ? null
+                            : busy
+                            ? stop
+                            : search,
+                        child: Text(busy ? l10n.message0167 : l10n.message0168),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 12),
+                  if (pluginsLoaded && plugins.isEmpty) ...[
+                    Text(l10n.message0190),
+                    TextButton.icon(
+                      onPressed: () => Navigator.push<void>(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => IntegrationsScreen(controller: c),
+                        ),
+                      ),
+                      icon: const Icon(Icons.hub_outlined),
+                      label: Text(l10n.integrationsTitle),
                     ),
-                    const SizedBox(width: 12),
-                    FilledButton(
-                      onPressed: handoffBusy
+                  ],
+                  Align(
+                    alignment: AlignmentDirectional.centerStart,
+                    child: TextButton.icon(
+                      onPressed: busy
                           ? null
-                          : busy
-                          ? stop
-                          : search,
-                      child: Text(busy ? l10n.message0167 : l10n.message0168),
+                          : () async {
+                              await Navigator.push<void>(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) =>
+                                      SearchPluginsScreen(controller: c),
+                                ),
+                              );
+                              await loadPlugins();
+                            },
+                      icon: const Icon(Icons.extension_outlined),
+                      label: Text(l10n.message0165),
                     ),
-                  ],
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: DropdownButtonFormField<String>(
-                        initialValue: plugin,
-                        isExpanded: true,
-                        decoration: InputDecoration(
-                          labelText: l10n.message0169,
-                        ),
-                        items: [
-                          DropdownMenuItem(
-                            value: 'all',
-                            child: Text(l10n.message0170),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: DropdownButtonFormField<String>(
+                          initialValue: plugin,
+                          isExpanded: true,
+                          decoration: InputDecoration(
+                            labelText: l10n.message0169,
                           ),
-                          DropdownMenuItem(
-                            value: 'enabled',
-                            child: Text(l10n.message0171),
-                          ),
-                          for (final p in plugins)
+                          items: [
                             DropdownMenuItem(
-                              value: '${p['name']}',
-                              child: Text(
-                                '${p['fullName'] ?? p['name']}',
-                                overflow: TextOverflow.ellipsis,
+                              value: 'all',
+                              child: Text(l10n.message0170),
+                            ),
+                            DropdownMenuItem(
+                              value: 'enabled',
+                              child: Text(l10n.message0171),
+                            ),
+                            for (final p in plugins)
+                              DropdownMenuItem(
+                                value: '${p['name']}',
+                                child: Text(
+                                  '${p['fullName'] ?? p['name']}',
+                                  overflow: TextOverflow.ellipsis,
+                                ),
                               ),
-                            ),
-                        ],
-                        onChanged: busy
-                            ? null
-                            : (value) =>
-                                  setState(() => plugin = value ?? 'all'),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Expanded(
-                      child: DropdownButtonFormField<String>(
-                        initialValue: category,
-                        isExpanded: true,
-                        decoration: InputDecoration(
-                          labelText: l10n.message0148,
-                        ),
-                        items: [
-                          for (final e in categoryLabels.entries)
-                            DropdownMenuItem(
-                              value: e.key,
-                              child: Text(e.value),
-                            ),
-                        ],
-                        onChanged: busy
-                            ? null
-                            : (value) =>
-                                  setState(() => category = value ?? 'all'),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ),
-          if (busy) const LinearProgressIndicator(),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Column(
-              children: [
-                Text(status?.call(l10n) ?? ''),
-                Text(l10n.searchResultUrlHidden),
-                if (uncertainLink != null && !profileChanged)
-                  TextButton(
-                    onPressed: handoffBusy ? null : checkUncertainSubmission,
-                    child: Text(l10n.searchCheckServer),
-                  ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: results.isEmpty && !busy
-                ? Center(child: Text(l10n.message0179))
-                : ListView.builder(
-                    itemCount: results.length,
-                    itemBuilder: (context, index) {
-                      final result = results[index];
-                      return ListTile(
-                        title: Text(
-                          safeSearchTitle(
-                            result['fileName'],
-                            context.l10n.message0109,
-                          ),
-                        ),
-                        subtitle: Text(
-                          context.l10n.message0180(
-                            humanBytes(
-                              result['fileSize'] is num
-                                  ? result['fileSize'] as num
-                                  : 0,
-                              l10n: context.l10n,
-                            ),
-                            safeSearchCount(result['nbSeeders']),
-                            '',
-                          ),
-                        ),
-                        isThreeLine: true,
-                        trailing: IconButton(
-                          tooltip: context.l10n.message0181,
-                          icon: const Icon(Icons.add_circle_outline),
-                          onPressed:
-                              handoffBusy ||
-                                  profileChanged ||
-                                  c.requiresAuthentication
+                          ],
+                          onChanged: busy
                               ? null
-                              : () => download(result),
+                              : (value) =>
+                                    setState(() => plugin = value ?? 'all'),
                         ),
-                      );
-                    },
+                      ),
+                      const SizedBox(width: 12),
+                      Expanded(
+                        child: DropdownButtonFormField<String>(
+                          initialValue: category,
+                          isExpanded: true,
+                          decoration: InputDecoration(
+                            labelText: l10n.message0148,
+                          ),
+                          items: [
+                            for (final e in categoryLabels.entries)
+                              DropdownMenuItem(
+                                value: e.key,
+                                child: Text(e.value),
+                              ),
+                          ],
+                          onChanged: busy
+                              ? null
+                              : (value) =>
+                                    setState(() => category = value ?? 'all'),
+                        ),
+                      ),
+                    ],
                   ),
-          ),
-        ],
+                ],
+              ),
+            ),
+            if (busy) const LinearProgressIndicator(),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Column(
+                children: [
+                  Text(status?.call(l10n) ?? ''),
+                  Text(l10n.searchResultUrlHidden),
+                  if (uncertainLink != null && !profileChanged)
+                    TextButton(
+                      onPressed: handoffBusy ? null : checkUncertainSubmission,
+                      child: Text(l10n.searchCheckServer),
+                    ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        empty: !busy ? Center(child: Text(l10n.message0179)) : null,
+        itemCount: results.length,
+        itemBuilder: (context, index) {
+          final result = results[index];
+          return ListTile(
+            title: Text(
+              safeSearchTitle(result['fileName'], context.l10n.message0109),
+            ),
+            subtitle: Text(
+              context.l10n.message0180(
+                humanBytes(
+                  result['fileSize'] is num ? result['fileSize'] as num : 0,
+                  l10n: context.l10n,
+                ),
+                safeSearchCount(result['nbSeeders']),
+                '',
+              ),
+            ),
+            isThreeLine: true,
+            trailing: IconButton(
+              tooltip: context.l10n.message0181,
+              icon: const Icon(Icons.add_circle_outline),
+              onPressed:
+                  handoffBusy || profileChanged || c.requiresAuthentication
+                  ? null
+                  : () => download(result),
+            ),
+          );
+        },
       ),
     );
   }

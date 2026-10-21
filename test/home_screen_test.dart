@@ -99,6 +99,13 @@ void main() {
       expect(find.text('Ubuntu Linux'), findsOneWidget);
       expect(find.text('Fedora Linux'), findsNothing);
       expect(find.textContaining('secret'), findsNothing);
+      final l10n = AppLocalizations.of(tester.element(search))!;
+      expect(find.text(l10n.torrentListFilterHint), findsOneWidget);
+      await tester.tap(find.byTooltip(l10n.clearTorrentListFilter));
+      await tester.pump();
+      expect(find.text('Fedora Linux'), findsOneWidget);
+      expect(tester.widget<TextField>(search).controller!.text, isEmpty);
+
       expect(tester.takeException(), isNull);
     });
   }

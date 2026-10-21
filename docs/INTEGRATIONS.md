@@ -25,6 +25,17 @@ profile, then open its card. Edit/remove actions affect only that integration
 profile, not the remote service. Secrets use a separate OS-protected document;
 a failed storage read prevents overwriting it with an empty profile list.
 
+## Find the right search
+
+- The main screen's torrent filter searches only torrents already on the selected
+  qBittorrent server. Clear it to restore the full list.
+- **Torrent search** in the navigation menu opens the selected server's search
+  engine. **Search plugins** manages plugins installed on that server. An empty
+  plugin list means this mode has no search sources; it does not inspect Jackett
+  profiles automatically.
+- For configured tracker/forum indexers in Jackett, open **Integrations**, then
+  your Jackett profile. Results come from that profile's configured indexers.
+
 ## Direct Jackett search
 
 1. Configure Jackett and your indexers yourself, then obtain its API key. The app

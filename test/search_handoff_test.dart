@@ -48,6 +48,9 @@ class SearchFixture {
   List<Torrent> existing = [];
   Completer<dynamic>? pendingStart;
   Completer<void>? pendingAdd;
+  List<Map<String, dynamic>> plugins = [
+    {'name': 'fixture', 'fullName': 'Fixture engine', 'enabled': true},
+  ];
   Object? pluginError;
   Object? addError;
   SearchServerApi create(ServerProfile profile) {
@@ -79,7 +82,7 @@ class FakeSearchApi implements SearchServerApi {
     record(endpoint, query);
     if (endpoint == 'search/plugins') {
       if (fixture.pluginError != null) throw fixture.pluginError!;
-      return [];
+      return fixture.plugins;
     }
     if (endpoint == 'search/results') {
       return {'status': 'Stopped', 'results': fixture.rows};
@@ -181,6 +184,74 @@ void main() {
     expect(attempts, 3);
     expect(tester.takeException(), isNull);
   });
+
+  testWidgets(
+    'small phone search dismisses keyboard and results remain reachable',
+    (tester) async {
+      tester.view.physicalSize = const Size(360, 592);
+      tester.view.devicePixelRatio = 1;
+      tester.view.viewInsets = const FakeViewPadding(bottom: 240);
+      addTearDown(tester.view.resetPhysicalSize);
+      addTearDown(tester.view.resetDevicePixelRatio);
+      addTearDown(tester.view.resetViewInsets);
+      final controller = SearchController()..choose(serverA);
+      addTearDown(controller.dispose);
+      final fixture = SearchFixture()
+        ..rows = [
+          {'fileName': 'Reachable plugin result', 'fileUrl': magnet},
+        ];
+      await pumpSearch(tester, controller, fixture);
+      expect(find.text(strings.message0165), findsOneWidget);
+      await runSearch(tester);
+      expect(
+        tester
+            .widget<EditableText>(find.byType(EditableText).first)
+            .focusNode
+            .hasFocus,
+        isFalse,
+      );
+      await tester.scrollUntilVisible(
+        find.text('Reachable plugin result'),
+        120,
+        scrollable: find
+            .descendant(
+              of: find.byType(CustomScrollView),
+              matching: find.byType(Scrollable),
+            )
+            .first,
+      );
+      expect(
+        find.text('Reachable plugin result').hitTestable(),
+        findsOneWidget,
+      );
+      expect(tester.takeException(), isNull);
+      expect(fixture.additions, isEmpty);
+    },
+  );
+
+  testWidgets(
+    'empty plugin list explains unavailable search and offers alternatives',
+    (tester) async {
+      final controller = SearchController()..choose(serverA);
+      addTearDown(controller.dispose);
+      final fixture = SearchFixture()..plugins = [];
+      await pumpSearch(tester, controller, fixture);
+      expect(find.text(strings.message0190), findsOneWidget);
+      expect(find.text(strings.integrationsTitle), findsOneWidget);
+      expect(find.text(strings.message0165), findsOneWidget);
+      await tester.enterText(find.byType(TextField).first, 'Ubuntu');
+      await tester.testTextInput.receiveAction(TextInputAction.done);
+      await tester.pumpAndSettle();
+      final button = tester.widget<FilledButton>(
+        find.widgetWithText(FilledButton, strings.message0168),
+      );
+      expect(button.onPressed, isNull);
+      expect(
+        fixture.calls.where((c) => c.operation == 'search/start'),
+        isEmpty,
+      );
+    },
+  );
 
   test('magnet identities normalize v1 base32/hex and keep full v2 hashes', () {
     expect(magnetInfoHashes('magnet:?xt=urn:btih:${'A' * 32}'), {'0' * 40});

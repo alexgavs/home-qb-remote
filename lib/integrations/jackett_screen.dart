@@ -6,6 +6,7 @@ import '../core/models.dart';
 import '../features/search_session.dart' show magnetInfoHashes, safeSearchTitle;
 import '../l10n/l10n.dart';
 import '../ui/add_torrent_dialog.dart';
+import '../ui/search_results_layout.dart';
 import 'jackett_client.dart';
 import 'jackett_models.dart';
 import 'torrent_identity.dart';
@@ -61,6 +62,7 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
 
   Future<void> _search() async {
     if (searching || adding || query.text.trim().isEmpty) return;
+    FocusManager.instance.primaryFocus?.unfocus();
     final epoch = ++generation;
     setState(() {
       searching = true;
@@ -247,78 +249,66 @@ class _JackettSearchScreenState extends State<JackettSearchScreen> {
       body: Center(
         child: ConstrainedBox(
           constraints: const BoxConstraints(maxWidth: 1000),
-          child: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      widget.profile.name,
-                      style: Theme.of(context).textTheme.titleMedium,
+          child: SearchResultsLayout(
+            header: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    widget.profile.name,
+                    style: Theme.of(context).textTheme.titleMedium,
+                  ),
+                  Text(l10n.searchResultUrlHidden),
+                  const SizedBox(height: 12),
+                  TextField(
+                    controller: query,
+                    decoration: InputDecoration(
+                      labelText: l10n.jackettSearchHint,
                     ),
-                    Text(l10n.searchResultUrlHidden),
-                    const SizedBox(height: 12),
-                    TextField(
-                      controller: query,
-                      decoration: InputDecoration(
-                        labelText: l10n.jackettSearchHint,
-                      ),
-                      onSubmitted: (_) => _search(),
+                    onSubmitted: (_) => _search(),
+                  ),
+                  const SizedBox(height: 8),
+                  FilledButton.icon(
+                    onPressed: searching || adding ? null : _search,
+                    icon: const Icon(Icons.search),
+                    label: Text(l10n.jackettSearchAction),
+                  ),
+                  if (searching || adding) const LinearProgressIndicator(),
+                  if (notice != null) Text(_status(l10n)),
+                  if (notice == _Notice.unknown || notice == _Notice.added)
+                    TextButton(
+                      onPressed: () =>
+                          Navigator.of(context)
+                              .popUntil((route) => route.isFirst),
+                      child: Text(l10n.searchCheckServer),
                     ),
-                    const SizedBox(height: 8),
-                    FilledButton.icon(
-                      onPressed: searching || adding ? null : _search,
-                      icon: const Icon(Icons.search),
-                      label: Text(l10n.jackettSearchAction),
-                    ),
-                    if (searching || adding) const LinearProgressIndicator(),
-                    if (notice != null) Text(_status(l10n)),
-                    if (notice == _Notice.unknown || notice == _Notice.added)
-                      TextButton(
-                        onPressed: () =>
-                            Navigator.of(context)
-                                .popUntil((route) => route.isFirst),
-                        child: Text(l10n.searchCheckServer),
-                      ),
-                    if (searched && results.isEmpty)
-                      Text(l10n.jackettSearchEmpty),
-                  ],
-                ),
+                  if (searched && results.isEmpty)
+                    Text(l10n.jackettSearchEmpty),
+                ],
               ),
-              Expanded(
-                child: ListView.builder(
-                  itemCount: results.length,
-                  itemBuilder: (context, index) {
-                    final result = results[index];
-                    return ListTile(
-                      title: Text(
-                        safeSearchTitle(result.title, l10n.jackettUnknownValue),
-                      ),
-                      subtitle: Text(
-                        l10n.message0180(
-                          result.size?.toString() ?? l10n.jackettUnknownValue,
-                          result.seeders?.toString() ??
-                              l10n.jackettUnknownValue,
-                          safeSearchTitle(
-                            result.indexer,
-                            l10n.jackettUnknownValue,
-                          ),
-                        ),
-                      ),
-                      trailing: IconButton(
-                        onPressed: adding || searching
-                            ? null
-                            : () => _add(result),
-                        tooltip: l10n.jackettDownloadAction,
-                        icon: const Icon(Icons.add_circle_outline),
-                      ),
-                    );
-                  },
+            ),
+            itemCount: results.length,
+            itemBuilder: (context, index) {
+              final result = results[index];
+              return ListTile(
+                title: Text(
+                  safeSearchTitle(result.title, l10n.jackettUnknownValue),
                 ),
-              ),
-            ],
+                subtitle: Text(
+                  l10n.message0180(
+                    result.size?.toString() ?? l10n.jackettUnknownValue,
+                    result.seeders?.toString() ?? l10n.jackettUnknownValue,
+                    safeSearchTitle(result.indexer, l10n.jackettUnknownValue),
+                  ),
+                ),
+                trailing: IconButton(
+                  onPressed: adding || searching ? null : () => _add(result),
+                  tooltip: l10n.jackettDownloadAction,
+                  icon: const Icon(Icons.add_circle_outline),
+                ),
+              );
+            },
           ),
         ),
       ),

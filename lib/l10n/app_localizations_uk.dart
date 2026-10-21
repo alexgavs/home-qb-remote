@@ -2130,4 +2130,10 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get searchConfirmAdd => 'Підтвердити і додати';
+
+  @override
+  String get torrentListFilterHint => 'Фільтр поточних торентів';
+
+  @override
+  String get clearTorrentListFilter => 'Скинути фільтр торентів';
 }
