@@ -5,7 +5,9 @@
 - Make server-side search plugins easier to discover from the search interface.
 - Improve keyboard handling and result-list scrolling on small screens.
 
-Physical-device validation of these UX changes is pending.
+Validated on a physical Android 16 phone: filter reset, search navigation,
+empty-plugin setup, Jackett results and scrolling with keyboard dismissal, and
+protected-profile persistence after restart. No downloads were started.
 
 ## 0.3.0
 
