@@ -3,13 +3,22 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../core/models.dart';
+import '../core/qb_client.dart' show QbAuthenticationException;
+import '../ui/add_torrent_dialog.dart';
+import 'search_session.dart';
 import '../l10n/error_messages.dart';
 import '../l10n/l10n.dart';
 import 'form_helpers.dart';
 
 class TypedSearchScreen extends StatefulWidget {
-  const TypedSearchScreen({super.key, required this.controller});
+  const TypedSearchScreen({
+    super.key,
+    required this.controller,
+    this.apiFactory,
+  });
   final AppController controller;
+  final SearchApiFactory? apiFactory;
   @override
   State<TypedSearchScreen> createState() => _TypedSearchScreenState();
 }
@@ -20,89 +29,130 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
   List<Map> plugins = [];
   String plugin = 'all', category = 'all';
   LocalizedText? status;
-  int? searchId;
+  BoundSearchJob? job;
+  ServerProfile? resultProfile;
   int generation = 0;
-  bool busy = false, canceled = false;
+  bool busy = false, canceled = false, handoffBusy = false;
+  bool profileChanged = false;
+  final hashesByProfile = <ServerProfile, Set<String>>{};
+  final linksByProfile = <ServerProfile, Set<String>>{};
+  ServerProfile? observedProfile;
+  String? uncertainLink;
+  Set<String> uncertainHashes = {};
   AppController get c => widget.controller;
+  SearchServerApi api(ServerProfile profile) =>
+      (widget.apiFactory ?? QbSearchServerApi.new)(profile);
+  ServerProfile resolved(ServerProfile profile) =>
+      profile.withUrl(c.currentConnectionUrl ?? profile.url);
+  bool selected(ServerProfile? profile) => identical(c.currentProfile, profile);
+
   @override
   void initState() {
     super.initState();
+    observedProfile = c.currentProfile;
+    c.addListener(selectionChanged);
     unawaited(loadPlugins());
   }
 
+  void selectionChanged() {
+    if (!identical(observedProfile, c.currentProfile)) {
+      observedProfile = c.currentProfile;
+      plugins = [];
+      plugin = 'all';
+      unawaited(loadPlugins());
+    }
+    final origin = resultProfile;
+    if (origin == null || selected(origin) || profileChanged) return;
+    generation++;
+    canceled = true;
+    final old = job;
+    job = null;
+    if (old != null) unawaited(old.cleanup());
+    setState(() {
+      busy = false;
+      profileChanged = true;
+      status = (l) => l.searchProfileChanged;
+    });
+  }
+
   Future<void> loadPlugins() async {
+    final profile = c.currentProfile;
+    if (profile == null || c.requiresAuthentication) return;
+    final client = api(resolved(profile));
     try {
-      final response = await c.apiGet('search/plugins');
-      if (mounted) {
+      final response = await client.get('search/plugins');
+      if (mounted && selected(profile)) {
         setState(
           () => plugins = response is List
               ? response.whereType<Map>().toList()
               : [],
         );
       }
-    } catch (_) {
-      if (mounted) {
-        setState(() => status = backendFailure(c.error, (l) => l.message0156));
+    } catch (error) {
+      await c.reportAuthenticationFailure(profile, error);
+      if (mounted && selected(profile)) {
+        setState(() => status = (l) => l.message0156);
       }
+    } finally {
+      client.close();
     }
   }
 
   @override
   void dispose() {
+    c.removeListener(selectionChanged);
     generation++;
     canceled = true;
-    final id = searchId;
-    if (id != null) unawaited(_cleanup(id));
+    final old = job;
+    if (old != null) unawaited(old.cleanup());
     query.dispose();
     super.dispose();
   }
 
-  Future<void> _cleanup(int id) async {
-    try {
-      if (busy) await c.apiPost('search/stop', {'id': '$id'});
-      await c.apiPost('search/delete', {'id': '$id'});
-    } catch (_) {
-      /* The server may have already removed this search. */
-    }
-  }
-
   Future<void> search() async {
-    if (query.text.trim().isEmpty || busy) return;
+    final profile = c.currentProfile;
+    if (query.text.trim().isEmpty ||
+        busy ||
+        handoffBusy ||
+        profile == null ||
+        c.requiresAuthentication) {
+      return;
+    }
     final token = ++generation;
+    final old = job;
+    if (old != null) unawaited(old.cleanup());
+    final activeJob = BoundSearchJob(api(resolved(profile)));
+    job = activeJob;
+    resultProfile = profile;
+    final pattern = query.text.trim();
     setState(() {
       busy = true;
       canceled = false;
+      profileChanged = false;
       results = [];
+      uncertainLink = null;
       status = (l) => l.message0157;
     });
     try {
-      if (searchId != null) await _cleanup(searchId!);
-      final response = await c.apiPost('search/start', {
-        'pattern': query.text.trim(),
+      final id = await activeJob.start({
+        'pattern': pattern,
         'plugins': plugin,
         'category': category,
       });
-      final raw = response is Map ? response['id'] : null;
-      final id = raw is num ? raw.toInt() : int.tryParse('$raw');
-      if (id == null) throw const FormatException();
-      if (!mounted || token != generation) {
-        await _cleanup(id);
-        return;
-      }
-      searchId = id;
+      if (!mounted || token != generation || !selected(profile)) return;
       for (
         var attempt = 0;
         attempt < 120 && mounted && !canceled && token == generation;
         attempt++
       ) {
         await Future<void>.delayed(const Duration(seconds: 1));
-        if (!mounted || canceled || token != generation) break;
-        final response = await c.apiGet('search/results', {
-          'id': '$id',
-          'limit': '1000',
-          'offset': '0',
-        });
-        if (!mounted || canceled || token != generation) break;
+        if (!mounted || canceled || token != generation || !selected(profile)) {
+          break;
+        }
+        final response = await activeJob.results(id);
+        if (!mounted || canceled || token != generation || !selected(profile)) {
+          break;
+        }
         if (response is! Map) throw const FormatException();
         final stopped = response['status'] == 'Stopped';
         setState(() {
@@ -112,20 +162,28 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
           final count = results.length;
           status = (l) => l.message0158(count, stopped ? l.message0159 : '');
         });
-        if (response['status'] == 'Stopped') break;
+        if (stopped) {
+          await activeJob.cleanup(stop: false);
+          break;
+        }
         if (attempt == 119) {
-          await c.apiPost('search/stop', {'id': '$id'});
-          if (mounted) {
+          await activeJob.cleanup();
+          if (mounted && token == generation) {
             final count = results.length;
             setState(() => status = (l) => l.message0160(count));
           }
         }
       }
-    } catch (_) {
+    } catch (error) {
+      await c.reportAuthenticationFailure(profile, error);
+      unawaited(activeJob.cleanup());
       if (mounted && token == generation) {
-        setState(() => status = backendFailure(c.error, (l) => l.message0161));
+        setState(() => status = (l) => l.message0161);
       }
     } finally {
+      if (!mounted || token != generation || !selected(profile)) {
+        unawaited(activeJob.cleanup());
+      }
       if (mounted && token == generation) setState(() => busy = false);
     }
   }
@@ -133,19 +191,143 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
   Future<void> stop() async {
     generation++;
     canceled = true;
-    try {
-      if (searchId != null) await c.apiPost('search/stop', {'id': '$searchId'});
-    } catch (_) {
-      if (mounted) {
-        setState(() => status = backendFailure(c.error, (l) => l.message0162));
-      }
-    }
+    final activeJob = job;
+    job = null;
+    if (activeJob != null) unawaited(activeJob.cleanup());
     if (mounted) {
       final count = results.length;
       setState(() {
         busy = false;
         status = (l) => l.message0163(count);
       });
+    }
+  }
+
+  Future<void> download(Map result) async {
+    final profile = resultProfile;
+    if (handoffBusy ||
+        profileChanged ||
+        profile == null ||
+        c.requiresAuthentication ||
+        !selected(profile)) {
+      return;
+    }
+    final link = result['fileUrl'] is String ? result['fileUrl'] as String : '';
+    if (!supportedSearchDownload(link)) {
+      setState(() => status = (l) => l.searchUnsupportedDownload);
+      return;
+    }
+    final hashes = magnetInfoHashes(link);
+    final submittedHashes = hashesByProfile.putIfAbsent(
+      profile,
+      () => <String>{},
+    );
+    final submittedLinks = linksByProfile.putIfAbsent(
+      profile,
+      () => <String>{},
+    );
+    if (submittedLinks.contains(link) ||
+        hashes.any(submittedHashes.contains) ||
+        c.torrents.any((t) => hashes.contains(t.hash.toLowerCase()))) {
+      setState(() => status = (l) => l.searchAlreadyAdded);
+      return;
+    }
+    setState(() => handoffBusy = true);
+    final client = api(resolved(profile));
+    var sent = false;
+    try {
+      final request = await showDialog<AddTorrentRequest>(
+        context: context,
+        builder: (_) => AddTorrentDialog(
+          controller: c,
+          targetProfile: profile,
+          initialUrls: link,
+          downloadTitle: safeSearchTitle(
+            result['fileName'],
+            context.l10n.message0109,
+          ),
+          hideUrls: true,
+          showFilePicker: false,
+          loadSuggestions: client.get,
+        ),
+      );
+      if (request == null || !mounted || !selected(profile)) return;
+      // Read-only fresh check, never an automatic replay of an add mutation.
+      if (hashes.isNotEmpty) {
+        final torrents = await client.getTorrents();
+        if (!mounted || !selected(profile)) return;
+        if (torrents.any((t) => hashes.contains(t.hash.toLowerCase()))) {
+          setState(() => status = (l) => l.searchAlreadyAdded);
+          return;
+        }
+      }
+      if (!selected(profile)) return;
+      submittedLinks.add(link);
+      submittedHashes.addAll(hashes);
+      sent = true;
+      await client.addUrls(link, options: request.options);
+      if (mounted && selected(profile)) {
+        setState(() => status = (l) => l.message0110);
+        unawaited(c.refresh());
+      }
+    } catch (error) {
+      await c.reportAuthenticationFailure(profile, error);
+      if (error is QbAuthenticationException) {
+        submittedLinks.remove(link);
+        submittedHashes.removeAll(hashes);
+        sent = false;
+      }
+      if (sent) {
+        uncertainLink = link;
+        uncertainHashes = hashes;
+      }
+      if (mounted && selected(profile)) {
+        setState(
+          () => status = sent
+              ? (l) => l.searchAddOutcomeUnknown
+              : (l) => l.message0182,
+        );
+      }
+    } finally {
+      client.close();
+      if (mounted) setState(() => handoffBusy = false);
+    }
+  }
+
+  Future<void> checkUncertainSubmission() async {
+    final profile = resultProfile;
+    final link = uncertainLink;
+    if (profile == null ||
+        link == null ||
+        !selected(profile) ||
+        c.requiresAuthentication ||
+        handoffBusy) {
+      return;
+    }
+    setState(() => handoffBusy = true);
+    final client = api(resolved(profile));
+    try {
+      final torrents = await client.getTorrents();
+      if (!mounted || !selected(profile)) return;
+      final present = torrents.any(
+        (t) => uncertainHashes.contains(t.hash.toLowerCase()),
+      );
+      if (present) {
+        setState(() {
+          status = (l) => l.searchAlreadyAdded;
+          uncertainLink = null;
+        });
+      } else if (uncertainHashes.isNotEmpty) {
+        // Only a fresh explicit confirmation may follow a successful read.
+        // Unknown identities remain blocked: absence cannot be established.
+        linksByProfile[profile]?.remove(link);
+        hashesByProfile[profile]?.removeAll(uncertainHashes);
+      }
+    } catch (error) {
+      await c.reportAuthenticationFailure(profile, error);
+    } finally {
+      client.close();
+      if (mounted) setState(() => handoffBusy = false);
     }
   }
 
@@ -202,7 +384,11 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
                     ),
                     const SizedBox(width: 12),
                     FilledButton(
-                      onPressed: busy ? stop : search,
+                      onPressed: handoffBusy
+                          ? null
+                          : busy
+                          ? stop
+                          : search,
                       child: Text(busy ? l10n.message0167 : l10n.message0168),
                     ),
                   ],
@@ -270,7 +456,17 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
           if (busy) const LinearProgressIndicator(),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-            child: Text(status?.call(l10n) ?? ''),
+            child: Column(
+              children: [
+                Text(status?.call(l10n) ?? ''),
+                Text(l10n.searchResultUrlHidden),
+                if (uncertainLink != null && !profileChanged)
+                  TextButton(
+                    onPressed: handoffBusy ? null : checkUncertainSubmission,
+                    child: Text(l10n.searchCheckServer),
+                  ),
+              ],
+            ),
           ),
           Expanded(
             child: results.isEmpty && !busy
@@ -281,7 +477,10 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
                       final result = results[index];
                       return ListTile(
                         title: Text(
-                          '${result['fileName'] ?? context.l10n.message0109}',
+                          safeSearchTitle(
+                            result['fileName'],
+                            context.l10n.message0109,
+                          ),
                         ),
                         subtitle: Text(
                           context.l10n.message0180(
@@ -291,36 +490,20 @@ class _TypedSearchScreenState extends State<TypedSearchScreen> {
                                   : 0,
                               l10n: context.l10n,
                             ),
-                            '${result['nbSeeders'] ?? 0}',
-                            '${result['siteUrl'] ?? ''}',
+                            safeSearchCount(result['nbSeeders']),
+                            '',
                           ),
                         ),
                         isThreeLine: true,
                         trailing: IconButton(
                           tooltip: context.l10n.message0181,
                           icon: const Icon(Icons.add_circle_outline),
-                          onPressed: () async {
-                            try {
-                              final url = '${result['fileUrl'] ?? ''}';
-                              if (url.isEmpty) throw const FormatException();
-                              await c.addUrls(url);
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(context.l10n.message0110),
-                                  ),
-                                );
-                              }
-                            } catch (_) {
-                              if (context.mounted) {
-                                ScaffoldMessenger.of(context).showSnackBar(
-                                  SnackBar(
-                                    content: Text(context.l10n.message0182),
-                                  ),
-                                );
-                              }
-                            }
-                          },
+                          onPressed:
+                              handoffBusy ||
+                                  profileChanged ||
+                                  c.requiresAuthentication
+                              ? null
+                              : () => download(result),
                         ),
                       );
                     },

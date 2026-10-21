@@ -1969,4 +1969,165 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get completionChannelDescription => 'Завершённые загрузки на ваших серверах qBittorrent';
+
+  @override
+  String get integrationsTitle => 'Интеграции';
+
+  @override
+  String get integrationsNotice => 'Необязательные подключения к вашим серверам. Поиск никогда не запускает загрузку автоматически.';
+
+  @override
+  String get integrationAddJackett => 'Добавить Jackett';
+
+  @override
+  String get integrationAddJellyfin => 'Добавить Jellyfin';
+
+  @override
+  String get integrationName => 'Название профиля';
+
+  @override
+  String get integrationServerUrl => 'URL сервера';
+
+  @override
+  String get integrationApiKey => 'API-ключ';
+
+  @override
+  String get integrationAccessToken => 'Токен доступа пользователя';
+
+  @override
+  String get integrationUserId => 'ID пользователя Jellyfin';
+
+  @override
+  String get integrationSave => 'Сохранить профиль';
+
+  @override
+  String get integrationEdit => 'Изменить профиль';
+
+  @override
+  String get integrationRemove => 'Удалить профиль';
+
+  @override
+  String get integrationRemoveConfirm => 'Удалить это подключение из приложения? Данные на сервере не изменятся.';
+
+  @override
+  String get integrationCancel => 'Отмена';
+
+  @override
+  String get integrationInvalidProfile => 'Введите название, корректный URL сервера HTTP(S) и необходимые учётные данные.';
+
+  @override
+  String get integrationStorageFailed => 'Защищённое хранилище интеграций недоступно. Существующие профили сохранены.';
+
+  @override
+  String get integrationRetry => 'Повторить';
+
+  @override
+  String get integrationHttpNotice => 'HTTP передаёт учётные данные без шифрования. Используйте его только в доверенной локальной сети.';
+
+  @override
+  String get integrationSecretNotice => 'Учётные данные хранятся в защищённом хранилище устройства и отправляются только настроенному сервису.';
+
+  @override
+  String get integrationNoProfiles => 'Интеграции не настроены.';
+
+  @override
+  String get jackettSearchTitle => 'Поиск Jackett';
+
+  @override
+  String get jackettSearchHint => 'Поиск по настроенным индексаторам';
+
+  @override
+  String get jackettSearchAction => 'Найти';
+
+  @override
+  String get jackettSearchEmpty => 'Подходящих результатов нет.';
+
+  @override
+  String get jackettSearchFailed => 'Не удалось выполнить поиск в Jackett. Проверьте сервер, API-ключ и настройки индексаторов.';
+
+  @override
+  String get jackettDownloadFailed => 'Не удалось получить корректный торрент с настроенного сервера Jackett.';
+
+  @override
+  String get jackettDownloadAction => 'Скачать';
+
+  @override
+  String get jackettUnknownValue => 'Неизвестно';
+
+  @override
+  String get jackettNoTarget => 'Выберите сервер qBittorrent перед добавлением загрузки.';
+
+  @override
+  String get jackettAdded => 'Загрузка отправлена. Статус можно проверить в списке торрентов.';
+
+  @override
+  String get jellyfinLibraryTitle => 'Медиатека Jellyfin';
+
+  @override
+  String get jellyfinSearchHint => 'Поиск в медиатеке';
+
+  @override
+  String get jellyfinSearchAction => 'Найти';
+
+  @override
+  String get jellyfinEmptyLibrary => 'Подходящих элементов в медиатеке нет.';
+
+  @override
+  String get jellyfinReadOnlyNotice => 'Просмотр существующей медиатеки. Воспроизведение здесь пока недоступно.';
+
+  @override
+  String get jellyfinConnectionFailed => 'Не удалось подключиться к Jellyfin. Проверьте профиль и повторите попытку.';
+
+  @override
+  String get jellyfinAuthenticationFailed => 'Jellyfin отклонил токен доступа или пользователя.';
+
+  @override
+  String get jellyfinInvalidResponse => 'Jellyfin вернул некорректный или слишком большой ответ.';
+
+  @override
+  String get jellyfinInvalidProfile => 'Введите корректный URL сервера, токен доступа и ID пользователя.';
+
+  @override
+  String get jellyfinRedirectBlocked => 'Jellyfin перенаправил запрос за пределы настроенного сервера.';
+
+  @override
+  String get jellyfinRetry => 'Повторить';
+
+  @override
+  String get jellyfinClose => 'Закрыть';
+
+  @override
+  String get searchDownloadConfirmTitle => 'Подтвердите загрузку';
+
+  @override
+  String searchDownloadTarget(String name) {
+    return 'Целевой сервер: $name';
+  }
+
+  @override
+  String get searchDownloadDataNotice => 'Ссылка и метаданные торрента будут отправлены на этот сервер qBittorrent. URL могут содержать учётные данные трекера.';
+
+  @override
+  String get searchResultUrlHidden => 'Адреса источника и загрузки скрыты, так как могут содержать учётные данные.';
+
+  @override
+  String get searchProfileChanged => 'Выбранный сервер изменился. Запустите новый поиск перед загрузкой.';
+
+  @override
+  String get searchAlreadyAdded => 'Этот торрент уже есть на выбранном сервере или уже был отправлен.';
+
+  @override
+  String get searchAddOutcomeUnknown => 'Запрос на загрузку мог дойти до сервера. Проверьте список торрентов, прежде чем повторять попытку.';
+
+  @override
+  String get searchCheckServer => 'Проверить сервер';
+
+  @override
+  String get searchUnsupportedDownload => 'У этого результата нет поддерживаемой ссылки для загрузки.';
+
+  @override
+  String get searchAddOptions => 'Параметры загрузки';
+
+  @override
+  String get searchConfirmAdd => 'Подтвердить и добавить';
 }

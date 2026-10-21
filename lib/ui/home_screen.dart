@@ -1,4 +1,5 @@
 import 'add_torrent_dialog.dart';
+import '../integrations/integrations_screen.dart';
 
 import 'dart:io';
 
@@ -283,6 +284,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 onTap: () {
                   if (closeOnSelect) Navigator.of(context).pop();
                   _deviceSettings();
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.hub_outlined),
+                title: Text(l10n.integrationsTitle),
+                onTap: () {
+                  if (closeOnSelect) Navigator.of(context).pop();
+                  Navigator.of(context).push<void>(
+                    MaterialPageRoute(
+                      builder: (_) =>
+                          IntegrationsScreen(controller: controller),
+                    ),
+                  );
                 },
               ),
               for (final entry in <String, IconData>{
@@ -1014,6 +1028,7 @@ class _HomeScreenState extends State<HomeScreen> {
       builder: (_) => AddTorrentDialog(controller: controller),
     );
     if (!mounted || request == null) return;
+    if (!identical(controller.currentProfile, request.targetProfile)) return;
     if (!request.file) {
       await _run(
         () => controller.addUrls(request.urls, options: request.options),
@@ -1035,6 +1050,10 @@ class _HomeScreenState extends State<HomeScreen> {
           return;
         }
         final bytes = await file.readAsBytes();
+        if (!mounted ||
+            !identical(controller.currentProfile, request.targetProfile)) {
+          return;
+        }
         await _run(
           () => controller.addTorrentFile(
             file.name,

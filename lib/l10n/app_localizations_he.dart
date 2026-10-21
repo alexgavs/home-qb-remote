@@ -1959,4 +1959,165 @@ class AppLocalizationsHe extends AppLocalizations {
 
   @override
   String get completionChannelDescription => 'הורדות שהושלמו בשרתי qBittorrent שלך';
+
+  @override
+  String get integrationsTitle => 'אינטגרציות';
+
+  @override
+  String get integrationsNotice => 'חיבורים אופציונליים לשרתים שלך. החיפוש לעולם אינו מתחיל הורדה אוטומטית.';
+
+  @override
+  String get integrationAddJackett => 'הוסף Jackett';
+
+  @override
+  String get integrationAddJellyfin => 'הוסף Jellyfin';
+
+  @override
+  String get integrationName => 'שם הפרופיל';
+
+  @override
+  String get integrationServerUrl => 'כתובת השרת';
+
+  @override
+  String get integrationApiKey => 'מפתח API';
+
+  @override
+  String get integrationAccessToken => 'אסימון גישה של משתמש';
+
+  @override
+  String get integrationUserId => 'מזהה משתמש ב-Jellyfin';
+
+  @override
+  String get integrationSave => 'שמור פרופיל';
+
+  @override
+  String get integrationEdit => 'ערוך פרופיל';
+
+  @override
+  String get integrationRemove => 'הסר פרופיל';
+
+  @override
+  String get integrationRemoveConfirm => 'להסיר חיבור זה מהאפליקציה? נתוני השרת לא ישתנו.';
+
+  @override
+  String get integrationCancel => 'ביטול';
+
+  @override
+  String get integrationInvalidProfile => 'הזן שם, כתובת שרת HTTP(S) תקינה והפרטי גישה הנדרשים.';
+
+  @override
+  String get integrationStorageFailed => 'אחסון האינטגרציות המאובטח אינו זמין. הפרופילים הקיימים נשמרו.';
+
+  @override
+  String get integrationRetry => 'נסה שוב';
+
+  @override
+  String get integrationHttpNotice => 'HTTP שולח פרטי גישה ללא הצפנה. השתמש בו רק ברשת מקומית מהימנה.';
+
+  @override
+  String get integrationSecretNotice => 'פרטי הגישה נשמרים באחסון מאובטח של המכשיר ונשלחים רק לשירות שהוגדר.';
+
+  @override
+  String get integrationNoProfiles => 'לא הוגדרו אינטגרציות.';
+
+  @override
+  String get jackettSearchTitle => 'חיפוש Jackett';
+
+  @override
+  String get jackettSearchHint => 'חפש באינדקסרים שהוגדרו';
+
+  @override
+  String get jackettSearchAction => 'חפש';
+
+  @override
+  String get jackettSearchEmpty => 'אין תוצאות תואמות.';
+
+  @override
+  String get jackettSearchFailed => 'החיפוש ב-Jackett נכשל. בדוק את השרת, מפתח ה-API והגדרות האינדקסרים.';
+
+  @override
+  String get jackettDownloadFailed => 'לא ניתן לאחזר קובץ טורנט תקין מהשרת שהוגדר ב-Jackett.';
+
+  @override
+  String get jackettDownloadAction => 'הורד';
+
+  @override
+  String get jackettUnknownValue => 'לא ידוע';
+
+  @override
+  String get jackettNoTarget => 'בחר שרת qBittorrent לפני הוספת הורדה.';
+
+  @override
+  String get jackettAdded => 'ההורדה נשלחה. בדוק את רשימת הטורנטים כדי לראות את הסטטוס.';
+
+  @override
+  String get jellyfinLibraryTitle => 'ספריית Jellyfin';
+
+  @override
+  String get jellyfinSearchHint => 'חפש בספרייה שלך';
+
+  @override
+  String get jellyfinSearchAction => 'חפש';
+
+  @override
+  String get jellyfinEmptyLibrary => 'אין פריטים תואמים בספרייה.';
+
+  @override
+  String get jellyfinReadOnlyNotice => 'עיין בספרייה הקיימת שלך. ניגון אינו זמין כאן עדיין.';
+
+  @override
+  String get jellyfinConnectionFailed => 'לא ניתן להתחבר ל-Jellyfin. בדוק את הפרופיל ונסה שוב.';
+
+  @override
+  String get jellyfinAuthenticationFailed => 'Jellyfin דחה את אסימון הגישה או את המשתמש.';
+
+  @override
+  String get jellyfinInvalidResponse => 'Jellyfin החזיר תגובה לא תקינה או גדולה מדי.';
+
+  @override
+  String get jellyfinInvalidProfile => 'הזן כתובת שרת תקינה, אסימון גישה ומזהה משתמש.';
+
+  @override
+  String get jellyfinRedirectBlocked => 'Jellyfin הפנה מחוץ לשרת שהוגדר.';
+
+  @override
+  String get jellyfinRetry => 'נסה שוב';
+
+  @override
+  String get jellyfinClose => 'סגור';
+
+  @override
+  String get searchDownloadConfirmTitle => 'אשר הורדה';
+
+  @override
+  String searchDownloadTarget(String name) {
+    return 'שרת יעד: $name';
+  }
+
+  @override
+  String get searchDownloadDataNotice => 'הקישור ונתוני הטורנט יישלחו לשרת qBittorrent זה. כתובות URL עשויות להכיל פרטי גישה של הטראקר.';
+
+  @override
+  String get searchResultUrlHidden => 'כתובות המקור וההורדה מוסתרות מכיוון שעשויות להכיל פרטי גישה.';
+
+  @override
+  String get searchProfileChanged => 'השרת שנבחר השתנה. התחל חיפוש חדש לפני ההורדה.';
+
+  @override
+  String get searchAlreadyAdded => 'טורנט זה כבר נמצא בשרת שנבחר או כבר נשלח.';
+
+  @override
+  String get searchAddOutcomeUnknown => 'בקשת ההורדה עשויה להגיע לשרת. בדוק את רשימת הטורנטים שלו לפני ניסיון נוסף.';
+
+  @override
+  String get searchCheckServer => 'בדוק שרת';
+
+  @override
+  String get searchUnsupportedDownload => 'לתוצאה זו אין קישור הורדה נתמך.';
+
+  @override
+  String get searchAddOptions => 'אפשרויות הורדה';
+
+  @override
+  String get searchConfirmAdd => 'אשר והוסף';
 }

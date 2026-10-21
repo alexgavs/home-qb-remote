@@ -1979,4 +1979,165 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get completionChannelDescription => 'التنزيلات المكتملة على خوادم qBittorrent الخاصة بك';
+
+  @override
+  String get integrationsTitle => 'التكاملات';
+
+  @override
+  String get integrationsNotice => 'اتصالات اختيارية بخوادمك. لا يبدأ البحث تنزيلًا تلقائيًا أبدًا.';
+
+  @override
+  String get integrationAddJackett => 'إضافة Jackett';
+
+  @override
+  String get integrationAddJellyfin => 'إضافة Jellyfin';
+
+  @override
+  String get integrationName => 'اسم الملف الشخصي';
+
+  @override
+  String get integrationServerUrl => 'عنوان الخادم';
+
+  @override
+  String get integrationApiKey => 'مفتاح API';
+
+  @override
+  String get integrationAccessToken => 'رمز وصول المستخدم';
+
+  @override
+  String get integrationUserId => 'معرّف مستخدم Jellyfin';
+
+  @override
+  String get integrationSave => 'حفظ الملف الشخصي';
+
+  @override
+  String get integrationEdit => 'تعديل الملف الشخصي';
+
+  @override
+  String get integrationRemove => 'إزالة الملف الشخصي';
+
+  @override
+  String get integrationRemoveConfirm => 'هل تريد إزالة هذا الاتصال من التطبيق؟ ستبقى بيانات الخادم دون تغيير.';
+
+  @override
+  String get integrationCancel => 'إلغاء';
+
+  @override
+  String get integrationInvalidProfile => 'أدخل اسمًا وعنوان خادم HTTP(S) صالحًا وبيانات الاعتماد المطلوبة.';
+
+  @override
+  String get integrationStorageFailed => 'مساحة التخزين المحمية للتكاملات غير متاحة. تم الحفاظ على الملفات الشخصية الحالية.';
+
+  @override
+  String get integrationRetry => 'إعادة المحاولة';
+
+  @override
+  String get integrationHttpNotice => 'يرسل HTTP بيانات الاعتماد دون تشفير. استخدمه فقط على شبكة محلية موثوقة.';
+
+  @override
+  String get integrationSecretNotice => 'تُخزَّن بيانات الاعتماد في مساحة تخزين محمية على الجهاز، ولا تُرسل إلا إلى الخدمة المهيأة.';
+
+  @override
+  String get integrationNoProfiles => 'لا توجد تكاملات مُعدّة.';
+
+  @override
+  String get jackettSearchTitle => 'بحث Jackett';
+
+  @override
+  String get jackettSearchHint => 'ابحث في الفهارس المُعدّة';
+
+  @override
+  String get jackettSearchAction => 'بحث';
+
+  @override
+  String get jackettSearchEmpty => 'لا توجد نتائج مطابقة.';
+
+  @override
+  String get jackettSearchFailed => 'فشل البحث في Jackett. تحقق من الخادم ومفتاح API وإعداد الفهارس.';
+
+  @override
+  String get jackettDownloadFailed => 'تعذر الحصول على ملف torrent صالح من خادم Jackett المُعدّ.';
+
+  @override
+  String get jackettDownloadAction => 'تنزيل';
+
+  @override
+  String get jackettUnknownValue => 'غير معروف';
+
+  @override
+  String get jackettNoTarget => 'اختر خادم qBittorrent قبل إضافة تنزيل.';
+
+  @override
+  String get jackettAdded => 'تم إرسال التنزيل. تحقق من قائمة torrent لمعرفة الحالة.';
+
+  @override
+  String get jellyfinLibraryTitle => 'مكتبة Jellyfin';
+
+  @override
+  String get jellyfinSearchHint => 'ابحث في مكتبتك';
+
+  @override
+  String get jellyfinSearchAction => 'بحث';
+
+  @override
+  String get jellyfinEmptyLibrary => 'لا توجد عناصر مطابقة في المكتبة.';
+
+  @override
+  String get jellyfinReadOnlyNotice => 'تصفح مكتبتك الحالية. التشغيل غير متاح هنا حتى الآن.';
+
+  @override
+  String get jellyfinConnectionFailed => 'تعذر الاتصال بـ Jellyfin. تحقق من الملف الشخصي وحاول مرة أخرى.';
+
+  @override
+  String get jellyfinAuthenticationFailed => 'رفض Jellyfin رمز الوصول أو المستخدم.';
+
+  @override
+  String get jellyfinInvalidResponse => 'أعاد Jellyfin استجابة غير صالحة أو كبيرة جدًا.';
+
+  @override
+  String get jellyfinInvalidProfile => 'أدخل عنوان خادم صالحًا ورمز وصول ومعرّف مستخدم.';
+
+  @override
+  String get jellyfinRedirectBlocked => 'أعاد Jellyfin التوجيه إلى خارج الخادم المُعدّ.';
+
+  @override
+  String get jellyfinRetry => 'إعادة المحاولة';
+
+  @override
+  String get jellyfinClose => 'إغلاق';
+
+  @override
+  String get searchDownloadConfirmTitle => 'تأكيد التنزيل';
+
+  @override
+  String searchDownloadTarget(String name) {
+    return 'الخادم المستهدف: $name';
+  }
+
+  @override
+  String get searchDownloadDataNotice => 'سيُرسل الرابط وبيانات torrent الوصفية إلى خادم qBittorrent هذا. قد تحتوي عناوين URL على بيانات اعتماد المتتبّع.';
+
+  @override
+  String get searchResultUrlHidden => 'عناوين المصدر والتنزيل مخفية لأنها قد تحتوي على بيانات اعتماد.';
+
+  @override
+  String get searchProfileChanged => 'تغيّر الخادم المحدد. ابدأ بحثًا جديدًا قبل التنزيل.';
+
+  @override
+  String get searchAlreadyAdded => 'هذا الملف موجود بالفعل على الخادم المحدد أو تم إرساله سابقًا.';
+
+  @override
+  String get searchAddOutcomeUnknown => 'ربما وصل طلب التنزيل إلى الخادم. تحقق من قائمة torrent الخاصة به قبل المحاولة مرة أخرى.';
+
+  @override
+  String get searchCheckServer => 'التحقق من الخادم';
+
+  @override
+  String get searchUnsupportedDownload => 'لا يحتوي هذا النتيجة على رابط تنزيل مدعوم.';
+
+  @override
+  String get searchAddOptions => 'خيارات التنزيل';
+
+  @override
+  String get searchConfirmAdd => 'تأكيد وإضافة';
 }

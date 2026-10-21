@@ -1,9 +1,29 @@
 # Optional Jackett and Jellyfin integrations
 
-**Status: design proposal, not implemented.** This work does not block the
-v0.2.0 release. Existing qBittorrent remote operation remains independent of
-both services. Requirements and primary sources were reviewed on 2026-10-21;
-implementation must verify the APIs of the actual supported server versions.
+**Status: partially implemented in current source; advanced work remains planned.**
+Independent protected profiles, direct Jackett basic search/download and Jellyfin
+read-only catalog screens now exist. Tests use local fixtures and mocked UI,
+not real Jackett/Jellyfin end-to-end deployments. Check release notes for binary
+availability; this does not change the historical v0.2.0 scope. See
+[practical setup](INTEGRATIONS.md). Primary sources were reviewed on 2026-10-21;
+actual supported service versions still need verification.
+
+## Implemented versus unverified
+
+| Area | Current source | Missing or unverified |
+|---|---|---|
+| Profiles | Independent protected storage and add/edit/remove UI | Native real-service onboarding not verified |
+| Jackett | Root/Torznab URL, basic text search, bounded XML, same-origin file fetch and qB multipart/magnet handoff | No capabilities, advanced filters/indexer picker, pagination or foreign-origin allowlist; no real E2E proof |
+| Handoff | Explicit target/options, identity checks and no mutation replay | Real private-tracker/network edge cases unverified |
+| Jellyfin | User-token/UUID validation, first 100 user-scoped items and read-only details | No admin API-key mode, pagination, login wizard, images, player or library matching |
+| Transport | Independent clients, default TLS, bounded responses/timeouts and restricted redirects | No integration-specific custom CA/client certificate/Basic-auth options |
+| Server plugin | Ordinary qB search screens can select server plugins | Jackett plugin E2E still an assessment; no configuration/filesystem writes |
+| LAN media | SMB remains the preferred future direct-file approach | SMB playback and local torrent engine absent |
+
+The sections below retain the target architecture, including work not yet built.
+The status table above and [setup guide](INTEGRATIONS.md) describe today's limits;
+in particular capability discovery, external-origin allowlists and matching are
+still proposals rather than implemented behavior.
 
 ## Roles and user flow
 
@@ -163,10 +183,10 @@ management writes are included in this proposal.
 | INT-06: playback prototype | Optional Jellyfin Direct Play, explicit transcode choice, SMB coexistence | Test codecs/subtitles/seeks, server policy denial, cleanup and OS lifecycle on actual target platforms; no claim from mocks alone |
 | INT-07: release gate | Documentation, eight locales and accessibility | en/ru/uk/he/ar/de/fr/es complete, ICU/plural tests and Hebrew/Arabic RTL layouts; platform results and limits recorded |
 
-Assess INT-00 first. If it meets the search/download need, prefer that smaller
-MVP and keep direct Torznab optional. INT-01–04 form the independently reviewable
-direct-integration MVP if required; INT-05 can ship separately. INT-06 is
-deliberately outside the first search/download milestone.
+INT-00 remains an unverified alternative through an existing server plugin.
+Direct profiles/basic handoff and the read-only part of INT-05 now exist; the
+advanced capability/filter, library-matching and real-service acceptance gates
+remain open. INT-06 playback is not part of the current implementation.
 All network tests use local fake services and invented data. Real-server tests
 need explicit authorization and must not publish keys, search histories, media
 titles, library paths or personal endpoints. Maintainers review added dependency

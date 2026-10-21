@@ -13,6 +13,11 @@ RSS, search plugins, queues and speed limits. Add links or torrent files and exp
 notifications, Wi-Fi-based local routing, and Wake-on-LAN. See the
 [feature and platform matrix](docs/FEATURES.md).
 
+Current source also provides optional direct Jackett text search/download and a
+read-only Jellyfin library. See [integration setup and limits](docs/INTEGRATIONS.md);
+check release notes for binary availability. These flows have local-fixture
+coverage, not a claimed real Jackett/Jellyfin end-to-end deployment.
+
 The interface supports English, Russian, Hebrew, Ukrainian, German, French,
 Spanish and Arabic, including right-to-left Hebrew and Arabic. Choose a language in
 application settings or follow the system language. Android 13+ also exposes
@@ -49,7 +54,8 @@ current; updates still require review and passing checks.
 
 ## Privacy and security
 
-Requests go to configured qBittorrent endpoints; search/RSS run on the server.
+Normal plugin search/RSS run on qBittorrent. Optional integration profiles also
+contact the user's configured Jackett/Jellyfin endpoints directly.
 Profiles, passwords and API keys use the OS protected store. TLS verification
 stays enabled, and cross-origin redirects are rejected. Use HTTPS or a trusted
 VPN for remote access. Optional notifications and Wi-Fi permissions are explained

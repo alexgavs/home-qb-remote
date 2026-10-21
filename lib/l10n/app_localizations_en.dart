@@ -1959,4 +1959,165 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get completionChannelDescription => 'Completed downloads on your qBittorrent servers';
+
+  @override
+  String get integrationsTitle => 'Integrations';
+
+  @override
+  String get integrationsNotice => 'Optional connections to your own servers. Search never starts a download automatically.';
+
+  @override
+  String get integrationAddJackett => 'Add Jackett';
+
+  @override
+  String get integrationAddJellyfin => 'Add Jellyfin';
+
+  @override
+  String get integrationName => 'Profile name';
+
+  @override
+  String get integrationServerUrl => 'Server URL';
+
+  @override
+  String get integrationApiKey => 'API key';
+
+  @override
+  String get integrationAccessToken => 'User access token';
+
+  @override
+  String get integrationUserId => 'Jellyfin user ID';
+
+  @override
+  String get integrationSave => 'Save profile';
+
+  @override
+  String get integrationEdit => 'Edit profile';
+
+  @override
+  String get integrationRemove => 'Remove profile';
+
+  @override
+  String get integrationRemoveConfirm => 'Remove this connection from the app? Server data will remain unchanged.';
+
+  @override
+  String get integrationCancel => 'Cancel';
+
+  @override
+  String get integrationInvalidProfile => 'Enter a name, a valid HTTP(S) server URL and the required credentials.';
+
+  @override
+  String get integrationStorageFailed => 'Protected integration storage is unavailable. Existing profiles were preserved.';
+
+  @override
+  String get integrationRetry => 'Retry';
+
+  @override
+  String get integrationHttpNotice => 'HTTP sends credentials without encryption. Use it only on a trusted local network.';
+
+  @override
+  String get integrationSecretNotice => 'Credentials are stored in protected device storage and sent only to the configured service.';
+
+  @override
+  String get integrationNoProfiles => 'No integrations configured.';
+
+  @override
+  String get jackettSearchTitle => 'Jackett search';
+
+  @override
+  String get jackettSearchHint => 'Search configured indexers';
+
+  @override
+  String get jackettSearchAction => 'Search';
+
+  @override
+  String get jackettSearchEmpty => 'No matching results.';
+
+  @override
+  String get jackettSearchFailed => 'Jackett search failed. Check the server, API key and indexer configuration.';
+
+  @override
+  String get jackettDownloadFailed => 'Could not retrieve a valid torrent from the configured Jackett server.';
+
+  @override
+  String get jackettDownloadAction => 'Download';
+
+  @override
+  String get jackettUnknownValue => 'Unknown';
+
+  @override
+  String get jackettNoTarget => 'Select a qBittorrent server before adding a download.';
+
+  @override
+  String get jackettAdded => 'Download submitted. Check the torrent list for its status.';
+
+  @override
+  String get jellyfinLibraryTitle => 'Jellyfin library';
+
+  @override
+  String get jellyfinSearchHint => 'Search your library';
+
+  @override
+  String get jellyfinSearchAction => 'Search';
+
+  @override
+  String get jellyfinEmptyLibrary => 'No matching library items.';
+
+  @override
+  String get jellyfinReadOnlyNotice => 'Browse your existing library. Playback is not available here yet.';
+
+  @override
+  String get jellyfinConnectionFailed => 'Could not connect to Jellyfin. Check the profile and try again.';
+
+  @override
+  String get jellyfinAuthenticationFailed => 'Jellyfin rejected the access token or user.';
+
+  @override
+  String get jellyfinInvalidResponse => 'Jellyfin returned an invalid or oversized response.';
+
+  @override
+  String get jellyfinInvalidProfile => 'Enter a valid server URL, access token and user ID.';
+
+  @override
+  String get jellyfinRedirectBlocked => 'Jellyfin redirected outside the configured server.';
+
+  @override
+  String get jellyfinRetry => 'Retry';
+
+  @override
+  String get jellyfinClose => 'Close';
+
+  @override
+  String get searchDownloadConfirmTitle => 'Confirm download';
+
+  @override
+  String searchDownloadTarget(String name) {
+    return 'Target server: $name';
+  }
+
+  @override
+  String get searchDownloadDataNotice => 'The link and torrent metadata will be sent to this qBittorrent server. URLs may contain tracker credentials.';
+
+  @override
+  String get searchResultUrlHidden => 'Source and download URLs are hidden because they may contain credentials.';
+
+  @override
+  String get searchProfileChanged => 'The selected server changed. Start a new search before downloading.';
+
+  @override
+  String get searchAlreadyAdded => 'This torrent is already on the selected server or has already been submitted.';
+
+  @override
+  String get searchAddOutcomeUnknown => 'The download request may have reached the server. Check its torrent list before trying again.';
+
+  @override
+  String get searchCheckServer => 'Check server';
+
+  @override
+  String get searchUnsupportedDownload => 'This result has no supported download link.';
+
+  @override
+  String get searchAddOptions => 'Download options';
+
+  @override
+  String get searchConfirmAdd => 'Confirm and add';
 }

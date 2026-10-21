@@ -1,18 +1,41 @@
 import 'package:flutter/material.dart';
 
 import '../app_controller.dart';
+import '../core/models.dart';
+import '../features/search_session.dart' show safeSearchTitle;
 import '../l10n/l10n.dart';
 
 class AddTorrentRequest {
-  const AddTorrentRequest(this.urls, this.file, this.options);
+  const AddTorrentRequest(
+    this.urls,
+    this.file,
+    this.options, {
+    this.targetProfile,
+  });
   final String urls;
   final bool file;
   final Map<String, String> options;
+  final ServerProfile? targetProfile;
 }
 
 class AddTorrentDialog extends StatefulWidget {
-  const AddTorrentDialog({super.key, required this.controller});
+  const AddTorrentDialog({
+    super.key,
+    required this.controller,
+    this.initialUrls = '',
+    this.downloadTitle,
+    this.hideUrls = false,
+    this.filePayload = false,
+    this.showFilePicker = true,
+    this.targetProfile,
+    this.loadSuggestions,
+  });
   final AppController controller;
+  final String initialUrls;
+  final String? downloadTitle;
+  final bool hideUrls, filePayload, showFilePicker;
+  final ServerProfile? targetProfile;
+  final Future<dynamic> Function(String endpoint)? loadSuggestions;
   @override
   State<AddTorrentDialog> createState() => _AddTorrentDialogState();
 }
@@ -34,11 +57,23 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
   bool stopped = false, autoTmm = false, sequential = false, firstLast = false;
   String layout = 'Original';
   List<String> categories = [], tags = [];
+  late final ServerProfile? target;
+  bool profileChanged = false, submitted = false;
 
   @override
   void initState() {
     super.initState();
+    target = widget.targetProfile ?? widget.controller.currentProfile;
+    fields['urls']!.text = widget.initialUrls;
+    widget.controller.addListener(_profileChanged);
     _defaults();
+  }
+
+  void _profileChanged() {
+    if (!identical(widget.controller.currentProfile, target) &&
+        !profileChanged) {
+      setState(() => profileChanged = true);
+    }
   }
 
   Future<void> _defaults() async {
@@ -60,15 +95,26 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
 
   Future<void> _suggest(String endpoint, void Function(dynamic) apply) async {
     try {
-      final value = await widget.controller.apiGet(endpoint);
-      if (mounted) setState(() => apply(value));
-    } catch (_) {
+      if (profileChanged) return;
+      final value =
+          await (widget.loadSuggestions?.call(endpoint) ??
+              widget.controller.apiGet(endpoint));
+      if (mounted &&
+          !profileChanged &&
+          identical(widget.controller.currentProfile, target)) {
+        setState(() => apply(value));
+      }
+    } catch (error) {
+      if (target != null) {
+        await widget.controller.reportAuthenticationFailure(target!, error);
+      }
       // Older servers may not provide suggestions.
     }
   }
 
   @override
   void dispose() {
+    widget.controller.removeListener(_profileChanged);
     for (final field in fields.values) {
       field.dispose();
     }
@@ -76,6 +122,12 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
   }
 
   void submit(bool file) {
+    if (widget.controller.requiresAuthentication ||
+        submitted ||
+        profileChanged ||
+        !identical(widget.controller.currentProfile, target)) {
+      return;
+    }
     if (!form.currentState!.validate()) return;
     if (!file && fields['urls']!.text.trim().isEmpty) return;
     final version = widget.controller.version ?? '';
@@ -94,9 +146,15 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
               ? '${int.parse(entry.value.text.trim()) * 1024}'
               : entry.value.text.trim(),
     };
+    submitted = true;
     Navigator.pop(
       context,
-      AddTorrentRequest(fields['urls']!.text.trim(), file, options),
+      AddTorrentRequest(
+        fields['urls']!.text.trim(),
+        file,
+        options,
+        targetProfile: target,
+      ),
     );
   }
 
@@ -126,7 +184,11 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
   Widget build(BuildContext context) {
     final l10n = context.l10n;
     return AlertDialog(
-      title: Text(l10n.message0459),
+      title: Text(
+        widget.downloadTitle == null
+            ? l10n.message0459
+            : l10n.searchDownloadConfirmTitle,
+      ),
       content: SizedBox(
         width: 520,
         child: SingleChildScrollView(
@@ -136,22 +198,36 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                TextFormField(
-                  controller: fields['urls'],
-                  minLines: 3,
-                  maxLines: 6,
-                  decoration: InputDecoration(
-                    labelText: l10n.message0460,
-                    hintText: l10n.message0461,
+                if (target != null)
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 12),
+                    child: Text(l10n.searchDownloadTarget(target!.name)),
                   ),
-                ),
+                if (profileChanged) Text(l10n.searchProfileChanged),
+                if (widget.downloadTitle != null)
+                  Text(safeSearchTitle(widget.downloadTitle, l10n.message0109)),
+                if (widget.hideUrls) ...[
+                  const SizedBox(height: 12),
+                  Text(l10n.searchDownloadDataNotice),
+                ] else
+                  TextFormField(
+                    controller: fields['urls'],
+                    minLines: 3,
+                    maxLines: 6,
+                    decoration: InputDecoration(
+                      labelText: l10n.message0460,
+                      hintText: l10n.message0461,
+                    ),
+                  ),
                 const SizedBox(height: 12),
-                OutlinedButton.icon(
-                  onPressed: () => submit(true),
-                  icon: const Icon(Icons.upload_file_outlined),
-                  label: Text(l10n.message0462),
-                ),
+                if (widget.showFilePicker)
+                  OutlinedButton.icon(
+                    onPressed: profileChanged ? null : () => submit(true),
+                    icon: const Icon(Icons.upload_file_outlined),
+                    label: Text(l10n.message0462),
+                  ),
                 ExpansionTile(
+                  initiallyExpanded: widget.hideUrls,
                   tilePadding: EdgeInsets.zero,
                   title: Text(l10n.message0463),
                   children: [
@@ -265,8 +341,17 @@ class _AddTorrentDialogState extends State<AddTorrentDialog> {
           child: Text(l10n.message0043),
         ),
         FilledButton(
-          onPressed: () => submit(false),
-          child: Text(l10n.message0100),
+          onPressed:
+              profileChanged ||
+                  submitted ||
+                  widget.controller.requiresAuthentication
+              ? null
+              : () => submit(widget.filePayload),
+          child: Text(
+            widget.downloadTitle == null
+                ? l10n.message0100
+                : l10n.searchConfirmAdd,
+          ),
         ),
       ],
     );

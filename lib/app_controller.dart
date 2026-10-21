@@ -294,6 +294,21 @@ class AppController extends ChangeNotifier {
     if (profile != null) await selectProfile(profile);
   }
 
+  /// Auxiliary, server-bound clients share the selected profile's definitive
+  /// authentication block; reopening a search must not retry rejected secrets.
+  Future<void> reportAuthenticationFailure(
+    ServerProfile profile,
+    Object error,
+  ) async {
+    if (error is! QbAuthenticationException ||
+        !identical(currentProfile, profile)) {
+      return;
+    }
+    this.error = _safeError(error);
+    await _blockAuthentication(profile.id);
+    _notify();
+  }
+
   void setActive(bool active) {
     _active = active;
     if (!active) {

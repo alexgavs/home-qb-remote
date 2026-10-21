@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../app_controller.dart';
 import '../l10n/error_messages.dart';
 import '../l10n/l10n.dart';
+import '../integrations/integrations_screen.dart';
 import 'search_screen.dart';
 import 'rss_screen.dart';
 import 'server_settings_screen.dart';
@@ -166,6 +167,19 @@ class _AdvancedScreenState extends State<AdvancedScreen> {
                 );
               }),
               tile(Icons.rss_feed, l10n.message0050, l10n.message0051, rss),
+              tile(
+                Icons.hub_outlined,
+                l10n.integrationsTitle,
+                l10n.integrationsNotice,
+                () async {
+                  await Navigator.push<void>(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => IntegrationsScreen(controller: c),
+                    ),
+                  );
+                },
+              ),
               tile(Icons.speed, l10n.message0052, l10n.message0053, limits),
               tile(
                 Icons.settings,

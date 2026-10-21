@@ -3850,6 +3850,324 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Completed downloads on your qBittorrent servers'**
   String get completionChannelDescription;
+
+  /// No description provided for @integrationsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Integrations'**
+  String get integrationsTitle;
+
+  /// No description provided for @integrationsNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Optional connections to your own servers. Search never starts a download automatically.'**
+  String get integrationsNotice;
+
+  /// No description provided for @integrationAddJackett.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Jackett'**
+  String get integrationAddJackett;
+
+  /// No description provided for @integrationAddJellyfin.
+  ///
+  /// In en, this message translates to:
+  /// **'Add Jellyfin'**
+  String get integrationAddJellyfin;
+
+  /// No description provided for @integrationName.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile name'**
+  String get integrationName;
+
+  /// No description provided for @integrationServerUrl.
+  ///
+  /// In en, this message translates to:
+  /// **'Server URL'**
+  String get integrationServerUrl;
+
+  /// No description provided for @integrationApiKey.
+  ///
+  /// In en, this message translates to:
+  /// **'API key'**
+  String get integrationApiKey;
+
+  /// No description provided for @integrationAccessToken.
+  ///
+  /// In en, this message translates to:
+  /// **'User access token'**
+  String get integrationAccessToken;
+
+  /// No description provided for @integrationUserId.
+  ///
+  /// In en, this message translates to:
+  /// **'Jellyfin user ID'**
+  String get integrationUserId;
+
+  /// No description provided for @integrationSave.
+  ///
+  /// In en, this message translates to:
+  /// **'Save profile'**
+  String get integrationSave;
+
+  /// No description provided for @integrationEdit.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit profile'**
+  String get integrationEdit;
+
+  /// No description provided for @integrationRemove.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove profile'**
+  String get integrationRemove;
+
+  /// No description provided for @integrationRemoveConfirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Remove this connection from the app? Server data will remain unchanged.'**
+  String get integrationRemoveConfirm;
+
+  /// No description provided for @integrationCancel.
+  ///
+  /// In en, this message translates to:
+  /// **'Cancel'**
+  String get integrationCancel;
+
+  /// No description provided for @integrationInvalidProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a name, a valid HTTP(S) server URL and the required credentials.'**
+  String get integrationInvalidProfile;
+
+  /// No description provided for @integrationStorageFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Protected integration storage is unavailable. Existing profiles were preserved.'**
+  String get integrationStorageFailed;
+
+  /// No description provided for @integrationRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get integrationRetry;
+
+  /// No description provided for @integrationHttpNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'HTTP sends credentials without encryption. Use it only on a trusted local network.'**
+  String get integrationHttpNotice;
+
+  /// No description provided for @integrationSecretNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Credentials are stored in protected device storage and sent only to the configured service.'**
+  String get integrationSecretNotice;
+
+  /// No description provided for @integrationNoProfiles.
+  ///
+  /// In en, this message translates to:
+  /// **'No integrations configured.'**
+  String get integrationNoProfiles;
+
+  /// No description provided for @jackettSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Jackett search'**
+  String get jackettSearchTitle;
+
+  /// No description provided for @jackettSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search configured indexers'**
+  String get jackettSearchHint;
+
+  /// No description provided for @jackettSearchAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get jackettSearchAction;
+
+  /// No description provided for @jackettSearchEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching results.'**
+  String get jackettSearchEmpty;
+
+  /// No description provided for @jackettSearchFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Jackett search failed. Check the server, API key and indexer configuration.'**
+  String get jackettSearchFailed;
+
+  /// No description provided for @jackettDownloadFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not retrieve a valid torrent from the configured Jackett server.'**
+  String get jackettDownloadFailed;
+
+  /// No description provided for @jackettDownloadAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Download'**
+  String get jackettDownloadAction;
+
+  /// No description provided for @jackettUnknownValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Unknown'**
+  String get jackettUnknownValue;
+
+  /// No description provided for @jackettNoTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a qBittorrent server before adding a download.'**
+  String get jackettNoTarget;
+
+  /// No description provided for @jackettAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'Download submitted. Check the torrent list for its status.'**
+  String get jackettAdded;
+
+  /// No description provided for @jellyfinLibraryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Jellyfin library'**
+  String get jellyfinLibraryTitle;
+
+  /// No description provided for @jellyfinSearchHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Search your library'**
+  String get jellyfinSearchHint;
+
+  /// No description provided for @jellyfinSearchAction.
+  ///
+  /// In en, this message translates to:
+  /// **'Search'**
+  String get jellyfinSearchAction;
+
+  /// No description provided for @jellyfinEmptyLibrary.
+  ///
+  /// In en, this message translates to:
+  /// **'No matching library items.'**
+  String get jellyfinEmptyLibrary;
+
+  /// No description provided for @jellyfinReadOnlyNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'Browse your existing library. Playback is not available here yet.'**
+  String get jellyfinReadOnlyNotice;
+
+  /// No description provided for @jellyfinConnectionFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not connect to Jellyfin. Check the profile and try again.'**
+  String get jellyfinConnectionFailed;
+
+  /// No description provided for @jellyfinAuthenticationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Jellyfin rejected the access token or user.'**
+  String get jellyfinAuthenticationFailed;
+
+  /// No description provided for @jellyfinInvalidResponse.
+  ///
+  /// In en, this message translates to:
+  /// **'Jellyfin returned an invalid or oversized response.'**
+  String get jellyfinInvalidResponse;
+
+  /// No description provided for @jellyfinInvalidProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid server URL, access token and user ID.'**
+  String get jellyfinInvalidProfile;
+
+  /// No description provided for @jellyfinRedirectBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Jellyfin redirected outside the configured server.'**
+  String get jellyfinRedirectBlocked;
+
+  /// No description provided for @jellyfinRetry.
+  ///
+  /// In en, this message translates to:
+  /// **'Retry'**
+  String get jellyfinRetry;
+
+  /// No description provided for @jellyfinClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get jellyfinClose;
+
+  /// No description provided for @searchDownloadConfirmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm download'**
+  String get searchDownloadConfirmTitle;
+
+  /// No description provided for @searchDownloadTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Target server: {name}'**
+  String searchDownloadTarget(String name);
+
+  /// No description provided for @searchDownloadDataNotice.
+  ///
+  /// In en, this message translates to:
+  /// **'The link and torrent metadata will be sent to this qBittorrent server. URLs may contain tracker credentials.'**
+  String get searchDownloadDataNotice;
+
+  /// No description provided for @searchResultUrlHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Source and download URLs are hidden because they may contain credentials.'**
+  String get searchResultUrlHidden;
+
+  /// No description provided for @searchProfileChanged.
+  ///
+  /// In en, this message translates to:
+  /// **'The selected server changed. Start a new search before downloading.'**
+  String get searchProfileChanged;
+
+  /// No description provided for @searchAlreadyAdded.
+  ///
+  /// In en, this message translates to:
+  /// **'This torrent is already on the selected server or has already been submitted.'**
+  String get searchAlreadyAdded;
+
+  /// No description provided for @searchAddOutcomeUnknown.
+  ///
+  /// In en, this message translates to:
+  /// **'The download request may have reached the server. Check its torrent list before trying again.'**
+  String get searchAddOutcomeUnknown;
+
+  /// No description provided for @searchCheckServer.
+  ///
+  /// In en, this message translates to:
+  /// **'Check server'**
+  String get searchCheckServer;
+
+  /// No description provided for @searchUnsupportedDownload.
+  ///
+  /// In en, this message translates to:
+  /// **'This result has no supported download link.'**
+  String get searchUnsupportedDownload;
+
+  /// No description provided for @searchAddOptions.
+  ///
+  /// In en, this message translates to:
+  /// **'Download options'**
+  String get searchAddOptions;
+
+  /// No description provided for @searchConfirmAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm and add'**
+  String get searchConfirmAdd;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
