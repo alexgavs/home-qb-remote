@@ -23,7 +23,7 @@ dependencies:
   local_auth_darwin: ^2.0.5
   network_info_plus: ^8.2.2
   # 13.x pulls Android SDK 37, beyond this Flutter/AGP toolchain's SDK metadata support.
-  permission_handler: 12.0.3
+  permission_handler: 13.0.2
   workmanager: ^0.10.10
 
 dev_dependencies:
