@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   xml: ^7.1.0
-  crypto: ^3.0.7
+  crypto: ^3.0.8
   app_links: ^7.2.2
   file_selector: ^1.1.0
   flutter:
